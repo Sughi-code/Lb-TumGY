@@ -1,17 +1,16 @@
 <?php
-$x = 5;
-$y = 10;
-echo $x + $y;
-?>
-<?php
-function helloWorld() {
-    echo "Hello, World!";
+echo "Hello World";
+$var = 123;
+if ($var > 100) {
+echo "Больше 100";
 }
-helloWorld();
-?>
 <?php
-if (isset($_GET['test'])) {
-    $var = $_GET['test'];
-    echo $var;
+function test() {
+return "test";
 }
-?>
+<?php
+class MyClass {
+public function method() {
+echo "Method called";
+}
+}
