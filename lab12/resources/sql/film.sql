@@ -1,4 +1,25 @@
 CREATE TABLE IF NOT EXISTS film (
+    film_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    description TEXT DEFAULT NULL,
+    release_year YEAR DEFAULT NULL,
+    language_id TINYINT UNSIGNED NOT NULL,
+    original_language_id TINYINT UNSIGNED DEFAULT NULL,
+    rental_duration TINYINT UNSIGNED NOT NULL DEFAULT 3,
+    rental_rate DECIMAL(4,2) NOT NULL DEFAULT 4.99,
+    length SMALLINT UNSIGNED DEFAULT NULL,
+    replacement_cost DECIMAL(5,2) NOT NULL DEFAULT 19.99,
+    rating ENUM('G','PG','PG-13','R','NC-17') DEFAULT 'G',
+    special_features SET('Trailers','Commentaries','Deleted Scenes','Behind the Scenes') DEFAULT NULL,
+    last_update TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (film_id),
+    KEY idx_title (title),
+    KEY idx_fk_language_id (language_id),
+    KEY idx_fk_original_language_id (original_language_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO film (film_id, title, description, release_year, language_id, rental_duration, rental_rate, length, replacement_cost, rating) VALUES
+(1, 'Interstellar', 'A team of explorers travel through a wormhole in space in an attempt to ensure humanity\'s survival.', 2014, 1, 7, 3.99, 169, 24.99, 'PG-13'),
     film_id INTEGER PRIMARY KEY AUTOINCREMENT,
     title VARCHAR(255) NOT NULL,
     description TEXT DEFAULT NULL,

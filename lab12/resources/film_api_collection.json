@@ -1,0 +1,158 @@
+{
+    "info": {
+        "name": "Film API Collection",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Get Film Details",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/films/{{film_id}}/details?data=details",
+                    "host": ["{{base_url}}"],
+                    "path": ["films", "{{film_id}}", "details"],
+                    "query": [
+                        {
+                            "key": "data",
+                            "value": "details"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Get Film Reviews",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/films/{{film_id}}/details?data=reviews",
+                    "host": ["{{base_url}}"],
+                    "path": ["films", "{{film_id}}", "details"],
+                    "query": [
+                        {
+                            "key": "data",
+                            "value": "reviews"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Get Film Persons",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/films/{{film_id}}/details?data=persons",
+                    "host": ["{{base_url}}"],
+                    "path": ["films", "{{film_id}}", "details"],
+                    "query": [
+                        {
+                            "key": "data",
+                            "value": "persons"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Get Film Similar",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/films/{{film_id}}/details?data=similar",
+                    "host": ["{{base_url}}"],
+                    "path": ["films", "{{film_id}}", "details"],
+                    "query": [
+                        {
+                            "key": "data",
+                            "value": "similar"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Get Film Images",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/films/{{film_id}}/details?data=images",
+                    "host": ["{{base_url}}"],
+                    "path": ["films", "{{film_id}}", "details"],
+                    "query": [
+                        {
+                            "key": "data",
+                            "value": "images"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Get Film Rating",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/films/{{film_id}}/details?data=rating",
+                    "host": ["{{base_url}}"],
+                    "path": ["films", "{{film_id}}", "details"],
+                    "query": [
+                        {
+                            "key": "data",
+                            "value": "rating"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Get Multiple Film Details",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/films/{{film_id}}/details?data=details,reviews,persons",
+                    "host": ["{{base_url}}"],
+                    "path": ["films", "{{film_id}}", "details"],
+                    "query": [
+                        {
+                            "key": "data",
+                            "value": "details,reviews,persons"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        }
+    ],
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost:8000",
+            "type": "string"
+        },
+        {
+            "key": "film_id",
+            "value": "1",
+            "type": "string"
+        },
+        {
+            "key": "API_KEY",
+            "value": "PW0WYZQ-7VTMC6Q-G1K5K69-11YM3C3",
+            "type": "string"
+        }
+    ]
+}
