@@ -35,29 +35,37 @@ function getRequestBody(): array
 
 function getAllFilms(PDO $databaseConnection): void
 {
-    $builder = new QueryBuilder(
-        $databaseConnection,
-        'film',
-        ['film_id', 'title', 'description', 'release_year', 'language_id', 'rental_duration', 'rental_rate', 'length', 'replacement_cost', 'rating'],
-        'film_id'
-    );
-    $result = $builder->execute();
-    sendJsonResponse($result);
+    try {
+        $builder = new QueryBuilder(
+            $databaseConnection,
+            'film',
+            ['film_id', 'title', 'description', 'release_year', 'language_id', 'rental_duration', 'rental_rate', 'length', 'replacement_cost', 'rating'],
+            'film_id'
+        );
+        $result = $builder->execute();
+        sendJsonResponse($result);
+    } catch (Exception $e) {
+        sendJsonError('Ошибка получения фильмов', 500, $e->getMessage());
+    }
 }
 
 function getFilmById(PDO $databaseConnection, string $filmId): void
 {
-    $builder = new QueryBuilder(
-        $databaseConnection,
-        'film',
-        ['film_id', 'title', 'description', 'release_year', 'language_id', 'rental_duration', 'rental_rate', 'length', 'replacement_cost', 'rating', 'special_features', 'last_update'],
-        'film_id'
-    );
-    $result = $builder->executeSingle('film_id', $filmId);
-    if (!$result) {
-        sendJsonError('Запись не найдена', 404, "Фильм с ID=$filmId не существует");
+    try {
+        $builder = new QueryBuilder(
+            $databaseConnection,
+            'film',
+            ['film_id', 'title', 'description', 'release_year', 'language_id', 'rental_duration', 'rental_rate', 'length', 'replacement_cost', 'rating', 'special_features', 'last_update'],
+            'film_id'
+        );
+        $result = $builder->executeSingle('film_id', $filmId);
+        if (!$result) {
+            sendJsonError('Запись не найдена', 404, "Фильм с ID=$filmId не существует");
+        }
+        sendJsonResponse(['success' => true, 'data' => $result]);
+    } catch (Exception $e) {
+        sendJsonError('Ошибка получения фильма по ID', 500, $e->getMessage());
     }
-    sendJsonResponse(['success' => true, 'data' => $result]);
 }
 
 function kinopoiskApiRequest(string $endpoint, array $params = [], string $apiKey = ''): ?array
@@ -81,7 +89,9 @@ function kinopoiskApiRequest(string $endpoint, array $params = [], string $apiKe
     
     $response = curl_exec($ch);
     if (curl_errno($ch)) {
+        $error = curl_error($ch);
         curl_close($ch);
+        error_log("cURL error: " . $error);
         return null;
     }
     
@@ -89,11 +99,13 @@ function kinopoiskApiRequest(string $endpoint, array $params = [], string $apiKe
     curl_close($ch);
     
     if ($httpCode !== 200) {
+        error_log("API request failed with HTTP code: " . $httpCode);
         return null;
     }
     
     $data = json_decode($response, true);
     if (json_last_error() !== JSON_ERROR_NONE) {
+        error_log("JSON decode error: " . json_last_error_msg());
         return null;
     }
     
@@ -190,66 +202,266 @@ function getKinopoiskFilmDetails(string $kpId, array $fields, string $apiKey): ?
     return $result;
 }
 
-function getFilmDetails(PDO $databaseConnection, string $filmId): void
+function getFilmDetails(PDO $databaseConnection, string $id): void
 {
-    $apiKey = getenv('KINOPOISK_API_KEY') ?: ($_SERVER['KINOPOISK_API_KEY'] ?? '');
-    
-    if (empty($apiKey)) {
-        sendJsonError('API ключ Кинопоиска не настроен', 500, 'Пожалуйста, установите API ключ в файле .env');
-    }
-    
-    $fieldsParam = $_GET['fields'] ?? '';
-    $requestedFields = is_array($fieldsParam) ? $fieldsParam : explode(',', $fieldsParam);
-    $requestedFields = array_map('trim', $requestedFields);
-    
-    $validFields = ['details', 'reviews', 'persons', 'similar', 'images', 'rating'];
-    $requestedFields = array_intersect($requestedFields, $validFields);
-    
-    if (empty($requestedFields)) {
-        sendJsonError('Не указаны поля для запроса', 400, 'Укажите параметр fields со списком полей через запятую. Доступные поля: ' . implode(', ', $validFields));
-    }
-    
-    $builder = new QueryBuilder(
-        $databaseConnection,
-        'film',
-        ['film_id', 'title', 'description', 'release_year', 'language_id', 'rental_duration', 'rental_rate', 'length', 'replacement_cost', 'rating'],
-        'film_id'
-    );
-    $result = $builder->executeSingle('film_id', $filmId);
-    
-    if (!$result) {
-        sendJsonError('Запись не найдена', 404, "Фильм с ID=$filmId не существует");
-    }
-    
-    $searchResult = kinopoiskApiRequest('/movie/search', [
-        'query' => trim($result['title']),
-        'limit' => 1
-    ], $apiKey);
-    
-    if (!$searchResult || !isset($searchResult['docs']) || empty($searchResult['docs'])) {
-        sendJsonError('Фильм не найден в Кинопоиске', 404, "Фильм '{$result['title']}' не найден в базе Кинопоиска");
-    }
-    
-    $kpFilmId = $searchResult['docs'][0]['id'];
-    $kinopoiskDetails = getKinopoiskFilmDetails((string)$kpFilmId, $requestedFields, $apiKey);
-    
-    if (!$kinopoiskDetails) {
-        sendJsonError('Ошибка при получении данных из API Кинопоиска', 502, 'Не удалось получить данные от стороннего сервиса');
-    }
-    
-    $response = [
-        'success' => true,
-        'data' => [
-            'film_id' => $result['film_id'],
-            'title' => $result['title'],
+    try {
+        $apiKey = 'PW0WYZQ-7VTMC6Q-G1K5K69-11YM3C3'; // Используем фиксированный API ключ
+        
+        $type = $_GET['type'] ?? '';
+        $validTypes = ['details', 'reviews', 'persons', 'similar', 'images', 'rating'];
+        
+        if (!in_array($type, $validTypes)) {
+            sendJsonError('Неверный тип запроса', 400, 'Допустимые значения: ' . implode(', ', $validTypes));
+            return;
+        }
+        
+        $builder = new QueryBuilder(
+            $databaseConnection,
+            'film',
+            ['film_id', 'title', 'description', 'release_year', 'language_id', 'rental_duration', 'rental_rate', 'length', 'replacement_cost', 'rating'],
+            'film_id'
+        );
+        $result = $builder->executeSingle('film_id', $id);
+        
+        if (!$result) {
+            sendJsonError('Запись не найдена', 404, "Фильм с ID=$id не существует");
+            return;
+        }
+        
+        // Добавляем данные из базы данных в ответ
+        $response = [
             'rental_duration' => $result['rental_duration'],
             'rental_rate' => (float)$result['rental_rate'],
-            'replacement_cost' => (float)$result['replacement_cost'],
-            'kinopoisk' => $kinopoiskDetails
-        ]
-    ];
-    
-    sendJsonResponse($response);
+            'replacement_cost' => (float)$result['replacement_cost']
+        ];
+        
+        // Поиск фильма в Кинопоиске по названию
+        $searchUrl = 'https://api.kinopoisk.dev/v1.4/movie/search';
+        $searchParams = [
+            'query' => trim($result['title'])
+        ];
+        
+        $searchResult = kinopoiskApiRequest('/movie/search', $searchParams, $apiKey);
+        
+        if (!$searchResult || !isset($searchResult['docs']) || empty($searchResult['docs'])) {
+            // Если фильм не найден в Кинопоиске, возвращаем только данные из базы
+            $response['message'] = "Фильм '{$result['title']}' не найден в базе Кинопоиска, возвращены только данные из базы данных";
+            sendJsonResponse($response);
+            return;
+        }
+        
+        $kpFilmId = $searchResult['docs'][0]['id'];
+        
+        // Запрашиваем конкретные данные в зависимости от типа
+        $baseUrl = 'https://api.kinopoisk.dev/v1.4';
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            "X-API-KEY: {$apiKey}",
+            "Content-Type: application/json"
+        ]);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+        
+        switch ($type) {
+            case 'details':
+                $url = "{$baseUrl}/movie/{$kpFilmId}?token={$apiKey}";
+                curl_setopt($ch, CURLOPT_URL, $url);
+                $apiResponse = curl_exec($ch);
+                
+                if (curl_errno($ch)) {
+                    $error = curl_error($ch);
+                    curl_close($ch);
+                    error_log("cURL error: " . $error);
+                    sendJsonError('Ошибка при запросе к API Кинопоиска', 502, $error);
+                    return;
+                }
+                
+                $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                curl_close($ch);
+                
+                if ($httpCode !== 200) {
+                    error_log("API request failed with HTTP code: " . $httpCode);
+                    sendJsonError('Ошибка при запросе к API Кинопоиска', 502, "HTTP код: {$httpCode}");
+                    return;
+                }
+                
+                $data = json_decode($apiResponse, true);
+                if (json_last_error() !== JSON_ERROR_NONE) {
+                    error_log("JSON decode error: " . json_last_error_msg());
+                    sendJsonError('Ошибка при разборе ответа от API Кинопоиска', 502, json_last_error_msg());
+                    return;
+                }
+                
+                $response['details'] = $data;
+                break;
+                
+            case 'reviews':
+                $url = "{$baseUrl}/review?movieId={$kpFilmId}&token={$apiKey}";
+                curl_setopt($ch, CURLOPT_URL, $url);
+                $apiResponse = curl_exec($ch);
+                
+                if (curl_errno($ch)) {
+                    $error = curl_error($ch);
+                    curl_close($ch);
+                    error_log("cURL error: " . $error);
+                    sendJsonError('Ошибка при запросе к API Кинопоиска', 502, $error);
+                    return;
+                }
+                
+                $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                curl_close($ch);
+                
+                if ($httpCode !== 200) {
+                    error_log("API request failed with HTTP code: " . $httpCode);
+                    sendJsonError('Ошибка при запросе к API Кинопоиска', 502, "HTTP код: {$httpCode}");
+                    return;
+                }
+                
+                $data = json_decode($apiResponse, true);
+                if (json_last_error() !== JSON_ERROR_NONE) {
+                    error_log("JSON decode error: " . json_last_error_msg());
+                    sendJsonError('Ошибка при разборе ответа от API Кинопоиска', 502, json_last_error_msg());
+                    return;
+                }
+                
+                $response['reviews'] = $data['docs'] ?? [];
+                break;
+                
+            case 'persons':
+                $url = "{$baseUrl}/person?movieId={$kpFilmId}&token={$apiKey}";
+                curl_setopt($ch, CURLOPT_URL, $url);
+                $apiResponse = curl_exec($ch);
+                
+                if (curl_errno($ch)) {
+                    $error = curl_error($ch);
+                    curl_close($ch);
+                    error_log("cURL error: " . $error);
+                    sendJsonError('Ошибка при запросе к API Кинопоиска', 502, $error);
+                    return;
+                }
+                
+                $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                curl_close($ch);
+                
+                if ($httpCode !== 200) {
+                    error_log("API request failed with HTTP code: " . $httpCode);
+                    sendJsonError('Ошибка при запросе к API Кинопоиска', 502, "HTTP код: {$httpCode}");
+                    return;
+                }
+                
+                $data = json_decode($apiResponse, true);
+                if (json_last_error() !== JSON_ERROR_NONE) {
+                    error_log("JSON decode error: " . json_last_error_msg());
+                    sendJsonError('Ошибка при разборе ответа от API Кинопоиска', 502, json_last_error_msg());
+                    return;
+                }
+                
+                $response['persons'] = $data['docs'] ?? [];
+                break;
+                
+            case 'similar':
+                $url = "{$baseUrl}/movie/similar?movieId={$kpFilmId}&token={$apiKey}";
+                curl_setopt($ch, CURLOPT_URL, $url);
+                $apiResponse = curl_exec($ch);
+                
+                if (curl_errno($ch)) {
+                    $error = curl_error($ch);
+                    curl_close($ch);
+                    error_log("cURL error: " . $error);
+                    sendJsonError('Ошибка при запросе к API Кинопоиска', 502, $error);
+                    return;
+                }
+                
+                $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                curl_close($ch);
+                
+                if ($httpCode !== 200) {
+                    error_log("API request failed with HTTP code: " . $httpCode);
+                    sendJsonError('Ошибка при запросе к API Кинопоиска', 502, "HTTP код: {$httpCode}");
+                    return;
+                }
+                
+                $data = json_decode($apiResponse, true);
+                if (json_last_error() !== JSON_ERROR_NONE) {
+                    error_log("JSON decode error: " . json_last_error_msg());
+                    sendJsonError('Ошибка при разборе ответа от API Кинопоиска', 502, json_last_error_msg());
+                    return;
+                }
+                
+                $response['similar'] = $data['docs'] ?? [];
+                break;
+                
+            case 'images':
+                $url = "{$baseUrl}/image?movieId={$kpFilmId}&type=cover&token={$apiKey}";
+                curl_setopt($ch, CURLOPT_URL, $url);
+                $apiResponse = curl_exec($ch);
+                
+                if (curl_errno($ch)) {
+                    $error = curl_error($ch);
+                    curl_close($ch);
+                    error_log("cURL error: " . $error);
+                    sendJsonError('Ошибка при запросе к API Кинопоиска', 502, $error);
+                    return;
+                }
+                
+                $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                curl_close($ch);
+                
+                if ($httpCode !== 200) {
+                    error_log("API request failed with HTTP code: " . $httpCode);
+                    sendJsonError('Ошибка при запросе к API Кинопоиска', 502, "HTTP код: {$httpCode}");
+                    return;
+                }
+                
+                $data = json_decode($apiResponse, true);
+                if (json_last_error() !== JSON_ERROR_NONE) {
+                    error_log("JSON decode error: " . json_last_error_msg());
+                    sendJsonError('Ошибка при разборе ответа от API Кинопоиска', 502, json_last_error_msg());
+                    return;
+                }
+                
+                $response['images'] = $data['docs'] ?? [];
+                break;
+                
+            case 'rating':
+                $url = "{$baseUrl}/movie/{$kpFilmId}?token={$apiKey}";
+                curl_setopt($ch, CURLOPT_URL, $url);
+                $apiResponse = curl_exec($ch);
+                
+                if (curl_errno($ch)) {
+                    $error = curl_error($ch);
+                    curl_close($ch);
+                    error_log("cURL error: " . $error);
+                    sendJsonError('Ошибка при запросе к API Кинопоиска', 502, $error);
+                    return;
+                }
+                
+                $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                curl_close($ch);
+                
+                if ($httpCode !== 200) {
+                    error_log("API request failed with HTTP code: " . $httpCode);
+                    sendJsonError('Ошибка при запросе к API Кинопоиска', 502, "HTTP код: {$httpCode}");
+                    return;
+                }
+                
+                $data = json_decode($apiResponse, true);
+                if (json_last_error() !== JSON_ERROR_NONE) {
+                    error_log("JSON decode error: " . json_last_error_msg());
+                    sendJsonError('Ошибка при разборе ответа от API Кинопоиска', 502, json_last_error_msg());
+                    return;
+                }
+                
+                $response['rating'] = $data['rating'] ?? null;
+                break;
+        }
+        
+        sendJsonResponse($response);
+    } catch (Exception $e) {
+        sendJsonError('Ошибка получения деталей фильма', 500, $e->getMessage());
+    }
 }
 
 class QueryBuilder
@@ -327,23 +539,18 @@ class QueryBuilder
         $statement->bindValue(':limit', $this->limit, PDO::PARAM_INT);
         $statement->bindValue(':offset', $this->offset, PDO::PARAM_INT);
         
-        try {
-            $statement->execute();
-            $data = $statement->fetchAll();
-            return [
-                'success' => true,
-                'data' => $data,
-                'pagination' => [
-                    'currentPage' => ($this->offset / $this->limit) + 1,
-                    'itemsPerPage' => $this->limit,
-                    'totalItems' => $totalItems,
-                    'totalPages' => $totalPages
-                ]
-            ];
-        } catch (PDOException $exception) {
-            sendJsonError('Ошибка выполнения запроса', 500, $exception->getMessage());
-            exit;
-        }
+        $statement->execute();
+        $data = $statement->fetchAll();
+        return [
+            'success' => true,
+            'data' => $data,
+            'pagination' => [
+                'currentPage' => ($this->offset / $this->limit) + 1,
+                'itemsPerPage' => $this->limit,
+                'totalItems' => $totalItems,
+                'totalPages' => $totalPages
+            ]
+        ];
     }
     
     public function executeSingle(string $idField, string $idValue): ?array
@@ -351,16 +558,11 @@ class QueryBuilder
         $selectFields = implode(', ', $this->selectFields);
         $query = "SELECT $selectFields FROM {$this->tableName} WHERE $idField = :id";
         
-        try {
-            $statement = $this->databaseConnection->prepare($query);
-            $statement->bindValue(':id', $idValue);
-            $statement->execute();
-            $result = $statement->fetch();
-            return $result === false ? null : $result;
-        } catch (PDOException $exception) {
-            sendJsonError('Ошибка выполнения запроса', 500, $exception->getMessage());
-            exit;
-        }
+        $statement = $this->databaseConnection->prepare($query);
+        $statement->bindValue(':id', $idValue);
+        $statement->execute();
+        $result = $statement->fetch();
+        return $result === false ? null : $result;
     }
 }
 ?>
