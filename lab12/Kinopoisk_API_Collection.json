@@ -1,0 +1,415 @@
+{
+  "info": {
+    "_postman_id": "12345678-1234-1234-1234-123456789012",
+    "name": "Movie Rental API with Kinopoisk Integration",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "API collection for movie rental system with Kinopoisk API integration"
+  },
+  "item": [
+    {
+      "name": "Films",
+      "item": [
+        {
+          "name": "Get All Films",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/films",
+              "host": ["{{base_url}}"],
+              "path": ["films"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Film by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/films/1",
+              "host": ["{{base_url}}"],
+              "path": ["films", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Film",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"The Matrix\",\n  \"description\": \"A computer hacker learns from mysterious rebels about the true nature of his reality.\",\n  \"release_year\": 1999,\n  \"language_id\": 1,\n  \"rental_duration\": 5,\n  \"rental_rate\": 2.99,\n  \"length\": 136,\n  \"replacement_cost\": 19.99,\n  \"rating\": \"R\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/films",
+              "host": ["{{base_url}}"],
+              "path": ["films"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Film",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"The Matrix Reloaded\",\n  \"rental_rate\": 3.49\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/films/1",
+              "host": ["{{base_url}}"],
+              "path": ["films", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Film",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/films/1",
+              "host": ["{{base_url}}"],
+              "path": ["films", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Film Details with Kinopoisk Integration",
+      "item": [
+        {
+          "name": "Get Film Details - All Fields",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-KEY",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/films/1/details?fields=details,reviews,persons,similar,images,rating",
+              "host": ["{{base_url}}"],
+              "path": ["films", "1", "details"],
+              "query": [
+                {
+                  "key": "fields",
+                  "value": "details,reviews,persons,similar,images,rating"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Film Details - Only Details",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-KEY",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/films/1/details?fields=details",
+              "host": ["{{base_url}}"],
+              "path": ["films", "1", "details"],
+              "query": [
+                {
+                  "key": "fields",
+                  "value": "details"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Film Details - Reviews Only",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-KEY",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/films/1/details?fields=reviews",
+              "host": ["{{base_url}}"],
+              "path": ["films", "1", "details"],
+              "query": [
+                {
+                  "key": "fields",
+                  "value": "reviews"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Film Details - Images Only",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-KEY",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/films/1/details?fields=images",
+              "host": ["{{base_url}}"],
+              "path": ["films", "1", "details"],
+              "query": [
+                {
+                  "key": "fields",
+                  "value": "images"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Film Details - Multiple Fields",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-KEY",
+                "value": "{{API_KEY}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/films/1/details?fields=details,persons,rating",
+              "host": ["{{base_url}}"],
+              "path": ["films", "1", "details"],
+              "query": [
+                {
+                  "key": "fields",
+                  "value": "details,persons,rating"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Customers",
+      "item": [
+        {
+          "name": "Get All Customers",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/customers",
+              "host": ["{{base_url}}"],
+              "path": ["customers"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Customer by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/customers/1",
+              "host": ["{{base_url}}"],
+              "path": ["customers", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Customer",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"store_id\": 1,\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"address_id\": 1,\n  \"active\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/customers",
+              "host": ["{{base_url}}"],
+              "path": ["customers"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Rentals",
+      "item": [
+        {
+          "name": "Get All Rentals",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/rentals",
+              "host": ["{{base_url}}"],
+              "path": ["rentals"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Rental by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/rentals/1",
+              "host": ["{{base_url}}"],
+              "path": ["rentals", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Stores",
+      "item": [
+        {
+          "name": "Get All Stores",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/stores",
+              "host": ["{{base_url}}"],
+              "path": ["stores"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Store by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/stores/1",
+              "host": ["{{base_url}}"],
+              "path": ["stores", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000",
+      "type": "string"
+    },
+    {
+      "key": "API_KEY",
+      "value": "PW0WYZQ-7VTMC6Q-G1K5K69-11YM3C3",
+      "type": "string"
+    }
+  ]
+}
