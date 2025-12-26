@@ -1,40 +1,44 @@
 ```
-# System files
-*.lnk
+# Dependencies
+vendor/
 
 # Logs and temp files
 *.log
 *.tmp
-*.swp
 
 # Environment
 .env
 .env.local
 *.env.*
 
-# Editors
+# Editor/IDE
 .vscode/
 .idea/
+*.swp
+*.swo
 
-# Coverage reports
+# OS
+.DS_Store
+Thumbs.db
+
+# Coverage
 coverage/
 htmlcov/
 .coverage
 
-# Python
-__pycache__/
+# Build artifacts
+dist/
+build/
+target/
+*.exe
+*.dll
+*.so
+*.a
+*.obj
+*.out
 *.pyc
-*.pyo
-*.pyd
-.Python
-env/
-venv/
-.venv/
-pip-log.txt
-pip-delete-this-directory.txt
-.tox/
-.coverage*
-.nosetests*
+__pycache__/
+*.class
 
 # Compressed files
 *.zip

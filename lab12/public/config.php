@@ -3,7 +3,7 @@ define('DB_HOST', 'MySQL-8.0');
 define('DB_USER', 'root'); 
 define('DB_PASS', '');
 define('DB_NAME', 'sakila');
-define('KINOPOISK_API_KEY', '77GRBHH-024MBG5-HNYZ5QA-ZY4P2PW');
+define('KINOPOISK_API_KEY', 'PW0WYZQ-7VTMC6Q-G1K5K69-11YM3C3');
 
 function getDBConnection() {
     try {

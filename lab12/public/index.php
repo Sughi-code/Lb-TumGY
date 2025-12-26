@@ -176,10 +176,10 @@ $dispatcher = FastRoute\simpleDispatcher(function(RouteCollector $r) use (
     
     $r->addRoute('GET', '/films/{id:[0-9]+}/details', function($params) use ($filmDetailsController) {
         try {
-            $fieldsParam = $_GET['fields'] ?? 'details';
+            $dataParam = $_GET['data'] ?? 'details';
             
-            if (is_string($fieldsParam)) {
-                $fields = explode(',', $fieldsParam);
+            if (is_string($dataParam)) {
+                $fields = explode(',', $dataParam);
                 $fields = array_map('trim', $fields);
             } else {
                 $fields = ['details'];

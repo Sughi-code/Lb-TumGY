@@ -7,8 +7,8 @@ try {
     
     $testFilms = [
         [
-            'title' => 'Интерстеллар',
-            'description' => 'Фантастический эпос о путешествии сквозь червоточину.',
+            'title' => 'Interstellar',
+            'description' => 'A team of explorers travel through a wormhole in space in an attempt to ensure humanity\'s survival.',
             'release_year' => 2014,
             'language_id' => 1,
             'rental_duration' => 7,
@@ -18,8 +18,8 @@ try {
             'rating' => 'PG-13'
         ],
         [
-            'title' => 'Начало',
-            'description' => 'Профессиональный вор идей проникает в сны других людей.',
+            'title' => 'Inception',
+            'description' => 'A thief who steals corporate secrets through dream-sharing technology is given the task of planting an idea into the mind of a C.E.O.',
             'release_year' => 2010,
             'language_id' => 1,
             'rental_duration' => 5,
@@ -29,8 +29,8 @@ try {
             'rating' => 'PG-13'
         ],
         [
-            'title' => 'Побег из Шоушенка',
-            'description' => 'Банкир Энди Дюфрейн оказывается в тюрьме по ложному обвинению.',
+            'title' => 'The Shawshank Redemption',
+            'description' => 'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.',
             'release_year' => 1994,
             'language_id' => 1,
             'rental_duration' => 10,
@@ -40,8 +40,8 @@ try {
             'rating' => 'R'
         ],
         [
-            'title' => 'Зеленая миля',
-            'description' => 'Надзиратель тюрьмы открывает в заключенном необычный дар.',
+            'title' => 'The Green Mile',
+            'description' => 'The lives of guards on Death Row are affected by one of their charges: a black man accused of child murder and rape, yet who has a mysterious gift.',
             'release_year' => 1999,
             'language_id' => 1,
             'rental_duration' => 8,
@@ -51,8 +51,8 @@ try {
             'rating' => 'R'
         ],
         [
-            'title' => 'Форрест Гамп',
-            'description' => 'История простого человека с добрым сердцем и низким IQ.',
+            'title' => 'Forrest Gump',
+            'description' => 'The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate, and other historical events unfold through the perspective of an Alabama man.',
             'release_year' => 1994,
             'language_id' => 1,
             'rental_duration' => 6,
