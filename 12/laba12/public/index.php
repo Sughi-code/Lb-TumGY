@@ -28,6 +28,23 @@ if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
     die("❌ Ошибка: Файл автозагрузчика не найден по пути: " . __DIR__ . '/../vendor/autoload.php');
 }
 
+// Подключение к базе данных и запуск миграций
+require __DIR__ . '/../src/migrations.php';
+try {
+    $databaseConnection = getDBConnection();
+    $migrationPath = __DIR__ . '/../resources/sql';
+    runMigrations($databaseConnection, $migrationPath);
+} catch (PDOException $exception) {
+    http_response_code(500);
+    echo json_encode([
+        'error' => true,
+        'message' => 'Ошибка подключения к базе данных',
+        'detail' => $exception->getMessage(),
+        'status' => 500
+    ], JSON_UNESCAPED_UNICODE);
+    exit;
+}
+
 use FastRoute\RouteCollector;
 use FastRoute\Dispatcher;
 

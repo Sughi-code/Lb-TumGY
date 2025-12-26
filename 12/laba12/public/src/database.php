@@ -10,30 +10,30 @@ define('DB_CHARSET', 'utf8mb4');
 function getDBConnection(): PDO
 {
     try {
+        $host = getenv('DB_HOST') ?: DB_HOST;
+        $user = getenv('DB_USER') ?: DB_USER;
+        $pass = getenv('DB_PASS') ?: DB_PASS;
+        $name = getenv('DB_NAME') ?: DB_NAME;
+        $charset = getenv('DB_CHARSET') ?: DB_CHARSET;
+
         $dsn = sprintf(
             'mysql:host=%s;dbname=%s;charset=%s',
-            DB_HOST,
-            DB_NAME,
-            DB_CHARSET
+            $host,
+            $name,
+            $charset
         );
         $options = [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             PDO::ATTR_EMULATE_PREPARES => false,
         ];
-        echo "🔧 Попытка подключения к базе данных...\n";
-        $connection = new PDO($dsn, DB_USER, DB_PASS, $options);
-        echo "✅ Подключение к базе данных успешно установлено\n";
         
-        echo "🚀 Запуск системы миграций...\n";
-        require __DIR__ . '/migrations.php';
-        $migrationPath = __DIR__ . '/../resources/sql';
-        runMigrations($connection, $migrationPath);
+        $connection = new PDO($dsn, $user, $pass, $options);
         
         return $connection;
     } catch (PDOException $exception) {
-        echo "❌ Ошибка подключения к базе данных: " . $exception->getMessage() . "\n";
-        exit(1);
+        // Since we can't use sendJsonError here due to dependency issues, we'll throw the exception
+        throw $exception;
     }
 }
 
