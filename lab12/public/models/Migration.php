@@ -33,7 +33,7 @@ class Migration {
     
     private function tableExists($tableName) {
         try {
-            $query = "SHOW TABLES LIKE :table_name";
+            $query = "SELECT name FROM sqlite_master WHERE type='table' AND name=:table_name";
             $stmt = $this->conn->prepare($query);
             $stmt->bindValue(':table_name', $tableName);
             $stmt->execute();
