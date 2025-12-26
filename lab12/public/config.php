@@ -1,14 +1,16 @@
 <?php
-define('DB_HOST', 'MySQL-8.0');
+define('DB_HOST', 'localhost');
 define('DB_USER', 'root'); 
 define('DB_PASS', '');
 define('DB_NAME', 'sakila');
-define('KINOPOISK_API_KEY', '77GRBHH-024MBG5-HNYZ5QA-ZY4P2PW');
+define('DB_TYPE', 'sqlite'); // Using SQLite for this environment
+define('KINOPOISK_API_KEY', 'PW0WYZQ-7VTMC6Q-G1K5K69-11YM3C3');
 
 function getDBConnection() {
     try {
-        $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8";
-        $connection = new PDO($dsn, DB_USER, DB_PASS);
+        // For this environment, we'll use SQLite
+        $dbFile = __DIR__ . '/database.sqlite';
+        $connection = new PDO("sqlite:$dbFile");
         $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         
