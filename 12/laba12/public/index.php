@@ -16,9 +16,9 @@ if (file_exists($envPath)) {
 }
 
 // Подключение файлов приложения
-require __DIR__ . '/../src/api.php';
-require __DIR__ . '/../src/database.php'; 
-require __DIR__ . '/../src/models.php';
+require __DIR__ . '/src/api.php';
+require __DIR__ . '/src/database.php'; 
+require __DIR__ . '/src/models.php';
 
 // Автозагрузка через Composer
 if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
@@ -50,7 +50,7 @@ use FastRoute\Dispatcher;
 
 $routeDispatcher = FastRoute\simpleDispatcher(function (RouteCollector $route) {
     // GET
-    $route->get('/films/{id:\d+}/details', 'getFilmDetails');
+    $route->get('/films/{id}/details', 'getFilmDetails');
     $route->get('/films', 'getAllFilms');
     $route->get('/films/{id:\d+}', 'getFilmById');
 });
