@@ -1,0 +1,699 @@
+{
+	"info": {
+		"_postman_id": "49021c26-7345-4ab6-b689-a332ed5a8a6a",
+		"name": "Кинопоиск",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28248675"
+	},
+	"item": [
+		{
+			"name": "Get Film by name",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "{{api_key}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.kinopoisk.dev/v1.4/movie/search?query=Reservoir Dogs",
+					"protocol": "https",
+					"host": [
+						"api",
+						"kinopoisk",
+						"dev"
+					],
+					"path": [
+						"v1.4",
+						"movie",
+						"search"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "Reservoir Dogs"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Film by name",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-API-KEY",
+								"value": "{{api_key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.kinopoisk.dev/v1.4/movie/search?query=Reservoir Dogs",
+							"protocol": "https",
+							"host": [
+								"api",
+								"kinopoisk",
+								"dev"
+							],
+							"path": [
+								"v1.4",
+								"movie",
+								"search"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "Reservoir Dogs"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.22.1"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 04 Dec 2024 05:26:27 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "content-security-policy",
+							"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+						},
+						{
+							"key": "cross-origin-opener-policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "cross-origin-resource-policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "origin-agent-cluster",
+							"value": "?1"
+						},
+						{
+							"key": "referrer-policy",
+							"value": "no-referrer"
+						},
+						{
+							"key": "strict-transport-security",
+							"value": "max-age=15552000; includeSubDomains"
+						},
+						{
+							"key": "x-content-type-options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-dns-prefetch-control",
+							"value": "off"
+						},
+						{
+							"key": "x-download-options",
+							"value": "noopen"
+						},
+						{
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "x-permitted-cross-domain-policies",
+							"value": "none"
+						},
+						{
+							"key": "x-xss-protection",
+							"value": "0"
+						},
+						{
+							"key": "access-control-allow-origin",
+							"value": "*"
+						},
+						{
+							"key": "x-ratelimit-limit",
+							"value": "5"
+						},
+						{
+							"key": "x-ratelimit-remaining",
+							"value": "4"
+						},
+						{
+							"key": "x-ratelimit-reset",
+							"value": "1"
+						},
+						{
+							"key": "vary",
+							"value": "accept-encoding"
+						},
+						{
+							"key": "content-encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"docs\": [\n        {\n            \"id\": 394,\n            \"name\": \"Бешеные псы\",\n            \"alternativeName\": \"Reservoir Dogs\",\n            \"enName\": \"\",\n            \"type\": \"movie\",\n            \"year\": 1991,\n            \"description\": \"Это должно было стать идеальным преступлением. Задумав ограбить ювелирный магазин, криминальный босс Джо Кэбот собрал вместе шестерых опытных и совершенно незнакомых друг с другом преступников. Но с самого начала все пошло не так, и обычный грабеж превратился в кровавую бойню.\",\n            \"shortDescription\": \"Гангстеры артистично спорят о том, кто их кинул. Кровожадный и веселый дебют Квентина Тарантино\",\n            \"movieLength\": 100,\n            \"isSeries\": false,\n            \"ticketsOnSale\": false,\n            \"totalSeriesLength\": null,\n            \"seriesLength\": null,\n            \"ratingMpaa\": \"r\",\n            \"ageRating\": 18,\n            \"top10\": null,\n            \"top250\": 222,\n            \"typeNumber\": 1,\n            \"status\": null,\n            \"names\": [\n                {\n                    \"name\": \"Бешеные псы\"\n                },\n                {\n                    \"name\": \"Reservoir Dogs\"\n                },\n                {\n                    \"name\": \"Cani da rapina\",\n                    \"language\": \"IT\",\n                    \"type\": null\n                },\n                {\n                    \"name\": \"Rengli Itler\",\n                    \"language\": \"AZ\",\n                    \"type\": null\n                },\n                {\n                    \"name\": \"Marukoerad\",\n                    \"language\": \"EE\",\n                    \"type\": null\n                },\n                {\n                    \"name\": \"Calbay Ashmoret\",\n                    \"language\": \"IL\",\n                    \"type\": null\n                },\n                {\n                    \"name\": \"Pasiute sunys\",\n                    \"language\": \"LT\",\n                    \"type\": null\n                },\n                {\n                    \"name\": \"Perros de Reserva\",\n                    \"language\": \"MX\",\n                    \"type\": null\n                },\n                {\n                    \"name\": \"Ulični psi\",\n                    \"language\": \"RS\",\n                    \"type\": null\n                },\n                {\n                    \"name\": \"Stekli psi\",\n                    \"language\": \"SI\",\n                    \"type\": null\n                },\n                {\n                    \"name\": \"Psi iz rezervoara\",\n                    \"language\": \"HR\",\n                    \"type\": null\n                },\n                {\n                    \"name\": \"Nhung Ke Phan Boi\",\n                    \"language\": \"VN\",\n                    \"type\": null\n                },\n                {\n                    \"name\": \"저수지의 개들\",\n                    \"language\": \"KR\",\n                    \"type\": null\n                },\n                {\n                    \"name\": \"レザボア・ドッグス\",\n                    \"language\": \"JP\",\n                    \"type\": null\n                },\n                {\n                    \"name\": \"Gauneři\",\n                    \"language\": \"CZ\",\n                    \"type\": \"Krimi / Thriller\"\n                },\n                {\n                    \"name\": \"De hensynsløse\",\n                    \"language\": \"NO\",\n                    \"type\": null\n                },\n                {\n                    \"name\": \"レザボア・ドッグス：1992\",\n                    \"language\": \"JP\",\n                    \"type\": null\n                },\n                {\n                    \"name\": \"霸道橫行\",\n                    \"language\": \"TW\",\n                    \"type\": null\n                }\n            ],\n            \"externalId\": {\n                \"imdb\": \"tt6493238\",\n                \"tmdb\": 500,\n                \"kpHD\": \"4fb4cda8403ef957ba9377da662375df\"\n            },\n            \"logo\": {\n                \"url\": \"https://avatars.mds.yandex.net/get-ott/2419418/2a00000172982695aba03b7c1b6e9a1e5398/orig\"\n            },\n            \"poster\": {\n                \"url\": \"https://image.openmoviedb.com/kinopoisk-images/1946459/b1add366-9e49-4ad8-905a-46ca23da8adc/orig\",\n                \"previewUrl\": \"https://image.openmoviedb.com/kinopoisk-images/1946459/b1add366-9e49-4ad8-905a-46ca23da8adc/x1000\"\n            },\n            \"backdrop\": {\n                \"url\": \"https://image.openmoviedb.com/kinopoisk-ott-images/224348/2a0000016224f0360420d935a974fc5a76e4/orig\",\n                \"previewUrl\": \"https://image.openmoviedb.com/kinopoisk-ott-images/224348/2a0000016224f0360420d935a974fc5a76e4/x1000\"\n            },\n            \"rating\": {\n                \"kp\": 8.115,\n                \"imdb\": 8.3,\n                \"filmCritics\": 8.9,\n                \"russianFilmCritics\": 0,\n                \"await\": null\n            },\n            \"votes\": {\n                \"kp\": 290112,\n                \"imdb\": 1095376,\n                \"filmCritics\": 82,\n                \"russianFilmCritics\": 2,\n                \"await\": 0\n            },\n            \"genres\": [\n                {\n                    \"name\": \"криминал\"\n                },\n                {\n                    \"name\": \"драма\"\n                },\n                {\n                    \"name\": \"триллер\"\n                }\n            ],\n            \"countries\": [\n                {\n                    \"name\": \"США\"\n                }\n            ],\n            \"releaseYears\": []\n        },\n        {\n            \"id\": 1291597,\n            \"name\": \"\",\n            \"alternativeName\": \"Reservoir Dogs: Deleted Scenes\",\n            \"enName\": \"\",\n            \"type\": \"movie\",\n            \"year\": 2002,\n            \"description\": \"\",\n            \"shortDescription\": \"\",\n            \"movieLength\": 13,\n            \"isSeries\": false,\n            \"ticketsOnSale\": false,\n            \"totalSeriesLength\": null,\n            \"seriesLength\": null,\n            \"ratingMpaa\": null,\n            \"ageRating\": null,\n            \"top10\": null,\n            \"top250\": null,\n            \"typeNumber\": 1,\n            \"status\": null,\n            \"names\": [\n                {\n                    \"name\": \"Reservoir Dogs: Deleted Scenes\",\n                    \"language\": null,\n                    \"type\": \"Original title on kinopoisk\"\n                }\n            ],\n            \"externalId\": {\n                \"kpHD\": null\n            },\n            \"logo\": null,\n            \"poster\": {\n                \"url\": null,\n                \"previewUrl\": null\n            },\n            \"backdrop\": {\n                \"url\": null,\n                \"previewUrl\": null\n            },\n            \"rating\": {\n                \"kp\": 6.871,\n                \"imdb\": 8.2,\n                \"filmCritics\": 0,\n                \"russianFilmCritics\": 0,\n                \"await\": null\n            },\n            \"votes\": {\n                \"kp\": 205,\n                \"imdb\": 957,\n                \"filmCritics\": 0,\n                \"russianFilmCritics\": 0,\n                \"await\": 0\n            },\n            \"genres\": [\n                {\n                    \"name\": \"короткометражка\"\n                },\n                {\n                    \"name\": \"криминал\"\n                }\n            ],\n            \"countries\": [\n                {\n                    \"name\": \"США\"\n                }\n            ],\n            \"releaseYears\": []\n        },\n        {\n            \"id\": 1009576,\n            \"name\": \"\",\n            \"alternativeName\": \"Reservoir Dogs: Sundance Institute 1991 June Film Lab\",\n            \"enName\": \"Reservoir Dogs: Sundance Institute 1991 June Film Lab\",\n            \"type\": \"movie\",\n            \"year\": 1991,\n            \"description\": \"\",\n            \"shortDescription\": \"\",\n            \"movieLength\": 12,\n            \"isSeries\": false,\n            \"ticketsOnSale\": false,\n            \"totalSeriesLength\": null,\n            \"seriesLength\": null,\n            \"ratingMpaa\": null,\n            \"ageRating\": null,\n            \"top10\": null,\n            \"top250\": null,\n            \"typeNumber\": 1,\n            \"status\": null,\n            \"names\": [\n                {\n                    \"name\": \"Reservoir Dogs: Sundance Institute 1991 June Film Lab\",\n                    \"language\": \"US\",\n                    \"type\": null\n                }\n            ],\n            \"externalId\": {\n                \"kpHD\": null,\n                \"imdb\": \"tt6493238\",\n                \"tmdb\": 443129\n            },\n            \"logo\": {\n                \"url\": null,\n                \"previewUrl\": null\n            },\n            \"poster\": {\n                \"url\": null,\n                \"previewUrl\": null\n            },\n            \"backdrop\": {\n                \"url\": null,\n                \"previewUrl\": null\n            },\n            \"rating\": {\n                \"kp\": 6.409,\n                \"imdb\": 6.4,\n                \"filmCritics\": 0,\n                \"russianFilmCritics\": 0,\n                \"await\": null\n            },\n            \"votes\": {\n                \"kp\": 190,\n                \"imdb\": 993,\n                \"filmCritics\": 0,\n                \"russianFilmCritics\": 0,\n                \"await\": 0\n            },\n            \"genres\": [\n                {\n                    \"name\": \"короткометражка\"\n                },\n                {\n                    \"name\": \"драма\"\n                }\n            ],\n            \"countries\": [\n                {\n                    \"name\": \"США\"\n                }\n            ],\n            \"releaseYears\": []\n        },\n        {\n            \"id\": 1090854,\n            \"name\": \"\",\n            \"alternativeName\": \"Reservoir Dogs in Irish!\",\n            \"enName\": \"\",\n            \"type\": \"movie\",\n            \"year\": 2015,\n            \"description\": \"\",\n            \"shortDescription\": \"\",\n            \"movieLength\": 7,\n            \"isSeries\": false,\n            \"ticketsOnSale\": false,\n            \"totalSeriesLength\": null,\n            \"seriesLength\": null,\n            \"ratingMpaa\": null,\n            \"ageRating\": null,\n            \"top10\": null,\n            \"top250\": null,\n            \"typeNumber\": 1,\n            \"status\": null,\n            \"names\": [\n                {\n                    \"name\": \"Reservoir Dogs in Irish!\"\n                }\n            ],\n            \"externalId\": {\n                \"imdb\": \"tt7126896\",\n                \"kpHD\": null\n            },\n            \"logo\": {\n                \"url\": null\n            },\n            \"poster\": {\n                \"url\": null,\n                \"previewUrl\": null\n            },\n            \"backdrop\": {\n                \"url\": null,\n                \"previewUrl\": null\n            },\n            \"rating\": {\n                \"kp\": 0,\n                \"imdb\": 0,\n                \"filmCritics\": 0,\n                \"russianFilmCritics\": 0,\n                \"await\": 0\n            },\n            \"votes\": {\n                \"kp\": 3,\n                \"imdb\": 0,\n                \"filmCritics\": 0,\n                \"russianFilmCritics\": 0,\n                \"await\": 0\n            },\n            \"genres\": [\n                {\n                    \"name\": \"короткометражка\"\n                },\n                {\n                    \"name\": \"драма\"\n                }\n            ],\n            \"countries\": [\n                {\n                    \"name\": \"Ирландия\"\n                }\n            ],\n            \"releaseYears\": []\n        },\n        {\n            \"id\": 1446115,\n            \"name\": \"\",\n            \"alternativeName\": \"Reservoir Dogs: Copy Cat Assignment\",\n            \"enName\": \"\",\n            \"type\": \"movie\",\n            \"year\": 2015,\n            \"description\": \"\",\n            \"shortDescription\": \"\",\n            \"movieLength\": 3,\n            \"isSeries\": false,\n            \"ticketsOnSale\": false,\n            \"totalSeriesLength\": null,\n            \"seriesLength\": null,\n            \"ratingMpaa\": null,\n            \"ageRating\": null,\n            \"top10\": null,\n            \"top250\": null,\n            \"typeNumber\": 1,\n            \"status\": null,\n            \"names\": [\n                {\n                    \"name\": \"Reservoir Dogs: Copy Cat Assignment\"\n                }\n            ],\n            \"externalId\": {\n                \"imdb\": \"tt7126930\",\n                \"kpHD\": null\n            },\n            \"logo\": {\n                \"url\": null\n            },\n            \"poster\": {\n                \"url\": null,\n                \"previewUrl\": null\n            },\n            \"backdrop\": {\n                \"url\": null,\n                \"previewUrl\": null\n            },\n            \"rating\": {\n                \"kp\": 0,\n                \"imdb\": 0,\n                \"filmCritics\": 0,\n                \"russianFilmCritics\": 0,\n                \"await\": 0\n            },\n            \"votes\": {\n                \"kp\": 1,\n                \"imdb\": 0,\n                \"filmCritics\": 0,\n                \"russianFilmCritics\": 0,\n                \"await\": 0\n            },\n            \"genres\": [\n                {\n                    \"name\": \"короткометражка\"\n                },\n                {\n                    \"name\": \"драма\"\n                }\n            ],\n            \"countries\": [\n                {\n                    \"name\": \"Канада\"\n                }\n            ],\n            \"releaseYears\": []\n        },\n        {\n            \"id\": 388098,\n            \"name\": \"\",\n            \"alternativeName\": \"Reservoir Guide Dogs\",\n            \"enName\": \"\",\n            \"type\": \"movie\",\n            \"year\": 1995,\n            \"description\": \"\",\n            \"shortDescription\": \"\",\n            \"movieLength\": 5,\n            \"isSeries\": false,\n            \"ticketsOnSale\": false,\n            \"totalSeriesLength\": null,\n            \"seriesLength\": null,\n            \"ratingMpaa\": null,\n            \"ageRating\": null,\n            \"top10\": null,\n            \"top250\": null,\n            \"typeNumber\": 1,\n            \"status\": null,\n            \"names\": [\n                {\n                    \"name\": \"Reservoir Guide Dogs\"\n                }\n            ],\n            \"externalId\": {\n                \"imdb\": \"tt0846077\",\n                \"kpHD\": null\n            },\n            \"logo\": {\n                \"url\": null\n            },\n            \"poster\": {\n                \"url\": null,\n                \"previewUrl\": null\n            },\n            \"backdrop\": {\n                \"url\": null,\n                \"previewUrl\": null\n            },\n            \"rating\": {\n                \"kp\": 0,\n                \"imdb\": 6,\n                \"filmCritics\": 0,\n                \"russianFilmCritics\": 0,\n                \"await\": 0\n            },\n            \"votes\": {\n                \"kp\": 1,\n                \"imdb\": 14,\n                \"filmCritics\": 0,\n                \"russianFilmCritics\": 0,\n                \"await\": 0\n            },\n            \"genres\": [\n                {\n                    \"name\": \"короткометражка\"\n                },\n                {\n                    \"name\": \"комедия\"\n                }\n            ],\n            \"countries\": [\n                {\n                    \"name\": \"Великобритания\"\n                }\n            ],\n            \"releaseYears\": []\n        },\n        {\n            \"id\": 648236,\n            \"name\": \"\",\n            \"alternativeName\": \"Reservoir\",\n            \"enName\": \"\",\n            \"type\": \"movie\",\n            \"year\": 2013,\n            \"description\": \"\",\n            \"shortDescription\": \"\",\n            \"movieLength\": 143,\n            \"isSeries\": false,\n            \"ticketsOnSale\": false,\n            \"totalSeriesLength\": null,\n            \"seriesLength\": null,\n            \"ratingMpaa\": null,\n            \"ageRating\": null,\n            \"top10\": null,\n            \"top250\": null,\n            \"typeNumber\": 1,\n            \"status\": null,\n            \"names\": [\n                {\n                    \"name\": \"Reservoir\"\n                }\n            ],\n            \"externalId\": {\n                \"imdb\": \"tt2106613\",\n                \"kpHD\": null\n            },\n            \"logo\": {\n                \"url\": null\n            },\n            \"poster\": {\n                \"url\": \"https://image.openmoviedb.com/kinopoisk-images/1946459/62d2e5c9-c551-4fac-9703-676e96450444/orig\",\n                \"previewUrl\": \"https://image.openmoviedb.com/kinopoisk-images/1946459/62d2e5c9-c551-4fac-9703-676e96450444/x1000\"\n            },\n            \"backdrop\": {\n                \"url\": null,\n                \"previewUrl\": null\n            },\n            \"rating\": {\n                \"kp\": 0,\n                \"imdb\": 0,\n                \"filmCritics\": 0,\n                \"russianFilmCritics\": 0,\n                \"await\": 0\n            },\n            \"votes\": {\n                \"kp\": 9,\n                \"imdb\": 0,\n                \"filmCritics\": 0,\n                \"russianFilmCritics\": 0,\n                \"await\": 0\n            },\n            \"genres\": [\n                {\n                    \"name\": \"драма\"\n                },\n                {\n                    \"name\": \"детектив\"\n                },\n                {\n                    \"name\": \"военный\"\n                }\n            ],\n            \"countries\": [\n                {\n                    \"name\": \"США\"\n                }\n            ],\n            \"releaseYears\": []\n        },\n        {\n            \"id\": 1313150,\n            \"name\": \"\",\n            \"alternativeName\": \"Réservoir\",\n            \"enName\": \"\",\n            \"type\": \"movie\",\n            \"year\": 2019,\n            \"description\": \"\",\n            \"shortDescription\": \"\",\n            \"movieLength\": 87,\n            \"isSeries\": false,\n            \"ticketsOnSale\": false,\n            \"totalSeriesLength\": null,\n            \"seriesLength\": null,\n            \"ratingMpaa\": null,\n            \"ageRating\": null,\n            \"top10\": null,\n            \"top250\": null,\n            \"typeNumber\": 1,\n            \"status\": null,\n            \"names\": [\n                {\n                    \"name\": \"Réservoir\"\n                }\n            ],\n            \"externalId\": {\n                \"kpHD\": null,\n                \"imdb\": \"tt9064020\",\n                \"tmdb\": 638695\n            },\n            \"logo\": {\n                \"url\": null,\n                \"previewUrl\": null\n            },\n            \"poster\": {\n                \"url\": null,\n                \"previewUrl\": null\n            },\n            \"backdrop\": {\n                \"url\": null,\n                \"previewUrl\": null\n            },\n            \"rating\": {\n                \"kp\": 0,\n                \"imdb\": 6.3,\n                \"filmCritics\": 0,\n                \"russianFilmCritics\": 0,\n                \"await\": 0\n            },\n            \"votes\": {\n                \"kp\": 4,\n                \"imdb\": 49,\n                \"filmCritics\": 0,\n                \"russianFilmCritics\": 0,\n                \"await\": 0\n            },\n            \"genres\": [\n                {\n                    \"name\": \"драма\"\n                }\n            ],\n            \"countries\": [\n                {\n                    \"name\": \"Канада\"\n                }\n            ],\n            \"releaseYears\": []\n        },\n        {\n            \"id\": 1197048,\n            \"name\": \"\",\n            \"alternativeName\": \"Reservoir\",\n            \"enName\": \"\",\n            \"type\": \"movie\",\n            \"year\": 2018,\n            \"description\": \"\",\n            \"shortDescription\": \"\",\n            \"movieLength\": 21,\n            \"isSeries\": false,\n            \"ticketsOnSale\": false,\n            \"totalSeriesLength\": null,\n            \"seriesLength\": null,\n            \"ratingMpaa\": null,\n            \"ageRating\": null,\n            \"top10\": null,\n            \"top250\": null,\n            \"typeNumber\": 1,\n            \"status\": null,\n            \"names\": [],\n            \"externalId\": {\n                \"kpHD\": null,\n                \"imdb\": \"tt8773272\"\n            },\n            \"logo\": {\n                \"url\": null\n            },\n            \"poster\": {\n                \"url\": null,\n                \"previewUrl\": null\n            },\n            \"backdrop\": {\n                \"url\": null,\n                \"previewUrl\": null\n            },\n            \"rating\": {\n                \"kp\": 0,\n                \"imdb\": 0,\n                \"filmCritics\": 0,\n                \"russianFilmCritics\": 0,\n                \"await\": 0\n            },\n            \"votes\": {\n                \"kp\": 1,\n                \"imdb\": 0,\n                \"filmCritics\": 0,\n                \"russianFilmCritics\": 0,\n                \"await\": 0\n            },\n            \"genres\": [\n                {\n                    \"name\": \"короткометражка\"\n                },\n                {\n                    \"name\": \"драма\"\n                }\n            ],\n            \"countries\": [\n                {\n                    \"name\": \"США\"\n                }\n            ],\n            \"releaseYears\": []\n        },\n        {\n            \"id\": 673872,\n            \"name\": \"Бешеные кошки\",\n            \"alternativeName\": \"Reservoir Cats\",\n            \"enName\": \"\",\n            \"type\": \"movie\",\n            \"year\": 2011,\n            \"description\": \"Пародия на \\\" Бешеные псы \\\" Квентина Тарантино, с заметной разницей, что все мужские персонажи были заменены на женские.\",\n            \"shortDescription\": \"\",\n            \"movieLength\": 86,\n            \"isSeries\": false,\n            \"ticketsOnSale\": false,\n            \"totalSeriesLength\": null,\n            \"seriesLength\": null,\n            \"ratingMpaa\": null,\n            \"ageRating\": null,\n            \"top10\": null,\n            \"top250\": null,\n            \"typeNumber\": 1,\n            \"status\": null,\n            \"names\": [\n                {\n                    \"name\": \"Бешеные кошки\"\n                },\n                {\n                    \"name\": \"Reservoir Cats\"\n                }\n            ],\n            \"externalId\": {\n                \"kpHD\": null,\n                \"imdb\": \"tt2306707\",\n                \"tmdb\": 147766\n            },\n            \"logo\": {\n                \"url\": null,\n                \"previewUrl\": null\n            },\n            \"poster\": {\n                \"url\": \"https://image.openmoviedb.com/kinopoisk-images/1629390/8dec0499-4fe6-4c9f-a66b-898e4509b13b/orig\",\n                \"previewUrl\": \"https://image.openmoviedb.com/kinopoisk-images/1629390/8dec0499-4fe6-4c9f-a66b-898e4509b13b/x1000\"\n            },\n            \"backdrop\": {\n                \"url\": null,\n                \"previewUrl\": null\n            },\n            \"rating\": {\n                \"kp\": 0,\n                \"imdb\": 2.8,\n                \"filmCritics\": 0,\n                \"russianFilmCritics\": 0,\n                \"await\": 0\n            },\n            \"votes\": {\n                \"kp\": 89,\n                \"imdb\": 294,\n                \"filmCritics\": 0,\n                \"russianFilmCritics\": 0,\n                \"await\": 0\n            },\n            \"genres\": [\n                {\n                    \"name\": \"драма\"\n                },\n                {\n                    \"name\": \"комедия\"\n                },\n                {\n                    \"name\": \"криминал\"\n                }\n            ],\n            \"countries\": [\n                {\n                    \"name\": \"Австралия\"\n                }\n            ],\n            \"releaseYears\": []\n        }\n    ],\n    \"total\": 23,\n    \"limit\": 10,\n    \"page\": 1,\n    \"pages\": 3\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Film by Id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "{{api_key}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.kinopoisk.dev/v1.4/movie/394",
+					"protocol": "https",
+					"host": [
+						"api",
+						"kinopoisk",
+						"dev"
+					],
+					"path": [
+						"v1.4",
+						"movie",
+						"394"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Film by name Copy",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-API-KEY",
+								"value": "{{api_key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.kinopoisk.dev/v1.4/movie/394",
+							"protocol": "https",
+							"host": [
+								"api",
+								"kinopoisk",
+								"dev"
+							],
+							"path": [
+								"v1.4",
+								"movie",
+								"394"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.22.1"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 04 Dec 2024 05:39:47 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "content-security-policy",
+							"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+						},
+						{
+							"key": "cross-origin-opener-policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "cross-origin-resource-policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "origin-agent-cluster",
+							"value": "?1"
+						},
+						{
+							"key": "referrer-policy",
+							"value": "no-referrer"
+						},
+						{
+							"key": "strict-transport-security",
+							"value": "max-age=15552000; includeSubDomains"
+						},
+						{
+							"key": "x-content-type-options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-dns-prefetch-control",
+							"value": "off"
+						},
+						{
+							"key": "x-download-options",
+							"value": "noopen"
+						},
+						{
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "x-permitted-cross-domain-policies",
+							"value": "none"
+						},
+						{
+							"key": "x-xss-protection",
+							"value": "0"
+						},
+						{
+							"key": "access-control-allow-origin",
+							"value": "*"
+						},
+						{
+							"key": "x-ratelimit-limit",
+							"value": "5"
+						},
+						{
+							"key": "x-ratelimit-remaining",
+							"value": "4"
+						},
+						{
+							"key": "x-ratelimit-reset",
+							"value": "1"
+						},
+						{
+							"key": "vary",
+							"value": "accept-encoding"
+						},
+						{
+							"key": "content-encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"fees\": {\n        \"world\": {\n            \"value\": 2832029,\n            \"currency\": \"$\"\n        },\n        \"usa\": {\n            \"value\": 2832029,\n            \"currency\": \"$\"\n        }\n    },\n    \"id\": 394,\n    \"type\": \"movie\",\n    \"externalId\": {\n        \"imdb\": \"tt6493238\",\n        \"tmdb\": 500,\n        \"kpHD\": \"4fb4cda8403ef957ba9377da662375df\"\n    },\n    \"name\": \"Бешеные псы\",\n    \"rating\": {\n        \"kp\": 8.115,\n        \"imdb\": 8.3,\n        \"filmCritics\": 8.9,\n        \"russianFilmCritics\": 0,\n        \"await\": null\n    },\n    \"description\": \"Это должно было стать идеальным преступлением. Задумав ограбить ювелирный магазин, криминальный босс Джо Кэбот собрал вместе шестерых опытных и совершенно незнакомых друг с другом преступников. Но с самого начала все пошло не так, и обычный грабеж превратился в кровавую бойню.\",\n    \"votes\": {\n        \"kp\": 290112,\n        \"imdb\": 1095376,\n        \"filmCritics\": 82,\n        \"russianFilmCritics\": 2,\n        \"await\": 0\n    },\n    \"distributors\": {\n        \"distributor\": \"Аргус-СВ\",\n        \"distributorRelease\": \"CP-Digital\"\n    },\n    \"premiere\": {\n        \"world\": \"1992-01-21T00:00:00.000Z\",\n        \"russia\": \"1995-02-01T00:00:00.000Z\",\n        \"bluray\": \"2009-10-15T00:00:00.000Z\",\n        \"dvd\": \"2008-07-03T00:00:00.000Z\",\n        \"cinema\": null,\n        \"digital\": null\n    },\n    \"slogan\": \"Let's get the job done\",\n    \"year\": 1991,\n    \"budget\": {\n        \"value\": 1200000,\n        \"currency\": \"$\"\n    },\n    \"poster\": {\n        \"url\": \"https://image.openmoviedb.com/kinopoisk-images/1946459/b1add366-9e49-4ad8-905a-46ca23da8adc/orig\",\n        \"previewUrl\": \"https://image.openmoviedb.com/kinopoisk-images/1946459/b1add366-9e49-4ad8-905a-46ca23da8adc/x1000\"\n    },\n    \"facts\": [\n        {\n            \"value\": \"Режиссер и сценарист фильма <a href=\\\"/name/7640/\\\" class=\\\"all\\\">Квентин Тарантино</a> хотел, чтобы в картине снимался <a href=\\\"/name/22953/\\\" class=\\\"all\\\">Джеймс Вудс</a>, и даже пять раз повышал сумму гонорара, предназначенного для этого актера. Однако агент Вудса отклонил все эти предложения, даже не упомянув о них ему, поскольку суммы были смехотворно малы по сравнению с его обычными заработками. Когда же долгое время спустя Тарантино наконец-то познакомился с Вудсом и тот узнал о его предложении, актер настолько расстроился, что тут же уволил своего агента. Тарантино не стал говорить Вудсу, на какую именно роль он намеревался его пригласить, так как не хотел принижать талант актера, в итоге исполнившего ее. Однако все сходятся в едином мнении: Тарантино мог видеть Вудса только в образе мистера Оранджа.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"На роль мистера Оранджа пробовался <a href=\\\"/name/7164/\\\" class=\\\"all\\\">Сэмюэл  Л. Джексон</a>. Хотя он в итоге и не снялся в фильме, Тарантино был настолько восхищен им, что пригласил его в «<a href=\\\"/film/342/\\\" class=\\\"all\\\">Криминальное чтиво</a>» (1994).\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"<a href=\\\"/name/21037/\\\" class=\\\"all\\\">Джордж Клуни</a>, пробовавшийся на роль мистера Блонда, получил отказ.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"Роль мистера Пинка (ее исполнил <a href=\\\"/name/9271/\\\" class=\\\"all\\\">Стив Бушеми</a>) <a href=\\\"/name/7640/\\\" class=\\\"all\\\">Тарантино</a> писал для себя, но в итоге предпочел сыграть мистера Брауна.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"<a href=\\\"/name/7111/\\\" class=\\\"all\\\">Майкл Мэдсен</a>, выступивший в роли мистера Блонда, сначала пробовался на роль мистера Пинка, а <a href=\\\"/name/9271/\\\" class=\\\"all\\\">Бушеми</a> на роль мистера Уайта, которая в итоге досталась <a href=\\\"/name/1600/\\\" class=\\\"all\\\">Харви Кейтелю</a>.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"Поначалу <a href=\\\"/name/7640/\\\" class=\\\"all\\\">Тарантино</a> хотел, чтобы <a href=\\\"/name/2145/\\\" class=\\\"all\\\">Тим Рот</a> сыграл либо мистера Блонда, либо мистера Пинка.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"Название картины родилось благодаря увлечению <a href=\\\"/name/7640/\\\" class=\\\"all\\\">Тарантино</a> фильмами «<a href=\\\"/film/8402/\\\" class=\\\"all\\\">До свидания, дети</a>» (1987) и «<a href=\\\"/film/4528/\\\" class=\\\"all\\\">Соломенные псы</a>» (1971). Плохо зная французский, Тарантино называл первую ленту «that reservoir movie». В результате простого комбинирования и сложилось название «Reservoir Dogs».\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"Первоначально <a href=\\\"/name/7640/\\\" class=\\\"all\\\">Квентин Тарантино</a> собирался снимать этот фильм на черно-белую пленку, заняв в нем своих друзей-актеров. Сценарий передавался из рук в руки и в конце концов попал к <a href=\\\"/name/1600/\\\" class=\\\"all\\\">Харви Кейтелю</a>, которому он настолько понравился, что актер моментально согласился сниматься в картине и даже помог в поисках источников финансирования.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"<a href=\\\"/name/52751/\\\" class=\\\"all\\\">Роберт Куртцман</a> согласился делать специальный грим бесплатно при условии, что <a href=\\\"/name/7640/\\\" class=\\\"all\\\">Тарантино</a>, в свою очередь, согласится написать сценарий фильма «<a href=\\\"/film/4815/\\\" class=\\\"all\\\">От заката до рассвета</a>» (1995), основанный на сюжете Куртцмана.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"Чтобы не отпугнуть спонсоров, продюсер <a href=\\\"/name/26107/\\\" class=\\\"all\\\">Лоуренс Бендер</a> принял решение снимать в первую очередь эпизоды без крови и насилия, которые и были показаны инвесторам в качестве рабочего материала. Все основные сцены снимались позже.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"Сюжет и многие сцены были позаимствованы <a href=\\\"/name/7640/\\\" class=\\\"all\\\">Квентином Тарантино</a> из гонконгского боевика <a href=\\\"/name/51389/\\\" class=\\\"all\\\">Ринго Лама</a> «<a href=\\\"/film/5370/\\\" class=\\\"all\\\">Город в огне</a>» (1987), который ему очень понравился. Главную роль в той картине исполнял <a href=\\\"/name/10919/\\\" class=\\\"all\\\">Чоу Юнь-Фат</a>.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"Своих героев <a href=\\\"/name/7640/\\\" class=\\\"all\\\">Тарантино</a> решил одеть в черные костюмы и белые рубашки с черными галстуками, то есть так же, как были одеты персонажи гонконгского фильма <a href=\\\"/name/30729/\\\" class=\\\"all\\\">Джона Ву</a> «<a href=\\\"/film/5372/\\\" class=\\\"all\\\">Светлое будущее 2: Ураганный огонь</a>» (1987).\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"Бюджета ленты не хватало на костюмы, поэтому многие актеры снимались в собственной одежде. Кроме того, <a href=\\\"/name/7111/\\\" class=\\\"all\\\">Майклу Мэдсену</a> пришлось ездить на съемках на собственном кадиллаке.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"Склад, фигурирующий в фильме, ранее использовался как морг.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"Слово «fuck» произносится в картине 252 раза.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"<a href=\\\"/name/7640/\\\" class=\\\"all\\\">Тарантино</a> всячески избегающий в своих фильмах рекламы различных торговых марок (product-placement), использовал в картине сигареты «Red Apples», которые он придумал сам, а также кукурузные хлопья с такими наименованиями, от которых отказались еще в 70-е годы.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"Картина была отмечена призами кинофестивалей в Торонто, Стокгольме и Каталонии, а также премией «Независимый дух» за лучшую мужскую роль второго плана (<a href=\\\"/name/9271/\\\" class=\\\"all\\\">Стив Бушеми</a>) и наградой лондонских кинокритиков за лучший режиссерский дебют.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"Во время финальных титров можно заметить, что в графе «специальное спасибо» упомянут <a href=\\\"/name/42918/\\\" class=\\\"all\\\">Терри Гиллиам</a>. <a href=\\\"/name/7640/\\\" class=\\\"all\\\">Тарантино</a> поблагодарил Гиллиама за множество полезных советов, которые последний дал Квентину во время семинара на кинофестивале в Сандэнсе.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"<a href=\\\"/name/41104/\\\" class=\\\"all\\\">Дэвид Духовны</a> пробовался на одну из ролей в фильме.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"Изначально в первой сцене фильма главные персонажи должны были ностальгировать по песне «Money» группы «<a href=\\\"/name/618737/\\\" class=\\\"all\\\">Pink Floyd</a>». Однако позднее <a href=\\\"/name/7640/\\\" class=\\\"all\\\">Тарантино</a> изменил песню на «Little Green Bag».\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"Мистер Розовый говорит, что он не дает чаевых официантам, которые просто делают свою работу. Примечательно, что два года спустя <a href=\\\"/name/9271/\\\" class=\\\"all\\\">Стив Бушеми</a> сыграет подобного официанта в картине «<a href=\\\"/film/342/\\\" class=\\\"all\\\">Криминальное чтиво</a>» (1994).\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"Первая монтажная копия картины была готова всего лишь за три дня до мировой премьеры на кинофестивале «Сандэнс». \",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"<a href=\\\"/name/32839/\\\" class=\\\"all\\\">Мадонне</a>, песню которой активно обсуждают герои картины, очень понравился фильм, но, по её словам, интерпретация «Like a Virgin» совершенно не верна. Мадонна подарила <a href=\\\"/name/7640/\\\" class=\\\"all\\\">Тарантино</a> диск с альбомом «Erotica», подписанный следующим образом: «Квентину. Песня не о членах. Она о любви. Мадонна».\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"Преступники в фильме «<a href=\\\"/film/17738/\\\" class=\\\"all\\\">Захват поезда Пелэм 1-2-3</a>» (1974) также называют друг друга различными цветовыми оттенками.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"В квартире мистера Оранжевого можно заметить коробку с хлопьями «Fruit Brute». Точно такие же хлопья появляются в «<a href=\\\"/film/342/\\\" class=\\\"all\\\">Криминальном чтиве</a>» (1994).\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"Незадолго до окончания фильма <a href=\\\"/name/66421/\\\" class=\\\"all\\\">Лоуренс Тирни</a> говорит: «Мертв, как Диллинжер». Лоуренс сыграл Джона Диллинджера в картине «<a href=\\\"/film/176511/\\\" class=\\\"all\\\">Диллинджер</a>» (1945).\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"Имя мистера Блондина – Вик Вега. Винсент Вега (<a href=\\\"/name/6479/\\\" class=\\\"all\\\">Джон Траволта</a>) из «<a href=\\\"/film/342/\\\" class=\\\"all\\\">Криминального чтива</a>» (1994) – это его родной брат.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"На специальном DVD-издании фильма, посвященном десятилетию картины, в одной из удаленных сцен говорится, что полное имя мистера Белого – Лоренс Диммик. Примечательно, что у Джимми (персонаж <a href=\\\"/name/7640/\\\" class=\\\"all\\\">Квентина Тарантино</a> из «<a href=\\\"/film/342/\\\" class=\\\"all\\\">Криминального чтива</a>» (1994)) точно такая же фамилия.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"<a href=\\\"/name/20098/\\\" class=\\\"all\\\">Нина Семашко</a> сыграла МакКласки, но сцены с её участием были вырезаны из фильма. Удаленные сцены можно найти на DVD.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"На складе, где происходит основное действие картины, можно заметить несколько гробов. Вдобавок, мистер Блондин сидит на старом катафалке.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"В одной из удаленных сцен (которая доступна на DVD) Клёвый парень Эдди подумывает отвести раненого мистера Оранжевого медсестре по имени Бонни. Примечательно, что в «<a href=\\\"/film/342/\\\" class=\\\"all\\\">Криминальном чтиве</a>» (1994) присутствует медсестра с таким же именем.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"<a href=\\\"/name/12635/\\\" class=\\\"all\\\">Кристоферу Уокену</a> предлагали роль мистера Блондина, но он отказался.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"Фраза, которую говорит мистер Белый мистеру Розовому: «Мне нужно, чтобы ты успокоился. Ты спокоен?» – была добавлена в сценарий после возникшей драки между <a href=\\\"/name/66421/\\\" class=\\\"all\\\">Лоуренсом Тирни</a> и <a href=\\\"/name/7111/\\\" class=\\\"all\\\">Майклом Мэдсеном</a>. Для того чтобы разрядить атмосферу и продолжить съёмки, <a href=\\\"/name/7640/\\\" class=\\\"all\\\">Квентин Тарантино</a> сказал Лоуренсу: «Ларри, мне нужно, чтобы ты успокоился. Ты спокоен?».\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"По ходу действия фильма мистер Розовый неоднократно говорит, что важно оставаться профессионалами. Это – ссылка на <a href=\\\"/name/160426/\\\" class=\\\"all\\\">Ховарда Хоукса</a>, любимого режиссера <a href=\\\"/name/7640/\\\" class=\\\"all\\\">Квентина Тарантино</a>.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"Внимательный зритель может заметить, что квартира мистера Оранжевого находится этажом выше склада, где происходит основное действие фильма. Из-за бюджетных ограничений создателям картины пришлось отремонтировать помещение, сделав его похожим на жилые апартаменты.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"<a href=\\\"/name/28739/\\\" class=\\\"all\\\">Кирк Балц</a> попросил <a href=\\\"/name/7111/\\\" class=\\\"all\\\">Майкла Мэдсена</a>, чтобы он провез его в багажнике машины. Мэдсен согласился, т.к. посчитал, что для лучшего понимания своего персонажа ему также не мешало бы прокатить кого-нибудь в багажнике машины. Поэтому Майкл специально поехал по дороге с многочисленными выбоинами и ямами.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"Изначально в сцене пытки должна была играть песня «Ballroom Blitz» группы «Sweet».\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"В США фильм вышел без рекламы, поэтому весьма посредственно прошел в прокате. Однако при выходе картины в Англии о <a href=\\\"/name/7640/\\\" class=\\\"all\\\">Тарантино</a> уже знали многие, а фильм стал настоящим хитом британского проката.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"В фильме отсутствуют женские персонажи, у которых есть диалоги. Однако в удаленных сценах на DVD они присутствуют.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"По версии журнала «Empire» картина была признана лучшим независимым фильмом всех времен. Читатели того же журнала назвали данное кино самым важным (наиболее влиятельным) фильмом последних пятнадцати лет.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"На роль Джо Кабота пробовался <a href=\\\"/name/6148/\\\" class=\\\"all\\\">Роберт Форстер</a>.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"<a href=\\\"/name/151435/\\\" class=\\\"all\\\">Тимоти Кэри</a> пробовался на роль Джо Кабота, однако <a href=\\\"/name/7640/\\\" class=\\\"all\\\">Тарантино</a> посчитал, что он не подходит на данную роль.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"Для европейской рекламной кампании фильма были использованы так называемые характер-постеры (отдельный постер для каждого персонажа). Сейчас подобные афиши выпускаются чуть ли не для всех картин, где присутствует множество главных героев, однако для того времени это было в новинку.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"<a href=\\\"/name/28739/\\\" class=\\\"all\\\">Кирк Балц</a> четыре раза проходил пробы на роль Марвина Нэша, до того как его утвердили.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"<a href=\\\"/name/7640/\\\" class=\\\"all\\\">Квентин Тарантино</a> написал первую версию сценария за три с половиной недели.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"По словам <a href=\\\"/name/9272/\\\" class=\\\"all\\\">Эдварда Банкера</a>, в фильме должна была присутствовать сцена, объясняющая, что случилось с его персонажем (мистером Синим), однако, она так и не была снята из-за бюджетных ограничений.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"Поведение Мистера Пинка (герой <a href=\\\"/name/9271/\\\" class=\\\"all\\\">Стива Бушеми</a>) в самом начале фильма относительно чаевых официантке целиком списано с молодого <a href=\\\"/name/7640/\\\" class=\\\"all\\\">Тарантино</a>. Квентин признаётся, что раньше, когда у него к тому же не было материальной возможности (при зарплате примерно 50 долларов в неделю) оставлять чаевые, он руководствовался именно теми мотивами, которые высказывает мистер Пинк. Сам же Бушеми теперь очень боится, что люди будут говорить про него: «Это тот самый жадный парень!» И чтобы хоть как-то обезопасить себя от неверных взглядов со стороны, теперь переплачивает чаевые. А забыть дать кому-либо на чай-теперь одна из его фобий.\",\n            \"type\": \"FACT\",\n            \"spoiler\": false\n        },\n        {\n            \"value\": \"На съемочной площадке присутствовал фельдшер «Скорой помощи», в обязанности которого входило следить за тем, чтобы количество крови, вытекавшей из мистера Оранджа, соответствовало реальности.\",\n            \"type\": \"FACT\",\n            \"spoiler\": true\n        },\n        {\n            \"value\": \"Иногда <a href=\\\"/name/2145/\\\" class=\\\"all\\\">Тиму Роту</a> приходилось так долго лежать в луже искусственной крови, что она высыхала. В результате актера в течение нескольких минут отдирали от пола.\",\n            \"type\": \"FACT\",\n            \"spoiler\": true\n        },\n        {\n            \"value\": \"Общее количество смертей в фильме (показанных и непоказанных) — 17.\",\n            \"type\": \"FACT\",\n            \"spoiler\": true\n        },\n        {\n            \"value\": \"В одной из сцен фильма Джо спрашивает мистера Белого о девушке по имени Алабама. Это – ссылка на героиню <a href=\\\"/name/7628/\\\" class=\\\"all\\\">Патриции Аркетт</a> из фильма «<a href=\\\"/film/4149/\\\" class=\\\"all\\\">Настоящая любовь</a>» (1993). По словам <a href=\\\"/name/7640/\\\" class=\\\"all\\\">Тарантино</a>, Кларенс (<a href=\\\"/name/6653/\\\" class=\\\"all\\\">Кристиан Слэйтер</a>) должен был погибнуть в концовке фильма <a href=\\\"/name/11891/\\\" class=\\\"all\\\">Тони Скотта</a>. Спустя некоторое время Алабама должна была познакомиться с мистером Белым и вместе с ним начать жить по другую сторону закона. Однако, продюсеры изменили концовку «Настоящей любви», сделав невозможной встречу мистера Белого и Алабамы.\",\n            \"type\": \"FACT\",\n            \"spoiler\": true\n        },\n        {\n            \"value\": \"Предполагается, что мистер Блондин убил больше людей, чем любой другой персонаж  фильма, однако зритель так ни разу не увидит в кадре, чтобы Блондин хоть кого-нибудь убил.\",\n            \"type\": \"FACT\",\n            \"spoiler\": true\n        },\n        {\n            \"value\": \"Актриса, сыгравшая женщину, которую застрелил мистер Оранжевый (<a href=\\\"/name/2145/\\\" class=\\\"all\\\">Тим Рот</a>), была его тренером по акценту. Тим специально настоял на том, чтобы она исполнила эту роль, т.к. таким нехитрым способом он «отомстил» ей за то, что она была слишком строга на занятиях с ним.\",\n            \"type\": \"FACT\",\n            \"spoiler\": true\n        },\n        {\n            \"value\": \"Когда полицейский умоляет мистера Блондина не сжигать его, он говорит, что у него есть маленький ребенок. Данная фраза отсутствовала в сценарии и является импровизацией <a href=\\\"/name/28739/\\\" class=\\\"all\\\">Кирка Балца</a>. Когда он сказал её в первый раз, <a href=\\\"/name/7111/\\\" class=\\\"all\\\">Майкл Мэдсен</a>, у которого незадолго до начала съёмок родился сын, был настолько поражен и шокирован идеей оставить ребенка без отца, что не смог закончить сцену.\",\n            \"type\": \"FACT\",\n            \"spoiler\": true\n        },\n        {\n            \"value\": \"По словам <a href=\\\"/name/7640/\\\" class=\\\"all\\\">Квентина Тарантино</a>, мистер Розовый выжил в концовке фильма. Если увеличить громкость, то на заднем фоне можно услышать следующее: когда мистер Розовый выбегает из здания, полицейские кричат ему, чтобы он бросил оружие. Далее слышны выстрелы, и мистер Розовый кричит, что его ранили. Затем полицейские разговаривают друг с другом во время ареста мистера Розового.\",\n            \"type\": \"FACT\",\n            \"spoiler\": true\n        },\n        {\n            \"value\": \"В сцене, где Клёвый парень Эдди разговаривает по мобильному телефону об ограблении, можно заметить оранжевый воздушный шарик, пролетающий за его машиной. По мнению некоторых зрителей, это было сделано намеренно, для того чтобы намекнуть, что мистер Оранжевый &#8211; крот. Однако, по словам <a href=\\\"/name/7640/\\\" class=\\\"all\\\">Квентина Тарантино</a>, это &#8211; чистая случайность.\",\n            \"type\": \"FACT\",\n            \"spoiler\": true\n        },\n        {\n            \"value\": \"Когда мистер Белый и мистер Розовый говорят о том, что же пошло не так во время ограбления, на стене за ними можно заметить семь бутылок. Одна из них наполнена белой жидкостью, три &#8211; розовой жидкостью; оставшиеся три &#8211; оранжевой жидкостью. Белые и розовые бутылки стоят рядом друг с другом, а оранжевые &#8211; отдельно от них. В то же самое время мистер Белый и мистер Розовый находятся в одной комнате, а мистер Оранжевый &#8211; в другой.\",\n            \"type\": \"FACT\",\n            \"spoiler\": true\n        },\n        {\n            \"value\": \"Сцена, где Блондин отрезает ухо полицейскому — прямая цитата из любимого <a href=\\\"/name/7640/\\\" class=\\\"all\\\">Квентином</a> спагетти-вестерна «<a href=\\\"/film/77394/\\\" class=\\\"all\\\">Джанго</a>» (1966).\",\n            \"type\": \"FACT\",\n            \"spoiler\": true\n        },\n        {\n            \"value\": \"В то время, когда Мистер Блондин обливает связанного полицейского бензином, тот сильно топает и болтает левой ногой. Однако в следующем кадре мы видим, что обе ноги полицейского примотаны к стулу.\",\n            \"type\": \"BLOOPER\",\n            \"spoiler\": true\n        },\n        {\n            \"value\": \"На 21 минуте, когда <a href=\\\"/name/9271/\\\" class=\\\"all\\\">Стив Бушеми</a> (Розовый) отстреливается от копов, сумка с бриллиантами лежит под ногами у машины, в следующем кадре, когда он открывает дверь машины — сумки с бриллиантами уже нет.\",\n            \"type\": \"BLOOPER\",\n            \"spoiler\": true\n        }\n    ],\n    \"genres\": [\n        {\n            \"name\": \"криминал\"\n        },\n        {\n            \"name\": \"драма\"\n        },\n        {\n            \"name\": \"триллер\"\n        }\n    ],\n    \"countries\": [\n        {\n            \"name\": \"США\"\n        }\n    ],\n    \"seasonsInfo\": [],\n    \"persons\": [\n        {\n            \"id\": 1600,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_1600.jpg\",\n            \"name\": \"Харви Кейтель\",\n            \"enName\": \"Harvey Keitel\",\n            \"description\": \"Mr. White / Larry\",\n            \"profession\": \"актеры\",\n            \"enProfession\": \"actor\"\n        },\n        {\n            \"id\": 2145,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_2145.jpg\",\n            \"name\": \"Тим Рот\",\n            \"enName\": \"Tim Roth\",\n            \"description\": \"Mr. Orange / Freddy\",\n            \"profession\": \"актеры\",\n            \"enProfession\": \"actor\"\n        },\n        {\n            \"id\": 7111,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_7111.jpg\",\n            \"name\": \"Майкл Мэдсен\",\n            \"enName\": \"Michael Madsen\",\n            \"description\": \"Mr. Blonde / Vic\",\n            \"profession\": \"актеры\",\n            \"enProfession\": \"actor\"\n        },\n        {\n            \"id\": 34283,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_34283.jpg\",\n            \"name\": \"Крис Пенн\",\n            \"enName\": \"Chris Penn\",\n            \"description\": \"Nice Guy Eddie\",\n            \"profession\": \"актеры\",\n            \"enProfession\": \"actor\"\n        },\n        {\n            \"id\": 9271,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_9271.jpg\",\n            \"name\": \"Стив Бушеми\",\n            \"enName\": \"Steve Buscemi\",\n            \"description\": \"Mr. Pink\",\n            \"profession\": \"актеры\",\n            \"enProfession\": \"actor\"\n        },\n        {\n            \"id\": 66421,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_66421.jpg\",\n            \"name\": \"Лоуренс Тирни\",\n            \"enName\": \"Lawrence Tierney\",\n            \"description\": \"Joe Cabot\",\n            \"profession\": \"актеры\",\n            \"enProfession\": \"actor\"\n        },\n        {\n            \"id\": 125696,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_125696.jpg\",\n            \"name\": \"Рэнди Брукс\",\n            \"enName\": \"Randy Brooks\",\n            \"description\": \"Holdaway\",\n            \"profession\": \"актеры\",\n            \"enProfession\": \"actor\"\n        },\n        {\n            \"id\": 28739,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_28739.jpg\",\n            \"name\": \"Кирк Балц\",\n            \"enName\": \"Kirk Baltz\",\n            \"description\": \"Marvin Nash\",\n            \"profession\": \"актеры\",\n            \"enProfession\": \"actor\"\n        },\n        {\n            \"id\": 9272,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_9272.jpg\",\n            \"name\": \"Эдвард Банкер\",\n            \"enName\": \"Edward Bunker\",\n            \"description\": \"Mr. Blue (в титрах: Eddie Bunker)\",\n            \"profession\": \"актеры\",\n            \"enProfession\": \"actor\"\n        },\n        {\n            \"id\": 7640,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_7640.jpg\",\n            \"name\": \"Квентин Тарантино\",\n            \"enName\": \"Quentin Tarantino\",\n            \"description\": \"Mr. Brown\",\n            \"profession\": \"актеры\",\n            \"enProfession\": \"actor\"\n        },\n        {\n            \"id\": 1985480,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_1985480.jpg\",\n            \"name\": \"Бетси Хайман\",\n            \"enName\": \"Betsy Heimann\",\n            \"description\": null,\n            \"profession\": \"художники\",\n            \"enProfession\": \"designer\"\n        },\n        {\n            \"id\": 1230982,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_1230982.jpg\",\n            \"name\": \"Сэнди Рейнольдс-Уоско\",\n            \"enName\": \"Sandy Reynolds-Wasco\",\n            \"description\": null,\n            \"profession\": \"художники\",\n            \"enProfession\": \"designer\"\n        },\n        {\n            \"id\": 7640,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_7640.jpg\",\n            \"name\": \"Квентин Тарантино\",\n            \"enName\": \"Quentin Tarantino\",\n            \"description\": null,\n            \"profession\": \"режиссеры\",\n            \"enProfession\": \"director\"\n        },\n        {\n            \"id\": 55970,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_55970.jpg\",\n            \"name\": \"Салли Менке\",\n            \"enName\": \"Sally Menke\",\n            \"description\": null,\n            \"profession\": \"монтажеры\",\n            \"enProfession\": \"editor\"\n        },\n        {\n            \"id\": 44288,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_44288.jpg\",\n            \"name\": \"Анджей Секула\",\n            \"enName\": \"Andrzej Sekuła\",\n            \"description\": null,\n            \"profession\": \"операторы\",\n            \"enProfession\": \"operator\"\n        },\n        {\n            \"id\": 26107,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_26107.jpg\",\n            \"name\": \"Лоуренс Бендер\",\n            \"enName\": \"Lawrence Bender\",\n            \"description\": null,\n            \"profession\": \"продюсеры\",\n            \"enProfession\": \"producer\"\n        },\n        {\n            \"id\": 22331,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_22331.jpg\",\n            \"name\": \"Ричард Н. Гладштейн\",\n            \"enName\": \"Richard N. Gladstein\",\n            \"description\": null,\n            \"profession\": \"продюсеры\",\n            \"enProfession\": \"producer\"\n        },\n        {\n            \"id\": 136948,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_136948.jpg\",\n            \"name\": \"Монте Хеллман\",\n            \"enName\": \"Monte Hellman\",\n            \"description\": null,\n            \"profession\": \"продюсеры\",\n            \"enProfession\": \"producer\"\n        },\n        {\n            \"id\": 1600,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_1600.jpg\",\n            \"name\": \"Харви Кейтель\",\n            \"enName\": \"Harvey Keitel\",\n            \"description\": null,\n            \"profession\": \"продюсеры\",\n            \"enProfession\": \"producer\"\n        },\n        {\n            \"id\": 4330372,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_4330372.jpg\",\n            \"name\": \"Михаил Глушковский\",\n            \"enName\": null,\n            \"description\": null,\n            \"profession\": \"актеры дубляжа\",\n            \"enProfession\": \"voice_actor\"\n        },\n        {\n            \"id\": 4498160,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_4498160.jpg\",\n            \"name\": \"Глеб Петров\",\n            \"enName\": null,\n            \"description\": null,\n            \"profession\": \"актеры дубляжа\",\n            \"enProfession\": \"voice_actor\"\n        },\n        {\n            \"id\": 3399668,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_3399668.jpg\",\n            \"name\": \"Сергей Пономарёв\",\n            \"enName\": null,\n            \"description\": null,\n            \"profession\": \"актеры дубляжа\",\n            \"enProfession\": \"voice_actor\"\n        },\n        {\n            \"id\": 2357303,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_2357303.jpg\",\n            \"name\": \"Михаил Данилюк\",\n            \"enName\": null,\n            \"description\": null,\n            \"profession\": \"актеры дубляжа\",\n            \"enProfession\": \"voice_actor\"\n        },\n        {\n            \"id\": 3713978,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_3713978.jpg\",\n            \"name\": \"Пётр Коврижных\",\n            \"enName\": null,\n            \"description\": null,\n            \"profession\": \"актеры дубляжа\",\n            \"enProfession\": \"voice_actor\"\n        },\n        {\n            \"id\": 7640,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_7640.jpg\",\n            \"name\": \"Квентин Тарантино\",\n            \"enName\": \"Quentin Tarantino\",\n            \"description\": null,\n            \"profession\": \"сценаристы\",\n            \"enProfession\": \"writer\"\n        },\n        {\n            \"id\": 17501,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_17501.jpg\",\n            \"name\": \"Роджер Эвери\",\n            \"enName\": \"Roger Avary\",\n            \"description\": null,\n            \"profession\": \"сценаристы\",\n            \"enProfession\": \"writer\"\n        },\n        {\n            \"id\": 80026,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_80026.jpg\",\n            \"name\": \"Рич Тернер\",\n            \"enName\": \"Rich Turner\",\n            \"description\": null,\n            \"profession\": \"актеры\",\n            \"enProfession\": \"actor\"\n        },\n        {\n            \"id\": 119128,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_119128.jpg\",\n            \"name\": \"Дэвид Стин\",\n            \"enName\": \"David Steen\",\n            \"description\": null,\n            \"profession\": \"актеры\",\n            \"enProfession\": \"actor\"\n        },\n        {\n            \"id\": 374287,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_374287.jpg\",\n            \"name\": \"Тони Космо\",\n            \"enName\": \"Tony Cosmo\",\n            \"description\": null,\n            \"profession\": \"актеры\",\n            \"enProfession\": \"actor\"\n        },\n        {\n            \"id\": 30154,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_30154.jpg\",\n            \"name\": \"Стево Полы\",\n            \"enName\": \"Stevo Polyi\",\n            \"description\": null,\n            \"profession\": \"актеры\",\n            \"enProfession\": \"actor\"\n        },\n        {\n            \"id\": 53453,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_53453.jpg\",\n            \"name\": \"Майкл Соттил\",\n            \"enName\": \"Michael Sottile\",\n            \"description\": null,\n            \"profession\": \"актеры\",\n            \"enProfession\": \"actor\"\n        },\n        {\n            \"id\": 37869,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_37869.jpg\",\n            \"name\": \"Роберт Рут\",\n            \"enName\": \"Robert Ruth\",\n            \"description\": null,\n            \"profession\": \"актеры\",\n            \"enProfession\": \"actor\"\n        },\n        {\n            \"id\": 102636,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_102636.jpg\",\n            \"name\": \"Линда Кэй\",\n            \"enName\": \"Linda Kaye\",\n            \"description\": null,\n            \"profession\": \"актеры\",\n            \"enProfession\": \"actor\"\n        },\n        {\n            \"id\": 130317,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_130317.jpg\",\n            \"name\": \"Сюзанн Селеста\",\n            \"enName\": \"Suzanne Celeste\",\n            \"description\": null,\n            \"profession\": \"актеры\",\n            \"enProfession\": \"actor\"\n        },\n        {\n            \"id\": 7732,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_7732.jpg\",\n            \"name\": \"Стивен Райт\",\n            \"enName\": \"Steven Wright\",\n            \"description\": null,\n            \"profession\": \"актеры\",\n            \"enProfession\": \"actor\"\n        },\n        {\n            \"id\": 94815,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_94815.jpg\",\n            \"name\": \"Лори Лэтэм\",\n            \"enName\": \"Laurie Lathem\",\n            \"description\": null,\n            \"profession\": \"актеры\",\n            \"enProfession\": \"actor\"\n        },\n        {\n            \"id\": 286437,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_286437.jpg\",\n            \"name\": \"Мария Строва\",\n            \"enName\": \"Maria Strova\",\n            \"description\": null,\n            \"profession\": \"актеры\",\n            \"enProfession\": \"actor\"\n        },\n        {\n            \"id\": 31707,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_31707.jpg\",\n            \"name\": \"Бёрр Стирс\",\n            \"enName\": \"Burr Steers\",\n            \"description\": null,\n            \"profession\": \"актеры\",\n            \"enProfession\": \"actor\"\n        },\n        {\n            \"id\": 80020,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_80020.jpg\",\n            \"name\": \"Крэйг Хаманн\",\n            \"enName\": \"Craig Hamann\",\n            \"description\": null,\n            \"profession\": \"актеры\",\n            \"enProfession\": \"actor\"\n        },\n        {\n            \"id\": 6003121,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_6003121.jpg\",\n            \"name\": null,\n            \"enName\": \"Scott McElroy\",\n            \"description\": null,\n            \"profession\": \"актеры\",\n            \"enProfession\": \"actor\"\n        },\n        {\n            \"id\": 4077528,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_4077528.jpg\",\n            \"name\": \"Джефф Ши\",\n            \"enName\": \"Jeffrey Erin Shea\",\n            \"description\": null,\n            \"profession\": \"актеры\",\n            \"enProfession\": \"actor\"\n        },\n        {\n            \"id\": 5449130,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_5449130.jpg\",\n            \"name\": null,\n            \"enName\": \"Gerard van Gent\",\n            \"description\": null,\n            \"profession\": \"актеры\",\n            \"enProfession\": \"actor\"\n        },\n        {\n            \"id\": 42384,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_42384.jpg\",\n            \"name\": \"Роулэнд Уоффорд\",\n            \"enName\": \"Rowland Wafford\",\n            \"description\": null,\n            \"profession\": \"актеры\",\n            \"enProfession\": \"actor\"\n        },\n        {\n            \"id\": 151083,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_151083.jpg\",\n            \"name\": \"Шеб Вули\",\n            \"enName\": \"Sheb Wooley\",\n            \"description\": null,\n            \"profession\": \"актеры\",\n            \"enProfession\": \"actor\"\n        },\n        {\n            \"id\": 3649975,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_3649975.jpg\",\n            \"name\": \"Кен Кауфман\",\n            \"enName\": \"Ken Kaufman\",\n            \"description\": null,\n            \"profession\": \"художники\",\n            \"enProfession\": \"designer\"\n        },\n        {\n            \"id\": 415503,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_415503.jpg\",\n            \"name\": \"Дэвид Уоско\",\n            \"enName\": \"David Wasco\",\n            \"description\": null,\n            \"profession\": \"художники\",\n            \"enProfession\": \"designer\"\n        },\n        {\n            \"id\": 1036893,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_1036893.jpg\",\n            \"name\": \"Геннадий Новиков\",\n            \"enName\": null,\n            \"description\": null,\n            \"profession\": \"актеры дубляжа\",\n            \"enProfession\": \"voice_actor\"\n        },\n        {\n            \"id\": 1079073,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_1079073.jpg\",\n            \"name\": \"Андрей Бархударов\",\n            \"enName\": null,\n            \"description\": null,\n            \"profession\": \"актеры дубляжа\",\n            \"enProfession\": \"voice_actor\"\n        },\n        {\n            \"id\": 3731475,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_3731475.jpg\",\n            \"name\": \"Александр Матвеев\",\n            \"enName\": null,\n            \"description\": null,\n            \"profession\": \"актеры дубляжа\",\n            \"enProfession\": \"voice_actor\"\n        },\n        {\n            \"id\": 1646297,\n            \"photo\": \"https://image.openmoviedb.com/kinopoisk-st-images//actor_iphone/iphone360_1646297.jpg\",\n            \"name\": \"Ольга Зубкова\",\n            \"enName\": null,\n            \"description\": null,\n            \"profession\": \"актеры дубляжа\",\n            \"enProfession\": \"voice_actor\"\n        }\n    ],\n    \"images\": {\n        \"framesCount\": 41\n    },\n    \"lists\": [\n        \"top250\",\n        \"top500\",\n        \"popular-films\"\n    ],\n    \"spokenLanguages\": [],\n    \"productionCompanies\": [],\n    \"typeNumber\": 1,\n    \"alternativeName\": \"Reservoir Dogs\",\n    \"enName\": null,\n    \"names\": [\n        {\n            \"name\": \"Бешеные псы\"\n        },\n        {\n            \"name\": \"Reservoir Dogs\"\n        },\n        {\n            \"name\": \"Cani da rapina\",\n            \"language\": \"IT\",\n            \"type\": null\n        },\n        {\n            \"name\": \"Rengli Itler\",\n            \"language\": \"AZ\",\n            \"type\": null\n        },\n        {\n            \"name\": \"Marukoerad\",\n            \"language\": \"EE\",\n            \"type\": null\n        },\n        {\n            \"name\": \"Calbay Ashmoret\",\n            \"language\": \"IL\",\n            \"type\": null\n        },\n        {\n            \"name\": \"Pasiute sunys\",\n            \"language\": \"LT\",\n            \"type\": null\n        },\n        {\n            \"name\": \"Perros de Reserva\",\n            \"language\": \"MX\",\n            \"type\": null\n        },\n        {\n            \"name\": \"Ulični psi\",\n            \"language\": \"RS\",\n            \"type\": null\n        },\n        {\n            \"name\": \"Stekli psi\",\n            \"language\": \"SI\",\n            \"type\": null\n        },\n        {\n            \"name\": \"Psi iz rezervoara\",\n            \"language\": \"HR\",\n            \"type\": null\n        },\n        {\n            \"name\": \"Nhung Ke Phan Boi\",\n            \"language\": \"VN\",\n            \"type\": null\n        },\n        {\n            \"name\": \"저수지의 개들\",\n            \"language\": \"KR\",\n            \"type\": null\n        },\n        {\n            \"name\": \"レザボア・ドッグス\",\n            \"language\": \"JP\",\n            \"type\": null\n        },\n        {\n            \"name\": \"Gauneři\",\n            \"language\": \"CZ\",\n            \"type\": \"Krimi / Thriller\"\n        },\n        {\n            \"name\": \"De hensynsløse\",\n            \"language\": \"NO\",\n            \"type\": null\n        },\n        {\n            \"name\": \"レザボア・ドッグス：1992\",\n            \"language\": \"JP\",\n            \"type\": null\n        },\n        {\n            \"name\": \"霸道橫行\",\n            \"language\": \"TW\",\n            \"type\": null\n        }\n    ],\n    \"similarMovies\": [\n        {\n            \"id\": 342,\n            \"name\": \"Криминальное чтиво\",\n            \"enName\": null,\n            \"alternativeName\": \"Pulp Fiction\",\n            \"type\": \"movie\",\n            \"poster\": {\n                \"url\": \"https://avatars.mds.yandex.net/get-kinopoisk-image/1900788/87b5659d-a159-4224-9bff-d5a5d109a53b/orig\",\n                \"previewUrl\": \"https://avatars.mds.yandex.net/get-kinopoisk-image/1900788/87b5659d-a159-4224-9bff-d5a5d109a53b/x1000\"\n            },\n            \"year\": 1994,\n            \"rating\": {\n                \"kp\": 8.65,\n                \"imdb\": 8.9,\n                \"filmCritics\": 9.2,\n                \"russianFilmCritics\": 100,\n                \"await\": null\n            }\n        },\n        {\n            \"id\": 819101,\n            \"name\": \"Омерзительная восьмерка\",\n            \"enName\": null,\n            \"alternativeName\": \"The Hateful Eight\",\n            \"type\": \"movie\",\n            \"poster\": {\n                \"url\": \"https://avatars.mds.yandex.net/get-kinopoisk-image/1600647/e5013408-8374-400b-a444-b9753e9da28d/orig\",\n                \"previewUrl\": \"https://avatars.mds.yandex.net/get-kinopoisk-image/1600647/e5013408-8374-400b-a444-b9753e9da28d/x1000\"\n            },\n            \"year\": 2015,\n            \"rating\": {\n                \"kp\": 7.971,\n                \"imdb\": 7.8,\n                \"filmCritics\": 7.3,\n                \"russianFilmCritics\": 87.0968,\n                \"await\": null\n            }\n        },\n        {\n            \"id\": 522,\n            \"name\": \"Карты, деньги, два ствола\",\n            \"enName\": null,\n            \"alternativeName\": \"Lock, Stock and Two Smoking Barrels\",\n            \"type\": \"movie\",\n            \"poster\": {\n                \"url\": \"https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/6492653f-11d5-4087-a1d2-ec7a74f161d3/orig\",\n                \"previewUrl\": \"https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/6492653f-11d5-4087-a1d2-ec7a74f161d3/x1000\"\n            },\n            \"year\": 1998,\n            \"rating\": {\n                \"kp\": 8.558,\n                \"imdb\": 8.1,\n                \"filmCritics\": 6.7,\n                \"russianFilmCritics\": 0,\n                \"await\": null\n            }\n        },\n        {\n            \"id\": 526,\n            \"name\": \"Большой куш\",\n            \"enName\": null,\n            \"alternativeName\": \"Snatch\",\n            \"type\": \"movie\",\n            \"poster\": {\n                \"url\": \"https://avatars.mds.yandex.net/get-kinopoisk-image/4303601/47fe48f6-ff17-4411-a12f-d337bea2639d/orig\",\n                \"previewUrl\": \"https://avatars.mds.yandex.net/get-kinopoisk-image/4303601/47fe48f6-ff17-4411-a12f-d337bea2639d/x1000\"\n            },\n            \"year\": 2000,\n            \"rating\": {\n                \"kp\": 8.552,\n                \"imdb\": 8.2,\n                \"filmCritics\": 6.4,\n                \"russianFilmCritics\": 100,\n                \"await\": null\n            }\n        },\n        {\n            \"id\": 9691,\n            \"name\": \"Бесславные ублюдки\",\n            \"enName\": null,\n            \"alternativeName\": \"Inglourious Basterds\",\n            \"type\": \"movie\",\n            \"poster\": {\n                \"url\": \"https://avatars.mds.yandex.net/get-kinopoisk-image/1946459/5e6dde98-74a8-4c02-b003-01d48e091025/orig\",\n                \"previewUrl\": \"https://avatars.mds.yandex.net/get-kinopoisk-image/1946459/5e6dde98-74a8-4c02-b003-01d48e091025/x1000\"\n            },\n            \"year\": 2009,\n            \"rating\": {\n                \"kp\": 7.989,\n                \"imdb\": 8.4,\n                \"filmCritics\": 7.8,\n                \"russianFilmCritics\": 80,\n                \"await\": null\n            }\n        },\n        {\n            \"id\": 340,\n            \"name\": \"Подозрительные лица\",\n            \"enName\": null,\n            \"alternativeName\": \"The Usual Suspects\",\n            \"type\": \"movie\",\n            \"poster\": {\n                \"url\": \"https://avatars.mds.yandex.net/get-kinopoisk-image/1704946/194aa7f0-13ab-401e-8ae7-913191a6e785/orig\",\n                \"previewUrl\": \"https://avatars.mds.yandex.net/get-kinopoisk-image/1704946/194aa7f0-13ab-401e-8ae7-913191a6e785/x1000\"\n            },\n            \"year\": 1995,\n            \"rating\": {\n                \"kp\": 7.843,\n                \"imdb\": 8.5,\n                \"filmCritics\": 7.8,\n                \"russianFilmCritics\": 0,\n                \"await\": null\n            }\n        },\n        {\n            \"id\": 81314,\n            \"name\": \"Отступники\",\n            \"enName\": null,\n            \"alternativeName\": \"The Departed\",\n            \"type\": \"movie\",\n            \"poster\": {\n                \"url\": \"https://avatars.mds.yandex.net/get-kinopoisk-image/1898899/f2c70176-43c8-4ca6-8f67-7119a2b73f19/orig\",\n                \"previewUrl\": \"https://avatars.mds.yandex.net/get-kinopoisk-image/1898899/f2c70176-43c8-4ca6-8f67-7119a2b73f19/x1000\"\n            },\n            \"year\": 2006,\n            \"rating\": {\n                \"kp\": 8.456,\n                \"imdb\": 8.5,\n                \"filmCritics\": 8.3,\n                \"russianFilmCritics\": 60,\n                \"await\": null\n            }\n        },\n        {\n            \"id\": 15641,\n            \"name\": \"Кровавый четверг\",\n            \"enName\": null,\n            \"alternativeName\": \"Thursday\",\n            \"type\": \"movie\",\n            \"poster\": {\n                \"url\": \"https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/416f4c7a-bfcb-4ac5-b03b-0c6803804678/orig\",\n                \"previewUrl\": \"https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/416f4c7a-bfcb-4ac5-b03b-0c6803804678/x1000\"\n            },\n            \"year\": 1998,\n            \"rating\": {\n                \"kp\": 7.858,\n                \"imdb\": 7.1,\n                \"filmCritics\": 5.1,\n                \"russianFilmCritics\": 0,\n                \"await\": null\n            }\n        },\n        {\n            \"id\": 586584,\n            \"name\": \"Семь психопатов\",\n            \"enName\": null,\n            \"alternativeName\": \"Seven Psychopaths\",\n            \"type\": \"movie\",\n            \"poster\": {\n                \"url\": \"https://avatars.mds.yandex.net/get-kinopoisk-image/4303601/58c54778-cb77-486f-a584-fbea76bb098a/orig\",\n                \"previewUrl\": \"https://avatars.mds.yandex.net/get-kinopoisk-image/4303601/58c54778-cb77-486f-a584-fbea76bb098a/x1000\"\n            },\n            \"year\": 2012,\n            \"rating\": {\n                \"kp\": 7.345,\n                \"imdb\": 7.1,\n                \"filmCritics\": 7.1,\n                \"russianFilmCritics\": 93.3333,\n                \"await\": null\n            }\n        },\n        {\n            \"id\": 586397,\n            \"name\": \"Джанго освобожденный\",\n            \"enName\": null,\n            \"alternativeName\": \"Django Unchained\",\n            \"type\": \"movie\",\n            \"poster\": {\n                \"url\": \"https://avatars.mds.yandex.net/get-kinopoisk-image/1898899/401c67e4-5047-42c2-8668-aeda39da529f/orig\",\n                \"previewUrl\": \"https://avatars.mds.yandex.net/get-kinopoisk-image/1898899/401c67e4-5047-42c2-8668-aeda39da529f/x1000\"\n            },\n            \"year\": 2012,\n            \"rating\": {\n                \"kp\": 8.235,\n                \"imdb\": 8.5,\n                \"filmCritics\": 8,\n                \"russianFilmCritics\": 88.2353,\n                \"await\": null\n            }\n        }\n    ],\n    \"updatedAt\": \"2024-12-01T00:00:06.837Z\",\n    \"movieLength\": 100,\n    \"ratingMpaa\": \"r\",\n    \"shortDescription\": \"Гангстеры артистично спорят о том, кто их кинул. Кровожадный и веселый дебют Квентина Тарантино\",\n    \"technology\": {\n        \"hasImax\": false,\n        \"has3D\": false\n    },\n    \"ticketsOnSale\": false,\n    \"imagesInfo\": {\n        \"framesCount\": 41\n    },\n    \"sequelsAndPrequels\": [\n        {\n            \"id\": 1009576,\n            \"name\": null,\n            \"enName\": \"Reservoir Dogs: Sundance Institute 1991 June Film Lab\",\n            \"alternativeName\": \"Reservoir Dogs: Sundance Institute 1991 June Film Lab\",\n            \"type\": \"remake\",\n            \"poster\": {\n                \"url\": \"https://st.kp.yandex.net/images/film_big/1009576.jpg\",\n                \"previewUrl\": \"https://st.kp.yandex.net/images/film_iphone/iphone360_1009576.jpg\"\n            }\n        },\n        {\n            \"id\": 34890,\n            \"name\": \"Чужой среди своих\",\n            \"enName\": \"Kaante\",\n            \"alternativeName\": \"Kaante\",\n            \"type\": \"remake\",\n            \"poster\": {\n                \"url\": \"https://st.kp.yandex.net/images/film_big/34890.jpg\",\n                \"previewUrl\": \"https://st.kp.yandex.net/images/film_iphone/iphone360_34890.jpg\"\n            }\n        },\n        {\n            \"id\": 673872,\n            \"name\": \"Бешеные кошки\",\n            \"enName\": \"Reservoir Cats\",\n            \"alternativeName\": \"Reservoir Cats\",\n            \"type\": \"remake\",\n            \"poster\": {\n                \"url\": \"https://st.kp.yandex.net/images/film_big/673872.jpg\",\n                \"previewUrl\": \"https://st.kp.yandex.net/images/film_iphone/iphone360_673872.jpg\"\n            }\n        }\n    ],\n    \"ageRating\": 18,\n    \"backdrop\": {\n        \"url\": \"https://image.openmoviedb.com/kinopoisk-ott-images/224348/2a0000016224f0360420d935a974fc5a76e4/orig\",\n        \"previewUrl\": \"https://image.openmoviedb.com/kinopoisk-ott-images/224348/2a0000016224f0360420d935a974fc5a76e4/x1000\"\n    },\n    \"logo\": {\n        \"url\": \"https://avatars.mds.yandex.net/get-ott/2419418/2a00000172982695aba03b7c1b6e9a1e5398/orig\"\n    },\n    \"watchability\": {\n        \"items\": []\n    },\n    \"top10\": null,\n    \"top250\": 222,\n    \"status\": null,\n    \"audience\": [\n        {\n            \"count\": 682400,\n            \"country\": \"США\"\n        },\n        {\n            \"count\": 225506,\n            \"country\": \"Испания\"\n        },\n        {\n            \"count\": 193981,\n            \"country\": \"Швеция\"\n        }\n    ],\n    \"deletedAt\": null,\n    \"isSeries\": false,\n    \"seriesLength\": null,\n    \"totalSeriesLength\": null,\n    \"networks\": null,\n    \"videos\": {\n        \"trailers\": [\n            {\n                \"url\": \"https://www.youtube.com/embed/UgSjnoimSak\",\n                \"name\": \"Бешеные псы (1991) Red-band трейлер (русский язык)\",\n                \"site\": \"youtube\",\n                \"type\": \"TRAILER\"\n            },\n            {\n                \"url\": \"https://www.youtube.com/embed/iJDR18Lmv8E\",\n                \"name\": \"БЕШЕНЫЕ ПСЫ (с субтитрами) - Трейлер (с субтитрами)\",\n                \"site\": \"youtube\",\n                \"type\": \"TRAILER\"\n            },\n            {\n                \"url\": \"https://www.youtube.com/embed/UgSjnoimSak\",\n                \"name\": \"Бешеные псы (1991) Red-band трейлер (русский язык)\",\n                \"site\": \"youtube\",\n                \"type\": \"TRAILER\"\n            },\n            {\n                \"url\": \"https://www.youtube.com/embed/iJDR18Lmv8E\",\n                \"name\": \"БЕШЕНЫЕ ПСЫ (с субтитрами) - Трейлер (с субтитрами)\",\n                \"site\": \"youtube\",\n                \"type\": \"TRAILER\"\n            },\n            {\n                \"url\": \"https://www.youtube.com/embed/t_ecM-orD5w\",\n                \"name\": \"35mm RED BAND Theatrical Trailer [4K] [FTD-1263]\",\n                \"site\": \"youtube\",\n                \"type\": \"TRAILER\"\n            },\n            {\n                \"url\": \"https://www.youtube.com/embed/2KLZ4fSXtgI\",\n                \"name\": \"Official Park Circus Trailer\",\n                \"site\": \"youtube\",\n                \"type\": \"TRAILER\"\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Film Reviews",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "{{api_key}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.kinopoisk.dev/v1.4/review?movieId=394",
+					"protocol": "https",
+					"host": [
+						"api",
+						"kinopoisk",
+						"dev"
+					],
+					"path": [
+						"v1.4",
+						"review"
+					],
+					"query": [
+						{
+							"key": "movieId",
+							"value": "394"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Film by name Copy",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-API-KEY",
+								"value": "{{api_key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.kinopoisk.dev/v1.4/review?movieId=394",
+							"protocol": "https",
+							"host": [
+								"api",
+								"kinopoisk",
+								"dev"
+							],
+							"path": [
+								"v1.4",
+								"review"
+							],
+							"query": [
+								{
+									"key": "movieId",
+									"value": "394"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.22.1"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 04 Dec 2024 05:26:15 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "content-security-policy",
+							"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+						},
+						{
+							"key": "cross-origin-opener-policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "cross-origin-resource-policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "origin-agent-cluster",
+							"value": "?1"
+						},
+						{
+							"key": "referrer-policy",
+							"value": "no-referrer"
+						},
+						{
+							"key": "strict-transport-security",
+							"value": "max-age=15552000; includeSubDomains"
+						},
+						{
+							"key": "x-content-type-options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-dns-prefetch-control",
+							"value": "off"
+						},
+						{
+							"key": "x-download-options",
+							"value": "noopen"
+						},
+						{
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "x-permitted-cross-domain-policies",
+							"value": "none"
+						},
+						{
+							"key": "x-xss-protection",
+							"value": "0"
+						},
+						{
+							"key": "access-control-allow-origin",
+							"value": "*"
+						},
+						{
+							"key": "x-ratelimit-limit",
+							"value": "5"
+						},
+						{
+							"key": "x-ratelimit-remaining",
+							"value": "4"
+						},
+						{
+							"key": "x-ratelimit-reset",
+							"value": "1"
+						},
+						{
+							"key": "vary",
+							"value": "accept-encoding"
+						},
+						{
+							"key": "content-encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"docs\": [\n        {\n            \"id\": 3349144,\n            \"movieId\": 394,\n            \"title\": \"Как же тяжело хвалить такой фильм\",\n            \"type\": \"Позитивный\",\n            \"review\": \"Тяжело писать хвалебные отзывы о фильме, который смотрели все, а если не смотрели, то точно слышали, видели цитаты и скриншоты с самыми знаменитыми сценами. Но интересно рассматривать картину, спустя года, так как меняется продакшн кинокартин, технологии и, соответственно, восприятие человека.\\r\\n\\r\\nВ первую очередь, что точно не постарело, и даже сейчас смотрится очень примечательно - это подача развития сюжета. Встретить героев сразу, на этапе следствий, не считая легендарного диалога в кафе, после совершения основного действия (ограбления) - фантастический прием. Видишь героев настоящих, так как после катастрофического провала, когда находишься на грани, чаще всего проявляется истинные черты человека. В эту же категорию можно добавить интересные склейки со сменой кадра, или дополнительные флэшбеки о героях во время ограбления (та самая сцена с погоней за мистером Розовым).\\r\\n\\r\\nВо-вторых, лично меня всегда гнетет темп передачи информации. В настоящее время, из-за обилия контента, мозг поглощает новое с огромной скоростью. Уже сложно усидеть на месте без хлеба и зрелищ. Но и тут фильм Тарантино не уступает современным картинам. Дано много героев, которых нужно раскрыть, чтобы зрители прониклись. Соответственно, будет много флэшбеков и смены действия: только вы узнаете об одном герое, так уже сцена смещается на другого персонажа и так далее. Сверху режиссер еще добавляет плоттвист, который держал в напряжении половину фильма, и смазывает все - обилием жестокости. Могу отметить, что показалась просадка во время раскрытия мистера Оранжевого, но это не точно...\\r\\n\\r\\nВ-третьих, без великолепных актеров можно было бы наплевать на предыдущие пункты. Никто не будет отрицать, что весь фильм построен на диалогах. Взаимодействие персонажей ключевая деталь всего происходящего. В какой-то момент можно почувствовать себя в театре, где все действие происходит в большом гараже без смены локаций, а только камера приближается или удаляется. Только персонажи кричали и разбирались в проблемах, как уже через пару минут спокойно разговаривают в другой комнате, покуривая. \\r\\n\\r\\nНе смотря на то, что прошло уже больше 25 лет с момента выхода, фильм, по моему мнению, уступает современникам только качеством съемки, и то, не по своей вине, а из-за быстрых темпов развития технологий. \\r\\n\\r\\nКак же прекрасно наслаждаться такой картиной, а еще прекрасней будет - посмотреть ее в будущем.\",\n            \"date\": \"2024-02-06T11:37:19.000Z\",\n            \"author\": \"Alex_Skvorc\",\n            \"userRating\": 8,\n            \"authorId\": 55784723,\n            \"createdAt\": \"2024-04-19T10:54:35.984Z\",\n            \"updatedAt\": \"2024-10-17T04:07:16.032Z\",\n            \"reviewDislikes\": 1,\n            \"reviewLikes\": 7\n        },\n        {\n            \"id\": 3305048,\n            \"movieId\": 394,\n            \"title\": \"Убери ствол, Уолтер.\",\n            \"type\": \"Позитивный\",\n            \"review\": \"Кучка лиц криминального характера запланировала налёт на ювелирку, но оказалось, что там была засада. Выжившие начинают искать крысу.\\r\\n\\r\\nСюжет рассказывается от лица нескольких персонажей. Смотреть на сложившийся бардак после неудачного ограбления весьма интересно именно благодаря тому, что персонажи получились шикарными. Да настолько шикарными, что всех мужчин мира можно классифицировать по схожести с персонажами 'Бешеных псов'. Мало того, что все выжившие после ограбления - харизматичные парни и интересные личности, так они ещё и реалистичные. Да, редко встретишь хотя бы в такой степени разумных мужчин в реальной жизни, но если найти их, то скорее всего они будут, как персонажи 'Бешеных псов', а не как эти ваши Тайлеры Дердены и Райаны Гослинги. \\r\\n\\r\\nЧем мне нравятся фильмы Тарантиныча, так это атмосферой. Шикарная музыка, красивые кадры, всё такое. К сожалению, 'Бешеные псы' по части красоты очень слабые, если сравнивать их с другими работами режиссёра. Снято всё ещё красиво, но кто-кто, а Квентин мог поработать и получше. Я не занижаю оценку за то, что фильм выглядит не идеально именно из-за этого сравнения, а потому, что он выглядит не идеально в принципе. Над постановкой кадра Тарантино в этом фильме очевидно работал меньше, цветовая гамма не особо привлекает. А вот что радует, так это забавные диалоги. Культовая сцена в кафе это подтверждает. А что не забавно, то получается весьма душевно. Мнение персонажей в диалогах на самые различные темы слушать также очень интересно. Радует и музыка, но она радует почти во всех фильмах Тарантино, и уникального комментария здесь я сказать уже не смогу, но она прям очень радует, но её могло быть и побольше.\\r\\n\\r\\nПомимо историй интересных персонажей, сюжет также может похвастаться интереснейшей концовкой, которая мне очень понравилась и даже удивила меня.\\r\\n\\r\\n8 из 10\",\n            \"date\": \"2023-10-04T23:16:46.000Z\",\n            \"author\": \"Radahn The Insane\",\n            \"userRating\": 157,\n            \"authorId\": 137324266,\n            \"createdAt\": \"2024-04-19T10:54:35.993Z\",\n            \"updatedAt\": \"2024-10-17T04:07:16.032Z\",\n            \"reviewDislikes\": 3,\n            \"reviewLikes\": 4\n        },\n        {\n            \"id\": 3286778,\n            \"movieId\": 394,\n            \"title\": \"Тарантино убедил меня пересмотреть взгляды на такой жанр кино\",\n            \"type\": \"Позитивный\",\n            \"review\": \"Я уважаю Квентина Тарантино, хоть и из его фильмов смотрел лишь дилогию 'Убить Билла'. Я уважаю его, как режиссера, как человека, потому что от части вижу в нём себя. Очень виню себя за то, что не был знаком с его творчеством. Тарантино является одним из тех людей, которыми я вдохновляюсь. Его история и достижения не то что вдохновляют, они мотивируют. От работника видеомагазина до одного из малого списка великих людей, которых можно назвать лицами голливуда не с оправданием, а с гордостью\\r\\n\\r\\nДолго откладывал, но всё же решился (для меня просмотр кино от части, как вызов потому что, к сожалению, я дитя поколения 2х - малое кол-во видео я смотрю не со скоростью '2х'. Мне так легче воспринимать информацию, в моём сознании такая прокрастинация не столь обидна, ведь ты умный - ты потратил на тупое видео не 20 минут, ты потратил на него 10 минут. И в такой среде выбор в основном падает на сериалы т. к. серии по 20-30 минут гораздо легче смотреть, чем полуторачасовое кино. И плевать, что скорее всего ты несколько вечеров подряд потратишь на один сезон, который специально растянут, нежели потратить половину этого вечера на один, грамотно написанный и снятый, фильм. Ты привык к такому, ты не можешь от этого уйти. Но. Я очень стараюсь изменить себя. Со стороны это так глупо и тупо звучит, но это и является глупостью, такое уж современное поколение людей ) лично ознакомится с легендой кинематографа. Решил начать с его первой признанной работы 'Бешеные псы'\\r\\n\\r\\nЕсли говорить кратко: мне очень понравился фильм. Да в паре моментов он душноват, но душноват для меня, для избалованной экшеном молодёжи, в остальном же эти моменты очень важны для фильма. В очередной раз убеждаюсь, что единственные достойные боевики создаёт Тарантино\\r\\n\\r\\nЕсли говорить более развёрнуто, то 'Убить Билла' дал мне второй шанс полюбить боевики. В детстве, как и, наверное, все дети я любил фильмы, наполненное экшенном, эффектами и прочей пылью. Чуть повзрослев, я понял, что это совсем не моё кино. Это конечно интересный аттракцион на один сеанс, но не более. Я никогда не назову 'Трансформеры' своей любимой серией фильмов, хотя с периодичностью в год или два я без зазрения совести пересматриваю первые три фильма. Квентин же смог убедить меня в том, что боевики не всегда работают по формуле 'экшн * тестерон * адреналин * машинки * бессмертие'. Он дал мне понять, что такой низкосортный жанр может обладать своими бриллиантами. Год назад я смотрел первую часть 'Убить Билла' и удивлялся, как изменилось моё мнение по поводу такого кино. Спустя почти год я смотрю 'Бешеные псы' и ощущаю ровно такое же чувство. Перестрелки, плохих парней и преступления можно было передать так!? Для моей скромной кинотеки это ещё один великий фильм.  Показать криминал не через кучи спецэффектов и перестрелок, а через персонажей, их чувства и переживания, это гениально. По крайней мере для моего маленького и не совсем умного мирка. Он даёт ощущение того, что всё это время ты мыслил не правильно - не бывает плохих жанров, есть плохие фильмы. В каком-то смысле эта картина напоминает мне 'Большой Куш' Гая Ричи. Я остался крайне доволен от просмотра этого фильма, конечно на пьедестал моих любимых фильмов он не попадёт, но надолго останется в моей памяти с такими классными эмоциями.\",\n            \"date\": \"2023-08-09T15:55:13.000Z\",\n            \"author\": \"Yonhyakuyon\",\n            \"userRating\": 1,\n            \"authorId\": 119932622,\n            \"createdAt\": \"2024-04-19T10:54:36.003Z\",\n            \"updatedAt\": \"2024-10-17T04:07:16.032Z\",\n            \"reviewDislikes\": 2,\n            \"reviewLikes\": 5\n        },\n        {\n            \"id\": 3207854,\n            \"movieId\": 394,\n            \"title\": \"\",\n            \"type\": \"Позитивный\",\n            \"review\": \"Сюжет\\r\\n\\r\\nШесть незнакомцев объединяются для совершения идеального ограбления. Но всё идет не по плану.\\r\\n\\r\\nОтзыв\\r\\n\\r\\nЧто можно вам рассказать про «Бешеных псов»? Культовая обожаемая классика, разошедшаяся на цитаты и запустившая моду на криминальные разговорные триллеры. Есть, конечно, и те, кто люто ненавидит фильм, например, за смакование насилия или вторичность (не секрет, что Квентин киноманьяк с фантастической шокирующей киноэрудицией и многие его фильмы, как монстры Франкенштейна, сотканы из идей и отсылок к куче других картин, так, в частности, сюжет «псов» позаимствован у гонконгского боевика «Город в огне»). Но равнодушных к фильму точно нет. Лично я считаю, что букв в алфавите всего 33, поэтому хочешь - не хочешь, а повторишься, так что нет ничего зазорного в отсылках, копированиях и референсах, если это всё не скатывается в банальный плагиат.\\r\\n\\r\\nТарантино, как ни относись к нему лично, это автор. Он берет серьезные и реальные темы, показывает много насилия и дрожащей камерой снимает реалистичные сцены. Но это не реализм. Действительно ли у таких матерых старожил, как мистер Блю, есть мнение о песне Мадонны? Выберет ли мистер Орандж, словив несколько маслин, особенно неподходящий момент, чтобы признаться во всем мистеру Уайту? Ответ, вероятно, «Нет». Фильм происходит в собственной выдуманной Тарантино вселенной. Позднее, с практикой, Квентин настолько прокачает свои скилы, что начнет фильмами переписывать историю человечества («Бесславные ублюдки», «Однажды... в Голливуде»), а пока он только разминается - дербанит поп-культуру на кусочки и кусочками этими затыкает паузы между стрельбой. Получается неподражаемо.\\r\\n\\r\\n8 из 10\",\n            \"date\": \"2022-12-18T08:31:37.000Z\",\n            \"author\": \"ar.menshenin\",\n            \"userRating\": 145,\n            \"authorId\": 60371488,\n            \"createdAt\": \"2024-04-19T10:54:36.014Z\",\n            \"updatedAt\": \"2024-10-17T04:07:16.032Z\",\n            \"reviewDislikes\": 3,\n            \"reviewLikes\": 5\n        },\n        {\n            \"id\": 3112983,\n            \"movieId\": 394,\n            \"title\": \"С чего всё началось\",\n            \"type\": \"Позитивный\",\n            \"review\": \"Бешеные псы является культовым фильмом, который обязателен для всех любителей гангстерских фильмов, да и просто кино. Его хвалят критики и зрители, на него делают отсылки, актеров сыгравших в картине вспоминают за их роль в этом фильме, в общем любят его, и я конечно тоже. \\r\\n\\r\\nВ первую очередь это фильм Тарантино, а значит будут яркие персонажи, диалоги ни о чем, но от которых сложно оторваться, и море крови. Всё это в фильме есть, и оформлено так, как подобает фильмам бывшего продавца видеокассет. \\r\\n\\r\\nНесмотря на свой дебют, Тарантино за счёт бессчётного количества просмотренных картин смог организовать целый фильм и грамотно внедрить свои идеи и задумки в него. Сюжет держит в напряжении даже несмотря на то, что нам не показывают ключевой момент-ограбление. Но за счёт оригинальной операторской работы, интересных диалогов, захватывающего сюжета и прекрасной игры актеров, фильм полностью захватывает тебя. А актеры проявили себя в этом фильме просто шикарно: Мадс Миккельсен, Харви Кейтель, Тим Рот, Стив Бушеми и т.д. Все актёры играют просто невероятно. А  за то, как тебе не по себе становиться от стонов боли мистера оранжевого, Тиму Роту стоит сказать отдельное спасибо.\\r\\n\\r\\nФильм не имеет какой-либо глубокой морали, кроме как то что убивать плохо. \\r\\n\\r\\nИ вообще, это фильм чертового Квентина Тарантино, и вопрос о просмотре этого фильма должен выпадать после упоминания имени режиссёра. Так что, приятного просмотра.\\r\\n\\r\\n'Stuck in the middle with you'\",\n            \"date\": \"2022-01-08T02:20:10.000Z\",\n            \"author\": \"Петр Маринов - 6347\",\n            \"userRating\": 7,\n            \"authorId\": 99781832,\n            \"createdAt\": \"2024-04-19T10:54:36.023Z\",\n            \"updatedAt\": \"2024-10-17T04:07:16.032Z\",\n            \"reviewDislikes\": 4,\n            \"reviewLikes\": 6\n        },\n        {\n            \"id\": 3063718,\n            \"movieId\": 394,\n            \"title\": \"Криминал не про мафию\",\n            \"type\": \"Позитивный\",\n            \"review\": \"Дебют культового режиссёра Квентина Тарантино получился таким, что другие режиссёры могут только позавидовать умению Квентина настолько мощно дать старт своей карьере. Фильм обрёл культовый статус только после того, как в Тарантино признали большого таланта после выхода 'Криминального чтива' и 'Убить Билла'.\\r\\n\\r\\nА ведь в сюжете этого фильма даже нечего пересказывать, этот фильм не то, чтобы наполнен событиями и каким-то действием, он смотрится совершенно легко и непринуждённо, при первом просмотре я сначала даже не поверил, что начальная сцена в кафе идёт аж больше десяти минут, это просто удивительное умение мастера снять фильм, в котором ничего не происходит на протяжении двух часов, и сделать его интересным, и в этом смысле это абсолютно уникальный фильм в карьере именитого режиссёра.\\r\\n\\r\\nА все потому, что наполнением фильма является не его закрученный сюжет, а именно сценарий. Фильм - яркий представитель приёма в кино, называющегося 'диалоговой перестрелкой', сюжет движется непрерывным диалогом как словесным, так и визуальным, как в сцене пытки полицейского Мистером Блондином. Этому фильму не нужны масштабные перестрелки и показ ограбления, кино концентрирует внимание совсем на другом. Не на перепалках бандитов и об их бандитских делах, а на персонажах и их взаимоотношениях. К каждому герою успеваешь проникнуться симпатией, даже при том, что зритель вообще ничего не знает о прошлом восьми ребят, а это и не нужно, Тарантино специально дал ребятам клички по цветам в своем фильме, так как хотел, чтобы герой раскрывался не путем рассказа его прошлого, а путем рассказа его настоящего. Прекрасный приём, отдающий дань героям классических вестернов, главные герои которых не имели ни имени, ни прошлого, ни даже будущего. Принимать предательство кого-либо из главных героев тяжко, поскольку уж слишком получились интересные и прописанные персонажи в этом фильме\\r\\n\\r\\nВиртуозная работа со сценарием и персонажами дала свои плоды, и с их помощью был создан абсолютно уникальный образчик в жанре криминальной драмы, который ставит во главе угла не мафиози и 'людей чести', а абсолютно обычных людей, оказавшихся в необычном и напряжённом положении. Минимум перестрелок и кровавых убийств, максимум драмы и нагнетания, завернутого в оболочку криминальной комедии, в которой привлекательные персонажи говорят забавные вещи, а так же одно из лучших предательств в истории кино, в котором традиционно предателем оказывается тот, от кого этого меньше всего ожидаешь. Уникальный зрительский опыт, испытывая который понимаешь, почему Тарантино считается лучшим режиссёром современности\\r\\n\\r\\n10 из 10\",\n            \"date\": \"2021-08-30T21:54:13Z\",\n            \"author\": \"juleswin\",\n            \"userRating\": 0,\n            \"authorId\": 22032925,\n            \"reviewLikes\": 10,\n            \"reviewDislikes\": 3,\n            \"createdAt\": \"2024-10-17T04:07:16.062Z\",\n            \"updatedAt\": \"2024-10-17T04:07:16.062Z\"\n        },\n        {\n            \"id\": 2987574,\n            \"movieId\": 394,\n            \"title\": \"Настоящий Тарантино\",\n            \"type\": \"Позитивный\",\n            \"review\": \"Сейчас о Квентине Тарантино знает каждый любитель хорошего кино, а ведь было время, когда он был совершенно неизвестным. Тарантино не имеет профессионального кинематографического образования, все свои знания он получил самостоятельно, когда работал в прокате и ходил в кино. Самый первый фильм Квентина, снятый в паре с Крейгом  Хэммоном, не смог сохраниться до наших дней и считается практически утерянным. И тут, наверное, любой режиссер-самоучка бы все это дело бросил, но только не Тарантино. Он взялся с двойными силами за работу и подарил нам свой первый шедевр – «Бешеных псов».\\r\\n\\r\\nЭто история про ограбление, которое совершает банда элегантно одетых джентльменов. Они продумали план и вроде бы он безупречен. Но что-то пошло не так и вот уже часть ребят подстрелена, друга отправилась в бега, и постепенно все действие сводится к одному пустынному складу, куда прибывают грабители…\\r\\n\\r\\nПонятно, что не имея за плечами большого опыта, Тарантино не мог рассчитывать на серьезное финансирование, и тем не менее с ним решил поработать Харви Кейтель, увидевший в парне потенциал. Кейтель, который ранее сотрудничал с Мартином Скорсезе, помог режиссеру собрать деньги на свой\\t фильм и во многом именно Харви стал той путеводной нитью, которая привела Тарантино в Голливуд.\\r\\n\\r\\nЕстественно, что запертый в четырех стенах склада сюжет был вызовом для режиссера, потому что он ограничен в возможностях рассказать крепкую и увлекательную историю, но Тарантино справился. Он насытил действие массой диалогов и полил все это литрами крови. Впоследствии эта методика станет фирменным стилем Тарантино, но конкретно в «Бешеных псах» она получилась наиболее сочной и лаконичной.\\r\\n\\r\\nПомимо Харви Кейтеля из актерского состава фильма я хочу выделить мистера Блондина, сыгранного Майклом Мэдсеном. Кстати, Мэдсен сильно сдружился с Тарантино на съемках «Бешеных псов» и впоследствии они неоднократно работали вместе.\\r\\n\\r\\nТакже неплохо проявил себя Тим Рот, тот самый портье из «Четырех комнат» Родригеса, Тарантино и компании. Наверное, именно Рот находился в поле зрения камеры больше всего и хотя ему было сложно играть свою роль, он стойко стерпел все неудобство и выдал мощную драматическую партию.\\r\\n\\r\\n«Бешеные псы» давно стали классикой крепкого гангстерского кино и подарили нам такого режиссера, как Квентин Тарантино. Если вы еще не видели этот фильм, значит пришло время. А если смотрели, то самое время еще раз глянуть.\\r\\n\\r\\n9 из 10\",\n            \"date\": \"2021-01-26T09:13:11Z\",\n            \"author\": \"dlya_dushi\",\n            \"userRating\": 0,\n            \"authorId\": 1011270,\n            \"reviewLikes\": 15,\n            \"reviewDislikes\": 3,\n            \"createdAt\": \"2024-10-17T04:07:16.062Z\",\n            \"updatedAt\": \"2024-10-17T04:07:16.062Z\"\n        },\n        {\n            \"id\": 2959233,\n            \"movieId\": 394,\n            \"title\": \"Первый фильм Тарантино\",\n            \"type\": \"Позитивный\",\n            \"review\": \"Считается, что это первый фильм Тарантино. Хотя, на самом деле, был ещё незаконченный «День рождения моего лучшего друга», но он не вышел в прокат. Тут, мне кажется, нужно проявить уважение к режиссёру — если фильм не закончен, значит лучше его не смотреть. А значит настоящий первенец Квентина — «Псы».\\r\\n\\r\\nКино сняли за миллион долларов и именно с этого фильма начался взлёт Тима Рота (на самом деле Тимоти Саймона Смита). Позже он сыграет ещё в нескольких фильмах Тарантино: «Криминальное чтиво» и «Омерзительная восьмёрка». Ну и в «Четырёх комнатах», конечно, — портье Тэд для многих — лучшая роль Тима Рота. Тарантино тут, кстати, снял последний эпизод.\\r\\n\\r\\n«Бешеные псы» обогатили культуру: диалог про чаевые, клички в виде цветов и задранный уровень жестокости — всё это прочно ассоциируется с фильмом.\\r\\n\\r\\nМногие до сих пор спорят, корректно ли переводить «Reservoir Dogs» как «Бешеные псы». Но ничего лучше до сих пор никто не придумал, а сам Тарантино толком не поясняет, что он хотел сказать названием. Да это и не важно — уже вышло так много фильмов, вдохновлённых «Псами», что убери его из истории — и всё развалится. Этим он и велик.\",\n            \"date\": \"2020-10-25T13:38:54Z\",\n            \"author\": \"Киноакула\",\n            \"userRating\": 0,\n            \"authorId\": 31787859,\n            \"reviewLikes\": 12,\n            \"reviewDislikes\": 3,\n            \"createdAt\": \"2024-10-17T04:07:16.062Z\",\n            \"updatedAt\": \"2024-10-17T04:07:16.062Z\"\n        },\n        {\n            \"id\": 2952008,\n            \"movieId\": 394,\n            \"title\": \"Вот где собака зарыта!\",\n            \"type\": \"Позитивный\",\n            \"review\": \"Мастер диалогов, любитель кровищи в своих картинах, искусный интриган в кино… Эти и другие эпитеты ещё только предстояло получить величайшему деятелю искусства <b>Квентину Тарантино</b>. И, видит Бог, он это заслужил. Прямо с первого своего фильма – речь именно о профессиональном дебюте в карьере – <b>«Бешеные псы»</b>.\\r\\n\\r\\nПервая сцена является как раз разговорной. В ней нас знакомят с персонажами и их характерами. А точнее – «оживляют», «одушевляют» героев. Присутствует и сам Тарантино в кадре. Обсудив смысл песни Мадонны, внимание джентльменов переключается на <i><b>Мистера Розового</b></i>. <b>Стив Бушеми</b> говорит нам с экрана о том, что всегда отказывается платить чаевые. И актёр даже признавался, что ему потом в реальной жизни было стыдно за эту реплику <i>(и даже не только это была одна реплика).</i> Потом он ещё появится, к слову, у Квентина в «Криминальном чтиве» в роли официанта…\\r\\n\\r\\nА потом заставка под потрясающий выход шестерых мужчин под прекрасную музыку… И вот уже события стремглав летят – <i><b>Мистер Оранжевый</b></i> ранен, а <i><b>Мистер Белый</b></i> везёт его на заброшенный склад... Ограбление ювелирки «У Карины» пошло как-то не так. Появляется Мистер Розовый. И с этого момента почти всё время склад станет для нас особым пристанищем. И в то же время, повествование станет как-то похожим на пьесу. Но это не минус, а даже плюс!.. \\r\\n\\r\\nЦели ясны и неясны одновременно: найти крысу, которая их сдала и что делать дальше. И пока, как уже сказал, склад становится для зрителя вполне уютным <i>(даром, что это здание бывшего морга),</i> во флэшбэках нам проясняют всю картину происшествия! Пазл собирается, всё становится на свои места. А шокирующая развязка просто потрясает воображение!..\\r\\n\\r\\nТак мир увидел нового на тот момент мастера. О, эти сцены, навек застолбившие нишу кинематографа, как танец <i><b>Мистера Блондина</b></i> перед пыткой полицейского, или та же «мексиканская разборка»… \\r\\n\\r\\nА что мы видим! Политическую повестку картина едва ли прошла бы. Женщина появляется лишь на короткое мгновение, темнокожий играет не основную роль, а гей ли Мистер Розовый, или Джо Кэбот так пошутил – не акцентируется. Ну и шикарно же!\\r\\n\\r\\nИ, может мне и показался сперва <i>(я просто лишь недавно познакомился с картиной)</i> этот фильм простоватым, но ведь как раз всё гениальное – просто!\\r\\n\\r\\n10 из 10\",\n            \"date\": \"2020-09-29T19:54:02Z\",\n            \"author\": \"Кот Баюн\",\n            \"userRating\": 0,\n            \"authorId\": 15256510,\n            \"reviewLikes\": 11,\n            \"reviewDislikes\": 2,\n            \"createdAt\": \"2024-10-17T04:07:16.062Z\",\n            \"updatedAt\": \"2024-10-17T04:07:16.062Z\"\n        },\n        {\n            \"id\": 2945416,\n            \"movieId\": 394,\n            \"title\": \"А вам, слабо признаться - хотя бы самому себе...?\",\n            \"type\": \"Негативный\",\n            \"review\": \"- Что фильм не понравился...? А вот мне нет, совсем не слабо! Итак, первая полноценная работа самого Квентина Тарантино!!! Я как и наверное многие другие киноманы часто пользуюсь топ рейтингом, чтобы вечерком посмотреть нечто интересное, дабы не потратить время впустую. Так вышло и в этот раз, о чем я сильно пожалел... Ожидая увидеть (исходя из названия и описания) - интересно закрученный сюжет, нехилую динамику развития и пр. - я увидел вместо этого использованную туалетную бумагу и услышал её шум при разрывании(прошу прощения)... Нет, я просто ничего не понимаю? Конечно... Фильм начинается с 'сортирных диалогов' и разговорах о больших членах и прочем в таком же духе, между главными героями - и это длится чуть ли не четверть фильма! В самом фильме слова 'член', 'трахнул', выражения типа ' Ты когда сидел в тюрьме - тебя там имели'(из диалога Эдди с блондином) и пр. любимые слова Тарантиновского лексикона, идут потоком весь фильм... Что ж, я понимаю режиссера - 'у кого что болит, тот про то и говорит' - в искусстве это не исключение... Именно эти озабоченные, набитые пошлятиной диалоги между героями станут позже визитной карточкой всего творчества Тарантино(видимо багаж из его прошлого)... Но ведь о вкусах не спорят? О, да, каждому свое...\\r\\n\\r\\n Ах да, сам сюжет... Он чем то похож на маршрут пьяного параноика смутно представляющего себе цель конечного пути... Если грубо сравнить данную работу с разведением костра, то получается следующее... У Тарантино в наличии был замечательный топливный материал - это блестящая подборка великолепных актеров! Можно было такое пламя зажечь! И вместо того, чтобы добавить масла режиссерского творчества, он просто залил это все мутной, грязной водой своей бездарности и начал розжиг... Все это шипело, трескалось, затухало не успев проявиться даже угольками и в конце много, много дыма, от которого начало невыносимо щипать глаза... Вот и весь фильм! Да, да, туго натянутый сюжет, неинтересный, и просто скучный... Мне могут возразить мол первый блин комом, молодость и пр. Нет друзья! Не соглашусь ни при каких! Разве мало в истории кино режиссеров, дебют которых производил настоящее 'золото' высшей пробы? Полно! \\r\\n\\r\\nДалее, игра самих актеров не спасает ситуацию ничуть... Они похожи на солдат героев, лишенных оружия своим глупым, бездарным полководцем, который не умеет воевать(читай -режиссером) и бросающих свой актерский гений в бой на захват высоты, но все атаки естественно безуспешны... У меня вообще сложилось впечатление - что если бы данным актерам предоставили возможность импровизировать, предварительно убрав режиссера, чтобы не мешал - получился бы точно шедевр!\\r\\n\\r\\nИтак, подведем итог... Если после 10-15 мин. просмотра вы начнете барабанить пальцами по сиденью или дивану, начнете зевать, ерзать, почесываться, тыкать телефон и все такое - не удивляйтесь, это верная защитная реакция вашего организма и к ней стоит прислушаться! Далее, просто включить другое хорошее кино и провести время с пользой, смыв со своего сознания предыдущую муть... И напоследок, если большинство считает, что навоз - это бриллиант, это не означает что так оно и есть на самом деле...\",\n            \"date\": \"2020-09-05T18:52:52Z\",\n            \"author\": \"krastonet - 7391\",\n            \"userRating\": 0,\n            \"authorId\": 34158580,\n            \"reviewLikes\": 24,\n            \"reviewDislikes\": 61,\n            \"createdAt\": \"2024-10-17T04:07:16.062Z\",\n            \"updatedAt\": \"2024-10-17T04:07:16.062Z\"\n        }\n    ],\n    \"total\": 217,\n    \"limit\": 10,\n    \"page\": 1,\n    \"pages\": 22\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Film Images",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "{{api_key}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.kinopoisk.dev/v1.4/image?movieId=394&type=cover",
+					"protocol": "https",
+					"host": [
+						"api",
+						"kinopoisk",
+						"dev"
+					],
+					"path": [
+						"v1.4",
+						"image"
+					],
+					"query": [
+						{
+							"key": "movieId",
+							"value": "394"
+						},
+						{
+							"key": "type",
+							"value": "cover"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Film Images",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-API-KEY",
+								"value": "{{api_key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.kinopoisk.dev/v1.4/image?movieId=394&type=cover",
+							"protocol": "https",
+							"host": [
+								"api",
+								"kinopoisk",
+								"dev"
+							],
+							"path": [
+								"v1.4",
+								"image"
+							],
+							"query": [
+								{
+									"key": "movieId",
+									"value": "394"
+								},
+								{
+									"key": "type",
+									"value": "cover"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.22.1"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 04 Dec 2024 05:32:53 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "content-security-policy",
+							"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+						},
+						{
+							"key": "cross-origin-opener-policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "cross-origin-resource-policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "origin-agent-cluster",
+							"value": "?1"
+						},
+						{
+							"key": "referrer-policy",
+							"value": "no-referrer"
+						},
+						{
+							"key": "strict-transport-security",
+							"value": "max-age=15552000; includeSubDomains"
+						},
+						{
+							"key": "x-content-type-options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-dns-prefetch-control",
+							"value": "off"
+						},
+						{
+							"key": "x-download-options",
+							"value": "noopen"
+						},
+						{
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "x-permitted-cross-domain-policies",
+							"value": "none"
+						},
+						{
+							"key": "x-xss-protection",
+							"value": "0"
+						},
+						{
+							"key": "access-control-allow-origin",
+							"value": "*"
+						},
+						{
+							"key": "x-ratelimit-limit",
+							"value": "5"
+						},
+						{
+							"key": "x-ratelimit-remaining",
+							"value": "4"
+						},
+						{
+							"key": "x-ratelimit-reset",
+							"value": "1"
+						},
+						{
+							"key": "vary",
+							"value": "accept-encoding"
+						},
+						{
+							"key": "content-encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"docs\": [\n        {\n            \"url\": \"https://image.openmoviedb.com/kinopoisk-images/1773646/ed4ac734-adf7-4ec8-a938-10ba9ea68865/orig\",\n            \"createdAt\": \"2022-09-24T01:36:35.259Z\",\n            \"height\": 500,\n            \"movieId\": 394,\n            \"previewUrl\": \"https://image.openmoviedb.com/kinopoisk-images/1773646/ed4ac734-adf7-4ec8-a938-10ba9ea68865/360\",\n            \"type\": \"cover\",\n            \"updatedAt\": \"2024-05-15T03:03:42.225Z\",\n            \"width\": 369,\n            \"id\": \"632e5f23aff710671ba9bcd2\"\n        },\n        {\n            \"url\": \"https://image.openmoviedb.com/kinopoisk-images/1629390/facae0ed-5055-4ba4-beb6-3922ff86035c/orig\",\n            \"createdAt\": \"2022-09-24T01:36:31.059Z\",\n            \"height\": 479,\n            \"movieId\": 394,\n            \"previewUrl\": \"https://image.openmoviedb.com/kinopoisk-images/1629390/facae0ed-5055-4ba4-beb6-3922ff86035c/360\",\n            \"type\": \"cover\",\n            \"updatedAt\": \"2024-05-15T03:03:42.183Z\",\n            \"width\": 350,\n            \"id\": \"632e5f1faff710671ba9b912\"\n        },\n        {\n            \"url\": \"https://image.openmoviedb.com/kinopoisk-images/1946459/0b3cbe4d-a2c4-40c7-add5-e6e699895d51/orig\",\n            \"createdAt\": \"2022-09-24T01:36:26.901Z\",\n            \"height\": 1102,\n            \"movieId\": 394,\n            \"previewUrl\": \"https://image.openmoviedb.com/kinopoisk-images/1946459/0b3cbe4d-a2c4-40c7-add5-e6e699895d51/360\",\n            \"type\": \"cover\",\n            \"updatedAt\": \"2024-05-15T03:03:42.105Z\",\n            \"width\": 758,\n            \"id\": \"632e5f1aaff710671ba9b56d\"\n        },\n        {\n            \"url\": \"https://image.openmoviedb.com/kinopoisk-images/1704946/10197e8a-f21d-4556-931a-82334fee855a/orig\",\n            \"createdAt\": \"2022-09-24T01:36:22.738Z\",\n            \"height\": 1102,\n            \"movieId\": 394,\n            \"previewUrl\": \"https://image.openmoviedb.com/kinopoisk-images/1704946/10197e8a-f21d-4556-931a-82334fee855a/360\",\n            \"type\": \"cover\",\n            \"updatedAt\": \"2024-05-15T03:03:42.075Z\",\n            \"width\": 758,\n            \"id\": \"632e5f16aff710671ba9b1bf\"\n        },\n        {\n            \"url\": \"https://image.openmoviedb.com/kinopoisk-images/1773646/43deb7e0-5551-4e6d-b280-bd18ffe429eb/orig\",\n            \"createdAt\": \"2022-09-24T01:36:18.697Z\",\n            \"height\": 1100,\n            \"movieId\": 394,\n            \"previewUrl\": \"https://image.openmoviedb.com/kinopoisk-images/1773646/43deb7e0-5551-4e6d-b280-bd18ffe429eb/360\",\n            \"type\": \"cover\",\n            \"updatedAt\": \"2024-05-15T03:03:42.045Z\",\n            \"width\": 760,\n            \"id\": \"632e5f12aff710671ba9ade0\"\n        },\n        {\n            \"url\": \"https://image.openmoviedb.com/kinopoisk-images/1946459/f75f915f-faae-4570-be0b-f2f89b1a36f9/orig\",\n            \"createdAt\": \"2022-09-24T01:36:14.734Z\",\n            \"height\": 1500,\n            \"movieId\": 394,\n            \"previewUrl\": \"https://image.openmoviedb.com/kinopoisk-images/1946459/f75f915f-faae-4570-be0b-f2f89b1a36f9/360\",\n            \"type\": \"cover\",\n            \"updatedAt\": \"2024-05-15T03:03:42.016Z\",\n            \"width\": 1176,\n            \"id\": \"632e5f0eaff710671ba9aa4d\"\n        },\n        {\n            \"url\": \"https://image.openmoviedb.com/kinopoisk-images/1900788/b808615b-016f-4844-976b-7478e1211387/orig\",\n            \"createdAt\": \"2022-09-24T01:36:10.808Z\",\n            \"height\": 827,\n            \"movieId\": 394,\n            \"previewUrl\": \"https://image.openmoviedb.com/kinopoisk-images/1900788/b808615b-016f-4844-976b-7478e1211387/360\",\n            \"type\": \"cover\",\n            \"updatedAt\": \"2024-05-15T03:03:41.980Z\",\n            \"width\": 516,\n            \"id\": \"632e5f0aaff710671ba9a6d9\"\n        },\n        {\n            \"url\": \"https://image.openmoviedb.com/kinopoisk-images/1946459/b1add366-9e49-4ad8-905a-46ca23da8adc/orig\",\n            \"createdAt\": \"2022-09-24T01:36:06.883Z\",\n            \"height\": 1500,\n            \"movieId\": 394,\n            \"previewUrl\": \"https://image.openmoviedb.com/kinopoisk-images/1946459/b1add366-9e49-4ad8-905a-46ca23da8adc/360\",\n            \"type\": \"cover\",\n            \"updatedAt\": \"2024-05-15T03:03:41.939Z\",\n            \"width\": 1000,\n            \"id\": \"632e5f06aff710671ba9a374\"\n        }\n    ],\n    \"total\": 8,\n    \"limit\": 10,\n    \"page\": 1,\n    \"pages\": 1\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "api_key",
+			"value": "set",
+			"type": "default"
+		}
+	]
+}
