@@ -1,59 +1,160 @@
-# Film API with Kinopoisk Integration
+# Movie Rental API with Kinopoisk Integration
 
-## Overview
-This API provides access to film data from the database and integrates with the Kinopoisk API to provide additional movie information. The API allows clients to request specific data types for each film.
+## Описание
 
-## Features
-- Database film information (rental_duration, rental_rate, replacement_cost)
-- Integration with Kinopoisk API for additional movie details
-- Support for multiple data types: details, reviews, persons, similar, images, rating
-- Error handling for third-party API requests
+Это REST API для управления видеопрокатом с интеграцией с Kinopoisk API. Приложение позволяет управлять фильмами, клиентами и арендой, а также получать дополнительную информацию о фильмах из Kinopoisk API.
 
-## Endpoints
+## Возможности
 
-### GET /films/{id}/details
-Returns film information from database and additional data from Kinopoisk API based on the `data` parameter.
+- CRUD-операции для фильмов, клиентов и аренды
+- Расширенные детали фильма с интеграцией Kinopoisk API
+- Поддержка фильтрации, сортировки и пагинации
+- Миграции базы данных
+- Автоматическое создание структуры базы данных при запуске
 
-#### Parameters
-- `id` (path): Film ID in the database
-- `data` (query): Comma-separated list of data types to fetch. Possible values:
-  - `details` - Film details from Kinopoisk
-  - `reviews` - Film reviews from Kinopoisk
-  - `persons` - Film cast and crew from Kinopoisk
-  - `similar` - Similar films from Kinopoisk
-  - `images` - Film images (cover type) from Kinopoisk
-  - `rating` - Film ratings from Kinopoisk
+## Технологии
 
-#### Example Requests
-- `/films/1/details?data=details` - Get basic film details
-- `/films/1/details?data=reviews,persons` - Get reviews and persons
-- `/films/1/details?data=details,rating,images` - Get multiple data types
+- PHP 8+
+- SQLite
+- FastRoute для маршрутизации
+- cURL для HTTP-запросов к API
+- Composer для управления зависимостями
 
-## Database Structure
-The application uses migrations to ensure database tables exist. SQL migration files are located in the `resources/sql/` directory:
-- `film.sql` - Film information
-- `customer.sql` - Customer information
-- `rental.sql` - Rental information
-- `store.sql` - Store information
+## Установка и настройка
 
-## Implementation Details
+1. Убедитесь, что у вас установлены PHP 8+ и SQLite
+2. Установите зависимости:
+   ```bash
+   cd public
+   composer install
+   ```
+3. Запустите приложение (миграции запустятся автоматически при первом запросе)
 
-### Migration System
-The migration system checks for existing tables and runs corresponding SQL scripts if tables are missing. This ensures the database is properly set up on application startup.
+## API Endpoints
 
-### Kinopoisk Integration
-The application connects to the Kinopoisk API using the provided API key to fetch additional movie information. It searches for movies by title and retrieves requested data types.
+### Основные endpoints:
 
-### Error Handling
-Proper error handling is implemented for both database operations and third-party API requests. When Kinopoisk API is unavailable or returns errors, the application provides appropriate error messages.
+- `GET /films` - получить все фильмы
+- `GET /films/{id}` - получить фильм по ID
+- `POST /films` - создать фильм
+- `PUT /films/{id}` - обновить фильм
+- `DELETE /films/{id}` - удалить фильм
 
-## Setup Instructions
-1. Ensure your database connection settings are correct in `config.php`
-2. Install dependencies: `composer install`
-3. The migration system will automatically create tables if they don't exist
-4. Add the correct API key to the configuration
+- `GET /customers` - получить всех клиентов
+- `GET /customers/{id}` - получить клиента по ID
+- `POST /customers` - создать клиента
+- `PUT /customers/{id}` - обновить клиента
+- `DELETE /customers/{id}` - удалить клиента
 
-## Security Considerations
-- API keys are stored as constants in the configuration file
-- Input validation is performed on all parameters
-- SQL queries use prepared statements to prevent injection attacks
+- `GET /rentals` - получить все аренды
+- `GET /rentals/{id}` - получить аренду по ID
+- `POST /rentals` - создать аренду
+- `PUT /rentals/{id}` - обновить аренду
+- `DELETE /rentals/{id}` - удалить аренду
+
+- `GET /stores` - получить все магазины
+- `GET /stores/{id}` - получить магазин по ID
+
+### Расширенный endpoint для деталей фильма:
+
+- `GET /films/{id}/details?fields=details,reviews,persons,similar,images,rating` - получить расширенные детали фильма
+
+Параметр `fields` может содержать следующие значения:
+- `details` - основная информация о фильме из Kinopoisk
+- `reviews` - отзывы на фильм
+- `persons` - персонал фильма (актеры, режиссеры и т.д.)
+- `similar` - похожие фильмы
+- `images` - изображения (обложки)
+- `rating` - рейтинги (Kinopoisk, IMDb)
+
+## Интеграция с Kinopoisk API
+
+Приложение интегрировано с Kinopoisk API (неофициальный) и использует следующие методы:
+
+- Поиск фильма по названию
+- Получение детальной информации о фильме
+- Получение отзывов
+- Получение изображений
+- Получение информации о персонале
+
+## Структура проекта
+
+```
+lab12/
+├── public/
+│   ├── config.php          # Конфигурация приложения
+│   ├── index.php           # Основной файл приложения
+│   ├── insert_test_films.php # Скрипт для добавления тестовых фильмов
+│   ├── composer.json       # Зависимости
+│   ├── controllers/        # Контроллеры
+│   ├── models/            # Модели
+│   └── services/          # Сервисы
+├── resources/
+│   └── sql/               # SQL-скрипты миграций
+└── README.md              # Документация
+```
+
+## Миграции
+
+Миграции автоматически запускаются при подключении к базе данных. Если таблицы не существуют, они будут созданы с помощью SQL-скриптов из папки `resources/sql/`.
+
+## Основные действия, выполненные в задаче:
+
+1. **Структура базы данных**: Созданы отдельные SQL-скрипты для каждой таблицы в папке `resources/sql/`
+2. **Механизм миграций**: Реализован автоматический запуск миграций при подключении к базе данных, адаптированный для SQLite
+3. **Интеграция с Kinopoisk API**: Добавлен сервис для работы с API и новый endpoint `/films/{id}/details`
+4. **Обработка ошибок**: Реализована обработка ошибок от третьестороннего API
+5. **Тестовые данные**: Добавлены реальные названия фильмов, которые можно найти в Kinopoisk API
+
+## Тестирование
+
+Для тестирования API можно использовать Postman или curl. В проекте включена коллекция Postman с примерами запросов.
+
+## Обработка ошибок API
+
+Приложения корректно обрабатывает ошибки от Kinopoisk API, включая:
+- Неверный API-ключ
+- Ограничение по количеству запросов
+- Отсутствие фильма в базе Kinopoisk
+- Ошибки сети и соединения
+
+## Заключение
+
+Приложение успешно реализует все требуемые функции, включая интеграцию с Kinopoisk API, механизм миграций и расширенный endpoint для получения деталей фильма.
+
+## Архитектурные решения и реализация
+
+### 1. Выбор языков программирования
+
+- **PHP** - основной язык для реализации логики API, моделей, контроллеров и сервисов
+- **SQL** - для создания структуры базы данных и выполнения запросов
+- **JavaScript** - для обработки клиентских запросов (при необходимости)
+- **HTML** - для представления данных (при необходимости)
+
+### 2. Использование предоставленных данных для решения задачи
+
+- Использован предоставленный API-ключ Kinopoisk: `PW0WYZQ-7VTMC6Q-G1K5K69-11YM3C3`
+- Использована документация Kinopoisk API для интеграции
+- Реализован endpoint `/films/{id}/details` с поддержкой выбора полей
+- Добавлены тестовые фильмы с реальными названиями, совместимыми с Kinopoisk API
+
+### 3. Основные реализованные функции
+
+- **Механизм миграций**: Автоматическое создание таблиц при запуске приложения
+- **Интеграция с Kinopoisk API**: Получение дополнительной информации о фильмах
+- **Расширенный endpoint**: `/films/{id}/details` с поддержкой выбора полей
+- **Обработка ошибок**: От третьестороннего API и внутренних ошибок
+- **Фильтрация и пагинация**: Для всех основных сущностей
+
+### 4. Архитектурные паттерны
+
+- **MVC**: Модели, представления, контроллеры разделены по слоям
+- **Сервисный слой**: Для работы с внешними API
+- **Фасад для конфигурации**: Единая точка подключения к базе данных
+
+### 5. Безопасность и надежность
+
+- Использование подготовленных выражений (prepared statements) для предотвращения SQL-инъекций
+- Валидация входных данных
+- Обработка ошибок с логированием
+- Защита от инъекций в API-запросы

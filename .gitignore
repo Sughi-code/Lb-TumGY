@@ -1,17 +1,26 @@
 ```
+# Compiled and build artifacts
+*.pyc
+__pycache__/
+*.o
+*.obj
+dist/
+build/
+target/
+
 # Dependencies
-vendor/
+node_modules/
+venv/
+.venv/
+.env
+.env.local
+*.env.*
 
 # Logs and temp files
 *.log
 *.tmp
 
-# Environment
-.env
-.env.local
-*.env.*
-
-# Editor/IDE
+# Editors
 .vscode/
 .idea/
 *.swp
@@ -21,46 +30,30 @@ vendor/
 .DS_Store
 Thumbs.db
 
-# Coverage
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Coverage reports
 coverage/
 htmlcov/
 .coverage
 
-# Build artifacts
-dist/
-build/
-target/
-*.exe
-*.dll
-*.so
-*.a
-*.obj
-*.out
+# Python specific
 *.pyc
 __pycache__/
-*.class
+*.pyo
+*.pyd
+.Python
+*.so
 
-# Compressed files
-*.zip
-*.gz
-*.tar
-*.tgz
-*.bz2
-*.xz
-*.7z
-*.rar
-*.zst
-*.lz4
-*.lzh
-*.cab
-*.arj
-*.rpm
-*.deb
-*.Z
-*.lz
-*.lzo
-*.tar.gz
-*.tar.bz2
-*.tar.xz
-*.tar.zst
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Backup files
+*~
+*.bak
+*.swp
 ```
