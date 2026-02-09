@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="img/fav/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="img/fav/favicon-16x16.png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <title>Публикации в категории - personal</title>
+    <title>Публикации в категории - {{ category }}</title>
   </head>
   <body>	   
     <header>
@@ -41,7 +41,28 @@
     </header>
     <main>
       <div class="container py-5">
-        <h1>Публикации в категории - personal</h1>   
+        <h1>Публикации в категории - {{ category }}</h1>
+        {% for post in posts %}
+        <hr>
+        <article>
+          <ul>
+            <li>
+              Место: {{ post.location }}              
+            </li>
+            <li>
+              Дата: {{ post.date }}
+            </li>
+            <li>
+              Категория: <a href="{% url 'blog:category_posts' post.category %}">{{ post.category }}</a>
+            </li>
+          </ul>          
+          <!-- Первые 10 слов -->
+          <p>
+            {{ post.text|truncatewords:10 }}
+          </p>
+          <a href="{% url 'blog:post_detail' post.id %}">Читать полный текст</a>
+        </article>
+        {% endfor %}
       </div>
     </main>
     <footer class="border-top text-center py-3">
