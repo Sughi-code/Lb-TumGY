@@ -1,22 +1,22 @@
-/* RSVP.6lab — рендер каталога и сквозная нумерация книг */
+/* Great books — catalogue rendering with running book numbers (No. 1 … No. N) */
 (function () {
   'use strict';
 
-  var DATA = window.RSVP_BOOKS;
+  var DATA = window.GREAT_BOOKS;
   if (!DATA || !DATA.length) return;
 
-  /* URL-friendly slug для страницы книги: author-title */
+  /* URL-friendly slug for the book page: author-title */
   function slugify(s) {
     return s.toLowerCase()
       .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')           // ударения/диакритика латиницы
-      .replace(/[^a-z0-9\s-]/g, '')              // только a-z0-9 (безопасно для URL)
+      .replace(/[\u0300-\u036f]/g, '')           // diacritics of the Latin script
+      .replace(/[^a-z0-9\s-]/g, '')              // only a-z0-9 (URL-safe)
       .trim()
       .replace(/\s+/g, '-')
       .replace(/-+/g, '-');
   }
 
-  /* Экранирование текста перед вставкой в HTML (защита от XSS) */
+  /* Escape text before inserting into HTML (XSS protection) */
   function esc(s) {
     return String(s)
       .replace(/&/g, '&amp;')
@@ -26,22 +26,21 @@
   }
 
   var catalog = document.getElementById('catalog');
-  var num = 0;                 // сквозной номер книги в общем списке
+  var num = 0;                 // running number of the book in the general list
   var html = '';
 
   DATA.forEach(function (group) {
     html += '<article class="era" id="' + esc(group.slugEra) + '">';
     html += '<h2 class="era-title">' + esc(group.era) + '</h2>';
-    html += '<p class="era-sub">' + esc(group.en) + '</p>';
     html += '<ol class="book-list" start="' + (num + 1) + '">';
     group.books.forEach(function (b) {
       num += 1;
       var author = esc(b[0]);
       var title = esc(b[1]);
-      var href = '/books/' + slugify(b[0]) + '-' + slugify(b[1]) + '.html';
+      var href = 'books/' + slugify(b[0]) + '-' + slugify(b[1]) + '.html';
       html += '<li class="book-item">';
-      html += '<a class="book-link" href="' + href + '" title="Страница книги: ' + title + ' — ' + author + '">';
-      html += '<span class="book-num" aria-label="Номер в общем списке: ' + num + '">№&nbsp;' + num + '</span>';
+      html += '<a class="book-link" href="' + href + '" title="Book page: ' + title + ' — ' + author + '">';
+      html += '<span class="book-num" aria-label="Number in the general list: ' + num + '">№&nbsp;' + num + '</span>';
       html += '<span class="book-author">' + author + '</span>';
       html += '<span class="book-title">' + title + '</span>';
       html += '</a>';
@@ -52,34 +51,10 @@
 
   catalog.innerHTML = html;
 
-  /* Сводка в hero: общее число книг считается динамически */
+  /* Hero summary: the total number of books is computed from the data, never hardcoded */
   var note = document.getElementById('totalNote');
   if (note) {
-    note.textContent = 'Всего в каноне: ' + num + ' книг · ' + DATA.length + ' эпох';
+    note.textContent = 'In the canon: ' + num + ' books · ' + DATA.length + ' eras';
     note.hidden = false;
-  }
-
-  /* Живой фильтр каталога по строке поиска в header (без внешних библиотек) */
-  var searchInput = document.querySelector('.search input[type=search]');
-  if (searchInput) {
-    searchInput.addEventListener('input', function () {
-      var q = searchInput.value.trim().toLowerCase();
-      var items = catalog.querySelectorAll('.book-item');
-      var shown = 0;
-      for (var i = 0; i < items.length; i++) {
-        var match = !q || items[i].textContent.toLowerCase().indexOf(q) !== -1;
-        items[i].hidden = !match;
-        if (match) shown++;
-      }
-      var eras = catalog.querySelectorAll('.era');
-      for (var j = 0; j < eras.length; j++) {
-        eras[j].hidden = q && eras[j].querySelectorAll('.book-item:not([hidden])').length === 0;
-      }
-      var hint = document.getElementById('searchHint');
-      if (hint) {
-        hint.textContent = q ? 'Найдено книг: ' + shown : '';
-        hint.hidden = !q;
-      }
-    });
   }
 })();

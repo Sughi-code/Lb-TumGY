@@ -1,96 +1,91 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RSVP.6lab — Great Books: интерактивный каталог канона западного образования</title>
-<meta name="description" content="RSVP.6lab — Great Books: интерактивный каталог и база знаний 120 великих книг от Гомера до Ханны Арендт со сквозной нумерацией и ссылками на страницы книг.">
-<meta name="keywords" content="RSVP.6lab, Great Books, великие книги, классическое образование, канон, античная литература, философия, путеводитель по книгам">
+<title>Great Books: An Interactive Guide to the Western Canon from Homer Onward</title>
+<meta name="description" content="Explore 120 great books of the Western canon in one numbered catalogue, from Homer to Hannah Arendt; every entry links to its own dedicated book page.">
+<meta name="keywords" content="great books, western canon, classic literature, philosophy, antiquity, enlightenment, reading list, shared reading">
 <meta name="robots" content="index, follow">
-<meta name="author" content="RSVP.6lab">
+<meta name="author" content="Great books">
 <link rel="canonical" href="https://rsvp.6lab.ru/">
-<!-- Yandex.Metrika counter: вставьте код верификации Яндекс Вебмастера перед </head> -->
-<!-- <meta name="yandex-verification" content="ВАШ_КОД_ВЕБИФИКАЦИИ"> -->
+<link rel="sitemap" type="application/xml" href="sitemap.xml">
+<!-- Yandex Webmaster: paste the verification code before </head> -->
+<!-- <meta name="yandex-verification" content="YOUR_VERIFICATION_CODE"> -->
 
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="RSVP.6lab">
-<meta property="og:title" content="RSVP.6lab — Great Books">
-<meta property="og:description" content="Интерактивный каталог и база знаний 120 великих книг западного канона: от Гомера до Ханны Арендт.">
+<meta property="og:site_name" content="Great books">
+<meta property="og:title" content="Great Books — An Interactive Guide to the Western Canon">
+<meta property="og:description" content="A deep catalogue and knowledge base of 120 great books: from Homer to Hannah Arendt, numbered across the whole canon.">
 <meta property="og:url" content="https://rsvp.6lab.ru/">
 <meta property="og:image" content="https://rsvp.6lab.ru/img/og-cover.svg">
-<meta property="og:locale" content="ru_RU">
+<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#1E1F22">
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="img/favicon-180.png">
 
-<!-- Критические инлайновые стили: мгновенный рендер без блокировки -->
+<!-- Critical inline styles: instant render, no blocking -->
 <style>
 body{margin:0;background:#1E1F22;color:#F2F3F5;font-family:Inter,Roboto,"Segoe UI",system-ui,-apple-system,Arial,sans-serif}
 header,main,footer{max-width:980px;margin:0 auto;padding:0 16px}
 .skip{position:absolute;left:-9999px}
 </style>
 
-<!-- Неиспользуемые стили грузятся асинхронно (без блокировки рендера) -->
-<link rel="preload" href="css/style.css?v=2" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="css/style.css?v=2"></noscript>
+<!-- Unused CSS loaded asynchronously (non-blocking) -->
+<link rel="preload" href="css/style.css?v=3" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="css/style.css?v=3"></noscript>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","name":"RSVP.6lab — Great Books","url":"https://rsvp.6lab.ru/","description":"Интерактивный путеводитель, каталог и база знаний великих книг классического западного образования."}
+{"@context":"https://schema.org","@type":"WebSite","name":"Great books","url":"https://rsvp.6lab.ru/","description":"An interactive guide, catalogue and knowledge base of the great books that form the core of a classical Western education."}
 </script>
 </head>
 <body>
-<a class="skip" href="#catalog">Перейти к каталогу</a>
+<a class="skip" href="#catalog">Skip to the catalogue</a>
 
 <header class="site-header">
   <div class="header-inner">
     <div class="brand">
       <span class="logo" aria-hidden="true">📖</span>
-      <span class="brand-name">RSVP.6lab<span class="brand-sep">/</span><b>Great books</b></span>
+      <span class="brand-name"><b>Great books</b></span>
     </div>
-    <!-- Header-счётчик: номер каждой книги в общем списке считается здесь -->
-    <nav class="top-nav" aria-label="Основная навигация">
-      <a href="#catalog" class="active">Каталог</a>
-      <a href="#antiquity">Античность</a>
-      <a href="#middle-ages">Средневековье</a>
-      <a href="#enlightenment">Просвещение</a>
-      <a href="#nineteenth-century">XIX век</a>
-      <a href="#twentieth-century">XX век</a>
+    <!-- Header navigation: every book keeps its number in the general list below -->
+    <nav class="top-nav" aria-label="Main navigation">
+      <a href="#catalog" class="active">Catalogue</a>
+      <a href="#antiquity">Antiquity</a>
+      <a href="#middle-ages">Middle Ages</a>
+      <a href="#enlightenment">Enlightenment</a>
+      <a href="#nineteenth-century">19th Century</a>
+      <a href="#twentieth-century">20th Century</a>
     </nav>
-    <form class="search" role="search" action="#catalog" method="get">
-      <label class="visually-hidden" for="q">Поиск по каталогу</label>
-      <input id="q" name="q" type="search" inputmode="search" autocomplete="off" placeholder="Search all books...">
-      <span id="searchHint" class="visually-hidden" role="status" aria-live="polite"></span>
-    </form>
   </div>
 </header>
 
 <main>
   <section class="hero">
-    <h1>Великие книги: интерактивный путеводитель по канону западного образования</h1>
-    <p class="lead">Глубокий каталог, база знаний и платформа совместного чтения <em>Great Books</em>, составляющих основу классического высшего образования на Западе. Каждая позиция пронумерована в общем списке и ведёт на отдельную страницу книги.</p>
+    <h1>Great Books: an interactive guide to the Western canon</h1>
+    <p class="lead">A deep catalogue, knowledge base and shared-reading platform for the <em>Great Books</em> that form the core of a classical Western education. Every entry carries its number in the general list and links to its own book page.</p>
     <p class="counter-note" id="totalNote" hidden></p>
-    <p class="cta-row"><a class="btn-cta" href="#antiquity">Начать чтение с №&nbsp;1 — Гомер, «Илиада» <span aria-hidden="true">→</span></a></p>
   </section>
 
-  <section id="catalog" class="catalog" aria-label="Каталог великих книг">
-    <!-- Разделы эпох генерируются из единого файла данных books.js -->
+  <section id="catalog" class="catalog" aria-label="Catalogue of great books">
+    <!-- Era sections are generated from the single data file books.js -->
   </section>
 
   <section class="about">
-    <h2>Как устроен каталог</h2>
-    <p>Книги сгруппированы по пяти историческим эпохам. Сквозная нумерация (№&nbsp;1&nbsp;…&nbsp;№&nbsp;120) отражает место произведения в общем каноне. Одна строка — одна книга; каждая ссылка ведёт на будущую страницу книги с описанием, планами чтения и материалами для совместного обсуждения — часть «Великого диалога» (The Great Conversation) между авторами разных эпох.</p>
+    <h2>How the catalogue is organized</h2>
+    <p>The books are grouped into five historical eras. The running numbering (No.&nbsp;1&nbsp;…&nbsp;No.&nbsp;120) reflects each work's place in the overall canon. One line per book; every link leads to a dedicated page with a description, reading plans and materials for shared discussion — part of the Great Conversation between authors of different ages.</p>
   </section>
 </main>
 
 <footer class="site-footer">
-  <p>© RSVP.6lab / Great books · Интерактивный путеводитель по канону классического образования</p>
-  <p><a href="/">Главная</a> · <a href="/404.html">Пример 404</a></p>
+  <p>© Great books · An interactive guide to the canon of classical liberal education</p>
+  <p><a href="./">Home</a> · <a href="404.html">404 example</a></p>
 </footer>
 
-<!-- Деградация без JS: статичный HTML-каркас заполняется скриптом -->
-<script src="books.js?v=2" defer></script>
-<script src="js/app.js?v=2" defer></script>
+<!-- Without JS: the static HTML shell stays empty; the script fills it -->
+<script src="books.js?v=3" defer></script>
+<script src="js/app.js?v=3" defer></script>
 </body>
 </html>
