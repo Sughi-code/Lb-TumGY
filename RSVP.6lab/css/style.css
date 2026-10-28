@@ -85,3 +85,7 @@ a{color:var(--accent)}
   .book-link{gap:8px;padding:8px 4px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ---------- copy protection shield (paired with js/shield.js) ---------- */
+body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+input,textarea,select,[contenteditable="true"]{-webkit-user-select:text;user-select:text}

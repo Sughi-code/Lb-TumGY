@@ -28,14 +28,19 @@
 
 <!-- Critical inline styles: instant render, no blocking -->
 <style>
-body{margin:0;background:#1E1F22;color:#F2F3F5;font-family:Inter,Roboto,"Segoe UI",system-ui,-apple-system,Arial,sans-serif}
+body{margin:0;background:#1E1F22;color:#F2F3F5;font-family:Inter,Roboto,"Segoe UI",system-ui,-apple-system,Arial,sans-serif;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 header,main,footer{max-width:980px;margin:0 auto;padding:0 16px}
 .skip{position:absolute;left:-9999px}
+input,textarea,select,[contenteditable="true"]{-webkit-user-select:text;user-select:text}
 </style>
 
 <!-- Unused CSS loaded asynchronously (non-blocking) -->
-<link rel="preload" href="css/style.css?v=5" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="css/style.css?v=5"></noscript>
+<script>/* copy protection: inline seed, full logic in shield.js */
+(function(){document.addEventListener('copy',function(e){e.preventDefault();},true);
+document.addEventListener('cut',function(e){e.preventDefault();},true);
+document.addEventListener('contextmenu',function(e){e.preventDefault();},true);})();</script>
+<link rel="preload" href="css/style.css?v=6" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="css/style.css?v=6"></noscript>
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"Great books","url":"https://rsvp.6lab.ru/","description":"An interactive guide, catalogue and knowledge base of the great books that form the core of a classical Western education."}
@@ -85,7 +90,8 @@ header,main,footer{max-width:980px;margin:0 auto;padding:0 16px}
 </footer>
 
 <!-- Without JS: the static HTML shell stays empty; the script fills it -->
-<script src="books.js?v=5" defer></script>
-<script src="js/app.js?v=5" defer></script>
+<script src="books.js?v=6" defer></script>
+<script src="js/app.js?v=6" defer></script>
+<script src="js/shield.js?v=6" defer></script>
 </body>
 </html>

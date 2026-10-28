@@ -95,11 +95,16 @@ TPL = '''<!DOCTYPE html>
 <meta name="theme-color" content="#1E1F22">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <style>
-body{{margin:0;background:#1E1F22;color:#F2F3F5;font-family:Inter,Roboto,"Segoe UI",system-ui,-apple-system,Arial,sans-serif}}
+body{{margin:0;background:#1E1F22;color:#F2F3F5;font-family:Inter,Roboto,"Segoe UI",system-ui,-apple-system,Arial,sans-serif;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}}
 header,main,footer{{max-width:980px;margin:0 auto;padding:0 16px}}
+input,textarea,select,[contenteditable="true"]{{-webkit-user-select:text;user-select:text}}
 </style>
-<link rel="preload" href="../css/style.css?v=5" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="../css/style.css?v=5"></noscript>
+<script>/* copy protection: inline seed, full logic in shield.js */
+(function(){{document.addEventListener('copy',function(e){{e.preventDefault();}},true);
+document.addEventListener('cut',function(e){{e.preventDefault();}},true);
+document.addEventListener('contextmenu',function(e){{e.preventDefault();}},true);}})();</script>
+<link rel="preload" href="../css/style.css?v=6" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="../css/style.css?v=6"></noscript>
 <script type="application/ld+json">
 {ld_json}
 </script>
@@ -143,6 +148,7 @@ header,main,footer{{max-width:980px;margin:0 auto;padding:0 16px}}
   <p>© Great books · An interactive guide to the canon of classical liberal education</p>
   <p><a href="../">Back to the full catalogue</a></p>
 </footer>
+<script src="../js/shield.js?v=6" defer></script>
 </body>
 </html>
 '''
