@@ -36,6 +36,15 @@ def slugify(s: str) -> str:
 def esc(s: str) -> str:
     return html.escape(s, quote=True)
 
+# --- short display titles -----------------------------------------------------
+# Long parenthetical clarifications are dropped so that consecutive book titles
+# (prev/next pager links and H1) fit on a single line. The full title is kept
+# in the SEO <title>, meta description and JSON-LD.
+PAREN_RE = re.compile(r'\s*\((?:[^()]*)\)\s*$')
+
+def short_title(title: str) -> str:
+    return PAREN_RE.sub('', title).strip()
+
 # --- parse the annotations file ----------------------------------------------
 doc = open(DOC, encoding='utf-8').read()
 entries = {}   # num -> (annotation, context)
@@ -89,8 +98,8 @@ TPL = '''<!DOCTYPE html>
 body{{margin:0;background:#1E1F22;color:#F2F3F5;font-family:Inter,Roboto,"Segoe UI",system-ui,-apple-system,Arial,sans-serif}}
 header,main,footer{{max-width:980px;margin:0 auto;padding:0 16px}}
 </style>
-<link rel="preload" href="../css/style.css?v=4" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="../css/style.css?v=4"></noscript>
+<link rel="preload" href="../css/style.css?v=5" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="../css/style.css?v=5"></noscript>
 <script type="application/ld+json">
 {ld_json}
 </script>
@@ -146,7 +155,10 @@ os.makedirs(OUT, exist_ok=True)
 made = 0
 for i, (num, era_full, era_slug, author, title, desc, fname) in enumerate(flat):
     _, _, annotation, context = entries[num]
-    h1 = f'{author} — {title}'
+    # H1 uses the shortened display title so it always fits on one line
+    st = short_title(title)
+    h1 = f'{author} — {st}'
+    # SEO tags keep the full canonical title (truncated safely by length rules)
     title_tag = f'{author}: {title} | Great Books №{num}'[:78]
     desc_meta = f'{author}, {title}. {annotation}'
     if len(desc_meta) > 158:
@@ -154,10 +166,10 @@ for i, (num, era_full, era_slug, author, title, desc, fname) in enumerate(flat):
     prev_l = next_l = ''
     if i > 0:
         p = flat[i-1]
-        prev_l = f'<a class="btn-home" href="{p[6]}">← №{p[0]} {esc(p[3])}, “{esc(p[4])}”</a>'
+        prev_l = f'<a class="btn-home" href="{p[6]}" title="№{p[0]} {esc(p[3])}, “{esc(p[4])}”">← №{p[0]} {esc(p[3])}, “{esc(short_title(p[4]))}”</a>'
     if i < TOTAL - 1:
         nx = flat[i+1]
-        next_l = f'<a class="btn-home" href="{nx[6]}">№{nx[0]} {esc(nx[3])}, “{esc(nx[4])}” →</a>'
+        next_l = f'<a class="btn-home" href="{nx[6]}" title="№{nx[0]} {esc(nx[3])}, “{esc(nx[4])}”">№{nx[0]} {esc(nx[3])}, “{esc(short_title(nx[4]))}” →</a>'
     ld = json.dumps({
         "@context": "https://schema.org", "@type": "Book",
         "name": title, "author": {"@type": "Person", "name": author},
