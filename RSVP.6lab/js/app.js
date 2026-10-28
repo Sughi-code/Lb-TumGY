@@ -58,4 +58,28 @@
     note.textContent = 'Всего в каноне: ' + num + ' книг · ' + DATA.length + ' эпох';
     note.hidden = false;
   }
+
+  /* Живой фильтр каталога по строке поиска в header (без внешних библиотек) */
+  var searchInput = document.querySelector('.search input[type=search]');
+  if (searchInput) {
+    searchInput.addEventListener('input', function () {
+      var q = searchInput.value.trim().toLowerCase();
+      var items = catalog.querySelectorAll('.book-item');
+      var shown = 0;
+      for (var i = 0; i < items.length; i++) {
+        var match = !q || items[i].textContent.toLowerCase().indexOf(q) !== -1;
+        items[i].hidden = !match;
+        if (match) shown++;
+      }
+      var eras = catalog.querySelectorAll('.era');
+      for (var j = 0; j < eras.length; j++) {
+        eras[j].hidden = q && eras[j].querySelectorAll('.book-item:not([hidden])').length === 0;
+      }
+      var hint = document.getElementById('searchHint');
+      if (hint) {
+        hint.textContent = q ? 'Найдено книг: ' + shown : '';
+        hint.hidden = !q;
+      }
+    });
+  }
 })();

@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Great Books: путеводитель по канону классического образования | RSVP.6lab</title>
-<meta name="description" content="Интерактивный путеводитель и каталог Great Books: 120 книг античности, Средневековья, Просвещения, XIX и XX веков со ссылками на страницы книг.">
-<meta name="keywords" content="Great Books, великие книги, классическое образование, канон, античная литература, философия, путеводитель по книгам">
+<title>RSVP.6lab — Great Books: интерактивный каталог канона западного образования</title>
+<meta name="description" content="RSVP.6lab — Great Books: интерактивный каталог и база знаний 120 великих книг от Гомера до Ханны Арендт со сквозной нумерацией и ссылками на страницы книг.">
+<meta name="keywords" content="RSVP.6lab, Great Books, великие книги, классическое образование, канон, античная литература, философия, путеводитель по книгам">
 <meta name="robots" content="index, follow">
 <meta name="author" content="RSVP.6lab">
 <link rel="canonical" href="https://rsvp.6lab.ru/">
@@ -14,27 +14,27 @@
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="RSVP.6lab">
-<meta property="og:title" content="Great Books: интерактивный путеводитель по классическому канону">
-<meta property="og:description" content="Глубокий каталог и база знаний 120 книг западного канона: от Гомера до Ханны Арендт.">
+<meta property="og:title" content="RSVP.6lab — Great Books">
+<meta property="og:description" content="Интерактивный каталог и база знаний 120 великих книг западного канона: от Гомера до Ханны Арендт.">
 <meta property="og:url" content="https://rsvp.6lab.ru/">
 <meta property="og:image" content="https://rsvp.6lab.ru/img/og-cover.svg">
 <meta property="og:locale" content="ru_RU">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#f6f2ea">
+<meta name="theme-color" content="#1E1F22">
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="img/favicon-180.png">
 
 <!-- Критические инлайновые стили: мгновенный рендер без блокировки -->
 <style>
-body{margin:0;background:#f6f2ea;color:#231f1a;font-family:Georgia,"Times New Roman",serif}
+body{margin:0;background:#1E1F22;color:#F2F3F5;font-family:Inter,Roboto,"Segoe UI",system-ui,-apple-system,Arial,sans-serif}
 header,main,footer{max-width:980px;margin:0 auto;padding:0 16px}
 .skip{position:absolute;left:-9999px}
 </style>
 
 <!-- Неиспользуемые стили грузятся асинхронно (без блокировки рендера) -->
-<link rel="preload" href="css/style.css?v=1" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="css/style.css?v=1"></noscript>
+<link rel="preload" href="css/style.css?v=2" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="css/style.css?v=2"></noscript>
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"RSVP.6lab — Great Books","url":"https://rsvp.6lab.ru/","description":"Интерактивный путеводитель, каталог и база знаний великих книг классического западного образования."}
@@ -44,19 +44,26 @@ header,main,footer{max-width:980px;margin:0 auto;padding:0 16px}
 <a class="skip" href="#catalog">Перейти к каталогу</a>
 
 <header class="site-header">
-  <div class="brand">
-    <span class="logo" aria-hidden="true">📖</span>
-    <span class="brand-name">RSVP.<b>6lab</b></span>
+  <div class="header-inner">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">📖</span>
+      <span class="brand-name">RSVP.6lab<span class="brand-sep">/</span><b>Great books</b></span>
+    </div>
+    <!-- Header-счётчик: номер каждой книги в общем списке считается здесь -->
+    <nav class="top-nav" aria-label="Основная навигация">
+      <a href="#catalog" class="active">Каталог</a>
+      <a href="#antiquity">Античность</a>
+      <a href="#middle-ages">Средневековье</a>
+      <a href="#enlightenment">Просвещение</a>
+      <a href="#nineteenth-century">XIX век</a>
+      <a href="#twentieth-century">XX век</a>
+    </nav>
+    <form class="search" role="search" action="#catalog" method="get">
+      <label class="visually-hidden" for="q">Поиск по каталогу</label>
+      <input id="q" name="q" type="search" inputmode="search" autocomplete="off" placeholder="Search all books...">
+      <span id="searchHint" class="visually-hidden" role="status" aria-live="polite"></span>
+    </form>
   </div>
-  <!-- Header-счётчик: номер каждой книги в общем списке считается здесь -->
-  <nav class="top-nav" aria-label="Основная навигация">
-    <a href="#catalog" class="active">Каталог</a>
-    <a href="#antiquity">Античность</a>
-    <a href="#middle-ages">Средневековье</a>
-    <a href="#enlightenment">Просвещение</a>
-    <a href="#nineteenth-century">XIX век</a>
-    <a href="#twentieth-century">XX век</a>
-  </nav>
 </header>
 
 <main>
@@ -64,6 +71,7 @@ header,main,footer{max-width:980px;margin:0 auto;padding:0 16px}
     <h1>Великие книги: интерактивный путеводитель по канону западного образования</h1>
     <p class="lead">Глубокий каталог, база знаний и платформа совместного чтения <em>Great Books</em>, составляющих основу классического высшего образования на Западе. Каждая позиция пронумерована в общем списке и ведёт на отдельную страницу книги.</p>
     <p class="counter-note" id="totalNote" hidden></p>
+    <p class="cta-row"><a class="btn-cta" href="#antiquity">Начать чтение с №&nbsp;1 — Гомер, «Илиада» <span aria-hidden="true">→</span></a></p>
   </section>
 
   <section id="catalog" class="catalog" aria-label="Каталог великих книг">
@@ -72,17 +80,17 @@ header,main,footer{max-width:980px;margin:0 auto;padding:0 16px}
 
   <section class="about">
     <h2>Как устроен каталог</h2>
-    <p>Книги сгруппированы по пяти историческим эпохам. Сквозная нумерация (№&nbsp;1&nbsp;…&nbsp;№&nbsp;120) отражает место произведения в общем каноне. Ссылки ведут на будущие страницы книг с описанием, планами чтения и материалами для совместного обсуждения.</p>
+    <p>Книги сгруппированы по пяти историческим эпохам. Сквозная нумерация (№&nbsp;1&nbsp;…&nbsp;№&nbsp;120) отражает место произведения в общем каноне. Одна строка — одна книга; каждая ссылка ведёт на будущую страницу книги с описанием, планами чтения и материалами для совместного обсуждения — часть «Великого диалога» (The Great Conversation) между авторами разных эпох.</p>
   </section>
 </main>
 
 <footer class="site-footer">
-  <p>© RSVP.6lab · Интерактивный путеводитель по Great Books</p>
+  <p>© RSVP.6lab / Great books · Интерактивный путеводитель по канону классического образования</p>
   <p><a href="/">Главная</a> · <a href="/404.html">Пример 404</a></p>
 </footer>
 
 <!-- Деградация без JS: статичный HTML-каркас заполняется скриптом -->
-<script src="books.js?v=1" defer></script>
-<script src="js/app.js?v=1" defer></script>
+<script src="books.js?v=2" defer></script>
+<script src="js/app.js?v=2" defer></script>
 </body>
 </html>
