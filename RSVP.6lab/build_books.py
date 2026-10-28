@@ -1,31 +1,34 @@
 #!/usr/bin/env python3
-"""Great books — static generator.
-Reads the canonical data from books.js and writes one page per book into ./books/.
+"""Great books — static generator v2.
+
+Reads canonical data from books.js and annotations (Annotation + Historical context)
+from great_books_120_english.md, then writes one page per book into ./books/.
+
+Header/breadcrumbs on book pages show beginner-friendly topics only:
+Catalogue, Antiquity, Middle Ages, Enlightenment, 19th Century, 20th Century.
+The era name is NOT shown next to the book title.
+
 Run:  python3 build_books.py
 """
-import re, html, os, sys
+import re, html, os, sys, json, unicodedata
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(ROOT, 'books.js')
+DOC = os.path.join(ROOT, 'great_books_120_english.md')
 OUT = os.path.join(ROOT, 'books')
 
-# --- parse books.js (window.GREAT_BOOKS = [ ... ];) -------------------------
+# --- parse books.js ----------------------------------------------------------
 js = open(SRC, encoding='utf-8').read()
 m = re.search(r'window\.GREAT_BOOKS\s*=\s*(\[.*?\n\]);', js, re.S)
 if not m:
     sys.exit('books.js: window.GREAT_BOOKS array not found')
 arr = m.group(1)
-
-# Convert the JS object literal into JSON: quote bare keys era:/slugEra:/books:
 j = arr.replace('era:', '"era":').replace('slugEra:', '"slugEra":').replace('books:', '"books":')
-j = re.sub(r'\},\s*{', '},{', j)
-import json
 data = json.loads(j)
 
 def slugify(s: str) -> str:
     s = s.lower()
-    s = ''.join(c for c in __import__('unicodedata').normalize('NFD', s)
-                if not ('\u0300' <= c <= '\u036f'))
+    s = ''.join(c for c in unicodedata.normalize('NFD', s) if not ('\u0300' <= c <= '\u036f'))
     s = re.sub(r"[^a-z0-9\s-]", '', s).strip()
     s = re.sub(r'\s+', '-', s)
     return re.sub('-+', '-', s)
@@ -33,20 +36,43 @@ def slugify(s: str) -> str:
 def esc(s: str) -> str:
     return html.escape(s, quote=True)
 
-SITE = 'https://rsvp.6lab.ru'
+# --- short display titles -----------------------------------------------------
+# Long parenthetical clarifications are dropped so that consecutive book titles
+# (prev/next pager links and H1) fit on a single line. The full title is kept
+# in the SEO <title>, meta description and JSON-LD.
+PAREN_RE = re.compile(r'\s*\((?:[^()]*)\)\s*$')
 
-# --- flatten with running numbers -------------------------------------------
-flat = []          # (num, era_title, era_slug, author, title, desc, href)
+def short_title(title: str) -> str:
+    return PAREN_RE.sub('', title).strip()
+
+# --- parse the annotations file ----------------------------------------------
+doc = open(DOC, encoding='utf-8').read()
+entries = {}   # num -> (annotation, context)
+pat = re.compile(
+    r'^## №(\d+)\.\s*(.+?)\s*—\s*(.+?)\s*$\n'
+    r'\*\*Annotation:\*\*\s*(.+?)$\n'
+    r'\*\*Historical context:\*\*\s*(.+?)$',
+    re.M)
+for mm in pat.finditer(doc):
+    n, author, title, ann, ctx = int(mm.group(1)), mm.group(2), mm.group(3), mm.group(4).strip(), mm.group(5).strip()
+    entries[n] = (author, title, ann, ctx)
+
+# --- flatten with running numbers --------------------------------------------
+flat = []
 n = 0
+missing = []
 for g in data:
-    era = re.sub(r'^\S+\s*', '', g['era'])   # strip leading emoji for meta text
     for b in g['books']:
         n += 1
         fname = f"{slugify(b[0])}-{slugify(b[1])}.html"
-        flat.append((n, g['era'], era, g['slugEra'], b[0], b[1], b[2], fname))
-
+        if n not in entries:
+            missing.append(n)
+        flat.append((n, g['era'], g['slugEra'], b[0], b[1], b[2], fname))
 TOTAL = n
-os.makedirs(OUT, exist_ok=True)
+if missing:
+    sys.exit(f'Missing annotation entries for numbers: {missing}')
+
+SITE = 'https://rsvp.6lab.ru'
 
 TPL = '''<!DOCTYPE html>
 <html lang="en">
@@ -69,11 +95,16 @@ TPL = '''<!DOCTYPE html>
 <meta name="theme-color" content="#1E1F22">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <style>
-body{{margin:0;background:#1E1F22;color:#F2F3F5;font-family:Inter,Roboto,"Segoe UI",system-ui,-apple-system,Arial,sans-serif}}
+body{{margin:0;background:#1E1F22;color:#F2F3F5;font-family:Inter,Roboto,"Segoe UI",system-ui,-apple-system,Arial,sans-serif;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}}
 header,main,footer{{max-width:980px;margin:0 auto;padding:0 16px}}
+input,textarea,select,[contenteditable="true"]{{-webkit-user-select:text;user-select:text}}
 </style>
-<link rel="preload" href="../css/style.css?v=3" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="../css/style.css?v=3"></noscript>
+<script>/* copy protection: inline seed, full logic in shield.js */
+(function(){{document.addEventListener('copy',function(e){{e.preventDefault();}},true);
+document.addEventListener('cut',function(e){{e.preventDefault();}},true);
+document.addEventListener('contextmenu',function(e){{e.preventDefault();}},true);}})();</script>
+<link rel="preload" href="../css/style.css?v=6" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="../css/style.css?v=6"></noscript>
 <script type="application/ld+json">
 {ld_json}
 </script>
@@ -86,20 +117,28 @@ header,main,footer{{max-width:980px;margin:0 auto;padding:0 16px}}
       <span class="brand-name"><b>Great books</b></span>
     </div>
     <nav class="top-nav" aria-label="Main navigation">
-      <a href="../#catalog">Catalogue</a>
-      <a href="../#{era_slug}">{era_short}</a>
+      <a href="../">Catalogue</a>
+      <a href="../#antiquity">Antiquity</a>
+      <a href="../#middle-ages">Middle Ages</a>
+      <a href="../#enlightenment">Enlightenment</a>
+      <a href="../#nineteenth-century">19th Century</a>
+      <a href="../#twentieth-century">20th Century</a>
     </nav>
   </div>
 </header>
 
 <main>
   <article class="book-page">
-    <p class="crumbs"><a href="../">Home</a> · <a href="../#catalog">Catalogue</a> · <a href="../#{era_slug}">{era_short}</a></p>
+    <p class="crumbs"><a href="../">Home</a> · <a href="../">Catalogue</a> · <a href="../#{era_slug}">{era_short}</a></p>
     <h1>{h1}</h1>
     <p class="counter-note">№&nbsp;{num} in the general list of {total} great books</p>
     <section class="about">
-      <h2>About this book</h2>
-      <p>{desc}</p>
+      <h2>Annotation</h2>
+      <p>{annotation}</p>
+    </section>
+    <section class="about">
+      <h2>Historical Context</h2>
+      <p>{context}</p>
     </section>
     <p class="pager">{prev}{next}</p>
   </article>
@@ -109,6 +148,7 @@ header,main,footer{{max-width:980px;margin:0 auto;padding:0 16px}}
   <p>© Great books · An interactive guide to the canon of classical liberal education</p>
   <p><a href="../">Back to the full catalogue</a></p>
 </footer>
+<script src="../js/shield.js?v=6" defer></script>
 </body>
 </html>
 '''
@@ -117,35 +157,39 @@ ERA_SHORT = {'antiquity': 'Antiquity', 'middle-ages': 'Middle Ages',
              'enlightenment': 'Enlightenment', 'nineteenth-century': '19th Century',
              'twentieth-century': '20th Century'}
 
+os.makedirs(OUT, exist_ok=True)
 made = 0
-for i, (num, era_full, era, era_slug, author, title, desc, fname) in enumerate(flat):
-    h1 = f'{author} — {title}'
+for i, (num, era_full, era_slug, author, title, desc, fname) in enumerate(flat):
+    _, _, annotation, context = entries[num]
+    # H1 uses the shortened display title so it always fits on one line
+    st = short_title(title)
+    h1 = f'{author} — {st}'
+    # SEO tags keep the full canonical title (truncated safely by length rules)
     title_tag = f'{author}: {title} | Great Books №{num}'[:78]
-    desc_meta = f'{author}, {title}. {desc}'
+    desc_meta = f'{author}, {title}. {annotation}'
     if len(desc_meta) > 158:
-        cut = desc_meta[:156].rsplit(' ', 1)[0]
-        desc_meta = cut + '…'
-    desc_meta = esc(desc_meta)
+        desc_meta = desc_meta[:156].rsplit(' ', 1)[0] + '…'
     prev_l = next_l = ''
     if i > 0:
         p = flat[i-1]
-        prev_l = f'<a class="btn-home" href="{p[7]}">← №{p[0]} {esc(p[4])}, “{esc(p[5])}”</a>'
+        prev_l = f'<a class="btn-home" href="{p[6]}" title="№{p[0]} {esc(p[3])}, “{esc(p[4])}”">← №{p[0]} {esc(p[3])}, “{esc(short_title(p[4]))}”</a>'
     if i < TOTAL - 1:
         nx = flat[i+1]
-        next_l = f'<a class="btn-home" href="{nx[7]}">№{nx[0]} {esc(nx[4])}, “{esc(nx[5])}” →</a>'
+        next_l = f'<a class="btn-home" href="{nx[6]}" title="№{nx[0]} {esc(nx[3])}, “{esc(nx[4])}”">№{nx[0]} {esc(nx[3])}, “{esc(short_title(nx[4]))}” →</a>'
     ld = json.dumps({
         "@context": "https://schema.org", "@type": "Book",
         "name": title, "author": {"@type": "Person", "name": author},
         "url": f"{SITE}/books/{fname}",
-        "description": html.unescape(desc_meta),
+        "description": annotation,
         "isPartOf": {"@type": "ItemList", "numberOfItems": TOTAL, "name": "Great books canon"},
         "position": num
     }, ensure_ascii=False)
     out = TPL.format(
-        title_tag=esc(title_tag), desc_meta=desc_meta, site=SITE, fname=fname,
+        title_tag=esc(title_tag), desc_meta=esc(desc_meta), site=SITE, fname=fname,
         og_title=esc(f'{author}: {title}'), ld_json=ld,
-        era_slug=era_slug, era_short=esc(ERA_SHORT.get(era_slug, era)),
-        h1=esc(h1), num=num, total=TOTAL, desc=esc(desc),
+        era_slug=era_slug, era_short=esc(ERA_SHORT.get(era_slug, era_slug)),
+        h1=esc(h1), num=num, total=TOTAL,
+        annotation=esc(annotation), context=esc(context),
         prev=prev_l, next=next_l)
     open(os.path.join(OUT, fname), 'w', encoding='utf-8').write(out)
     made += 1
