@@ -12,10 +12,14 @@ must never appear as a site title anywhere in the UI or metadata).
   `[author, title, english description]`.
 - `js/app.js` — renders the catalogue from `books.js`, computes numbering dynamically,
   builds relative links `books/<author>-<title>.html`.
-- `build_books.py` — static generator: writes one page per book into `books/`
-  (description taken from `books.js`, i.e. from the *great_books_120_english* source file).
+- `great_books_120_english.md` — the annotation source for every book:
+  **Annotation** + **Historical context**, one entry per canon number №1–№120.
+- `build_books.py` — static generator: merges `books.js` with
+  `great_books_120_english.md` and writes one page per book into `books/`.
 - `books/*.html` — 120 generated book pages (title, meta description, canonical, OG,
-  JSON-LD `Book` schema, breadcrumb, prev/next pager, era navigation).
+  JSON-LD `Book` schema, Annotation + Historical Context sections, prev/next pager).
+  Header/breadcrumbs show beginner topics only: Catalogue · Antiquity · Middle Ages ·
+  Enlightenment · 19th Century · 20th Century; long era labels are not shown to users.
 - `css/style.css` — Dark Mode Flat Design tokens; critical CSS is inlined in each HTML.
 - `404.html`, `favicon.svg`, `img/og-cover.svg` — error page and vector assets.
 
@@ -33,7 +37,8 @@ All user-facing text, metadata and code comments are in English.
 ```bash
 python3 build_books.py     # rewrites all 120 files in books/
 ```
-Edit descriptions in `books.js` (third element of each array), then re-run the script.
+Edit annotations in `great_books_120_english.md` (Annotation / Historical context per №),
+edit catalogue data in `books.js`, then re-run the script.
 
 ## SEO / metadata
 - `<title>` kept within 70–80 characters; `<meta description>` within 150–160 characters.
