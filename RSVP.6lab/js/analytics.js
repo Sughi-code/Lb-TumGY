@@ -1,18 +1,18 @@
-/* Great books — п. 10 (счётчики Google Analytics 4 и Яндекс Метрика с закрепленными
- * формами на главной) + п. 11 (строка активности пользователей в реальном времени).
- * Работает на статическом хостинге: если задан LIVE_ENDPOINT (свой серверный счётчик),
- * данные берутся оттуда; иначе — локальная оценка по этой вкладке. */
+/* Great books — req. 10 (Google Analytics 4 & Yandex Metrika counters with their
+ * forms pinned on the home page) + req. 11 (live line showing user activity on the
+ * server). Works on static hosting: if LIVE_ENDPOINT (your own server counter) is
+ * set, data comes from there; otherwise a local estimate for this tab is used. */
 (function () {
   'use strict';
 
-  var LS_GA = 'gb_ga4_id';        // ключ хранения Measurement ID (GA4)
-  var LS_YM = 'gb_ym_id';         // ключ хранения номера счётчика Метрики
-  var LS_SEEN = 'gb_seen_days';   // массив посещённых дат (для «Всего»)
-  var TICK_MS = 20000;            // период обновления строки активности
-  var STALE_MS = 90000;           // сессия считается «живой», если обновлялась < 90 с
-  /* Опциональный REST-эндпоинт собственного серверного счётчика, например
-     https://rsvp.6lab.ru/api/visitors , возвращающий {"now":N,"today":N,"total":N}.
-     Оставьте '' для автономного режима без бэкенда. */
+  var LS_GA = 'gb_ga4_id';        // storage key for the GA4 Measurement ID
+  var LS_YM = 'gb_ym_id';         // storage key for the Metrika counter ID
+  var LS_SEEN = 'gb_seen_days';   // array of visited days (for "Total")
+  var TICK_MS = 20000;            // activity line refresh period
+  var STALE_MS = 90000;           // a session counts as "live" if refreshed < 90 s ago
+  /* Optional REST endpoint of your own server-side counter, e.g.
+     https://rsvp.6lab.ru/api/visitors , returning {"now":N,"today":N,"total":N}.
+     Leave it empty for standalone mode without a backend. */
   var LIVE_ENDPOINT = '';
 
   function $(id) { return document.getElementById(id); }
@@ -22,11 +22,11 @@
     return d.getFullYear() + '-' + (m < 10 ? '0' + m : m) + '-' + (dd < 10 ? '0' + dd : dd);
   }
 
-  /* ---------- localStorage: тихо деградируем в приватном режиме ---------- */
+  /* ---------- localStorage: degrade quietly in private mode ---------- */
   function lsGet(k) { try { return window.localStorage.getItem(k); } catch (e) { return null; } }
   function lsSet(k, v) { try { window.localStorage.setItem(k, String(v)); } catch (e) {} }
 
-  /* =================== П. 10: ПОДКЛЮЧЕНИЕ СЧЁТЧИКОВ =================== */
+  /* ============ REQ. 10: CONNECTING THE COUNTERS ==================== */
   var gaOn = false, ymOn = false;
 
   function loadGtag(id) {
@@ -60,10 +60,10 @@
     document.body.appendChild(n);
   }
 
-  /* =================== П. 11: СТРОКА АКТИВНОСТИ =================== */
+  /* =============== REQ. 11: LIVE ACTIVITY LINE ====================== */
   function hbName() { return 'gbhb_' + dayKey(new Date()); }
 
-  /* одна вкладка = один идентификатор сессии (sessionStorage устойчив к перезагрузкам) */
+  /* one tab = one session id (sessionStorage survives reloads) */
   function tabId() {
     var k = 'gb_tab_id', v = null;
     try {
@@ -147,7 +147,7 @@
     } catch (e) { render(local); }
   }
 
-  /* =================== ГЛАВНАЯ: ФОРМЫ СЧЁТЧИКОВ =================== */
+  /* =================== HOME PAGE: COUNTER FORMS ===================== */
   function setStatus(id, text) {
     var el = $(id);
     if (el) el.textContent = text;
@@ -155,14 +155,14 @@
 
   function bindForm(inputId, btnId, statusId, validate, enable, onLabel) {
     var input = $(inputId), btn = $(btnId);
-    if (!input || !btn) return;                       // формы есть только на главной
+    if (!input || !btn) return;                       // the forms exist only on the home page
     var key = input.dataset.lskey || '';
     var saved = lsGet(key);
     if (saved) { input.value = saved; enable(saved); setStatus(statusId, onLabel + ': ' + saved); }
 
     function apply() {
       var v = (input.value || '').trim();
-      if (!validate(v)) { setStatus(statusId, 'Неверный формат — проверьте identifier.'); return; }
+      if (!validate(v)) { setStatus(statusId, 'Invalid format — check the identifier.'); return; }
       lsSet(key, v);
       enable(v);
       setStatus(statusId, onLabel + ': ' + v);
@@ -180,14 +180,14 @@
 
     bindForm('ga4Id', 'ga4Apply', 'ga4Status',
       function (v) { return /^G-[A-Z0-9]{6,12}$/.test(v); },
-      loadGtag, 'Google Analytics подключён');
+      loadGtag, 'Google Analytics enabled');
 
     bindForm('ymId', 'ymApply', 'ymStatus',
       function (v) { return /^\d{4,12}$/.test(v); },
-      loadMetrika, 'Яндекс Метрика подключена');
+      loadMetrika, 'Yandex Metrika enabled');
   }
 
-  /* =================== СТАРТ =================== */
+  /* ========================= START ================================= */
   function start() {
     initForms();
     if ($('liveCounter')) {
