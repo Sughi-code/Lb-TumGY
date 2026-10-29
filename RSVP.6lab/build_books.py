@@ -74,23 +74,30 @@ if missing:
 
 SITE = 'https://rsvp.6lab.ru'
 
+# Русские подписи для SEO-тегов и перелинковки (контент книг остаётся англ. первоисточником)
+SEO_SITE_SUFFIX = ' | Книжный клуб Великих Книг'
+SEC_ANN = 'Аннотация'
+SEC_CTX = 'Исторический контекст'
+
 TPL = '''<!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title_tag}</title>
 <meta name="description" content="{desc_meta}">
+<meta name="keywords" content="великие книги, книжный клуб онлайн, западный канон, классическое образование, список книг сент джонс, университетская программа, трекер чтения, классическая литература, история философии, интеллектуальный клуб">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Great books">
 <link rel="canonical" href="{site}/books/{fname}">
+<link rel="sitemap" type="application/xml" href="{site}/sitemap.xml">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Great books">
 <meta property="og:title" content="{og_title}">
 <meta property="og:description" content="{desc_meta}">
 <meta property="og:url" content="{site}/books/{fname}">
 <meta property="og:image" content="{site}/img/og-cover.svg">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="ru_RU">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#1E1F22">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
@@ -110,34 +117,37 @@ document.addEventListener('contextmenu',function(e){{e.preventDefault();}},true)
 </script>
 </head>
 <body>
+<!-- ===== Единая шапка сайта (полностью идентична шапке главной страницы index.html;
+       ссылка "Каталог" ведёт на главную — навигация и состав одинаковы) ===== -->
 <header class="site-header">
   <div class="header-inner">
     <div class="brand">
       <span class="logo" aria-hidden="true">📖</span>
       <span class="brand-name"><b>Great books</b></span>
     </div>
-    <nav class="top-nav" aria-label="Main navigation">
-      <a href="../">Catalogue</a>
-      <a href="../#antiquity">Antiquity</a>
-      <a href="../#middle-ages">Middle Ages</a>
-      <a href="../#enlightenment">Enlightenment</a>
-      <a href="../#nineteenth-century">19th Century</a>
-      <a href="../#twentieth-century">20th Century</a>
+    <!-- Header navigation: every book keeps its number in the general list below -->
+    <nav class="top-nav" aria-label="Основная навигация">
+      <a href="../">Каталог</a>
+      <a href="../#antiquity">Античность</a>
+      <a href="../#middle-ages">Средние века</a>
+      <a href="../#enlightenment">Эпоха Просвещения</a>
+      <a href="../#nineteenth-century">XIX век</a>
+      <a href="../#twentieth-century">XX век</a>
     </nav>
   </div>
 </header>
+<!-- ===== /Единая шапка сайта ===== -->
 
 <main>
   <article class="book-page">
-    <p class="crumbs"><a href="../">Home</a> · <a href="../">Catalogue</a> · <a href="../#{era_slug}">{era_short}</a></p>
     <h1>{h1}</h1>
-    <p class="counter-note">№&nbsp;{num} in the general list of {total} great books</p>
+    <p class="counter-note">№&nbsp;{num} в общем списке {total} великих книг</p>
     <section class="about">
-      <h2>Annotation</h2>
+      <h2>{sec_ann}</h2>
       <p>{annotation}</p>
     </section>
     <section class="about">
-      <h2>Historical Context</h2>
+      <h2>{sec_ctx}</h2>
       <p>{context}</p>
     </section>
     <p class="pager">{prev}{next}</p>
@@ -145,17 +155,17 @@ document.addEventListener('contextmenu',function(e){{e.preventDefault();}},true)
 </main>
 
 <footer class="site-footer">
-  <p>© Great books · An interactive guide to the canon of classical liberal education</p>
-  <p><a href="../">Back to the full catalogue</a></p>
+  <p>© Great books · Интерактивный гид по канону классического гуманитарного образования</p>
+  <p><a href="../">Вернуться к полному каталогу</a></p>
 </footer>
 <script src="../js/shield.js?v=6" defer></script>
 </body>
 </html>
 '''
 
-ERA_SHORT = {'antiquity': 'Antiquity', 'middle-ages': 'Middle Ages',
-             'enlightenment': 'Enlightenment', 'nineteenth-century': '19th Century',
-             'twentieth-century': '20th Century'}
+ERA_SHORT = {'antiquity': 'Античность', 'middle-ages': 'Средние века',
+             'enlightenment': 'Эпоха Просвещения', 'nineteenth-century': 'XIX век',
+             'twentieth-century': 'XX век'}
 
 os.makedirs(OUT, exist_ok=True)
 made = 0
@@ -165,7 +175,24 @@ for i, (num, era_full, era_slug, author, title, desc, fname) in enumerate(flat):
     st = short_title(title)
     h1 = f'{author} — {st}'
     # SEO tags keep the full canonical title (truncated safely by length rules)
-    title_tag = f'{author}: {title} | Great Books №{num}'[:78]
+    suffix = f' №{num}{SEO_SITE_SUFFIX}'
+
+    def build_title_tag(tt):
+        return f'{author}: {tt}' + suffix
+
+    title_tag = build_title_tag(title)
+    if len(html.unescape(title_tag)) > 70:            # Яндекс/Google: до ~70 символов
+        title_tag = build_title_tag(PAREN_RE.sub('', title).strip())
+    guard = 0
+    while len(html.unescape(title_tag)) > 70 and guard < 400:   # обрезка по словам
+        guard += 1
+        core = title_tag[:len(title_tag) - len(suffix) - 1]
+        cut = core.rfind(' ')                          # режем по пробелу — entity не порвётся
+        core = (core[:cut] if cut > 0 else core).rstrip(' ,—-…')
+        if not core:
+            title_tag = f'{author}…' + suffix
+            break
+        title_tag = core + '…' + suffix
     desc_meta = f'{author}, {title}. {annotation}'
     if len(desc_meta) > 158:
         desc_meta = desc_meta[:156].rsplit(' ', 1)[0] + '…'
@@ -188,6 +215,7 @@ for i, (num, era_full, era_slug, author, title, desc, fname) in enumerate(flat):
         title_tag=esc(title_tag), desc_meta=esc(desc_meta), site=SITE, fname=fname,
         og_title=esc(f'{author}: {title}'), ld_json=ld,
         era_slug=era_slug, era_short=esc(ERA_SHORT.get(era_slug, era_slug)),
+        sec_ann=SEC_ANN, sec_ctx=SEC_CTX,
         h1=esc(h1), num=num, total=TOTAL,
         annotation=esc(annotation), context=esc(context),
         prev=prev_l, next=next_l)
