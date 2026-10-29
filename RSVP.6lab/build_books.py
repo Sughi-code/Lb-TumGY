@@ -74,13 +74,13 @@ if missing:
 
 SITE = 'https://rsvp.6lab.ru'
 
-# Русские подписи для SEO-тегов и перелинковки (контент книг остаётся англ. первоисточником)
+# Russian SEO meta tags (title suffix / keywords) — the page content stays English
 SEO_SITE_SUFFIX = ' | Книжный клуб Великих Книг'
-SEC_ANN = 'Аннотация'
-SEC_CTX = 'Исторический контекст'
+SEC_ANN = 'Annotation'
+SEC_CTX = 'Historical Context'
 
 TPL = '''<!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -97,7 +97,7 @@ TPL = '''<!DOCTYPE html>
 <meta property="og:description" content="{desc_meta}">
 <meta property="og:url" content="{site}/books/{fname}">
 <meta property="og:image" content="{site}/img/og-cover.svg">
-<meta property="og:locale" content="ru_RU">
+<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#1E1F22">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
@@ -117,31 +117,28 @@ document.addEventListener('contextmenu',function(e){{e.preventDefault();}},true)
 </script>
 </head>
 <body>
-<!-- ===== Единая шапка сайта (полностью идентична шапке главной страницы index.html;
-       ссылка "Каталог" ведёт на главную — навигация и состав одинаковы) ===== -->
 <header class="site-header">
   <div class="header-inner">
     <div class="brand">
       <span class="logo" aria-hidden="true">📖</span>
       <span class="brand-name"><b>Great books</b></span>
     </div>
-    <!-- Header navigation: every book keeps its number in the general list below -->
-    <nav class="top-nav" aria-label="Основная навигация">
-      <a href="../">Каталог</a>
-      <a href="../#antiquity">Античность</a>
-      <a href="../#middle-ages">Средние века</a>
-      <a href="../#enlightenment">Эпоха Просвещения</a>
-      <a href="../#nineteenth-century">XIX век</a>
-      <a href="../#twentieth-century">XX век</a>
+    <!-- Header navigation: identical to the home page header -->
+    <nav class="top-nav" aria-label="Main navigation">
+      <a href="../">Catalogue</a>
+      <a href="../#antiquity">Antiquity</a>
+      <a href="../#middle-ages">Middle Ages</a>
+      <a href="../#enlightenment">Enlightenment</a>
+      <a href="../#nineteenth-century">19th Century</a>
+      <a href="../#twentieth-century">20th Century</a>
     </nav>
   </div>
 </header>
-<!-- ===== /Единая шапка сайта ===== -->
 
 <main>
   <article class="book-page">
     <h1>{h1}</h1>
-    <p class="counter-note">№&nbsp;{num} в общем списке {total} великих книг</p>
+    <p class="counter-note">№&nbsp;{num} in the general list of {total} great books</p>
     <section class="about">
       <h2>{sec_ann}</h2>
       <p>{annotation}</p>
@@ -155,17 +152,17 @@ document.addEventListener('contextmenu',function(e){{e.preventDefault();}},true)
 </main>
 
 <footer class="site-footer">
-  <p>© Great books · Интерактивный гид по канону классического гуманитарного образования</p>
-  <p><a href="../">Вернуться к полному каталогу</a></p>
+  <p>© Great books · An interactive guide to the canon of classical liberal education</p>
+  <p><a href="../">Back to the full catalogue</a></p>
 </footer>
 <script src="../js/shield.js?v=6" defer></script>
 </body>
 </html>
 '''
 
-ERA_SHORT = {'antiquity': 'Античность', 'middle-ages': 'Средние века',
-             'enlightenment': 'Эпоха Просвещения', 'nineteenth-century': 'XIX век',
-             'twentieth-century': 'XX век'}
+ERA_SHORT = {'antiquity': 'Antiquity', 'middle-ages': 'Middle Ages',
+             'enlightenment': 'Enlightenment', 'nineteenth-century': '19th Century',
+             'twentieth-century': '20th Century'}
 
 os.makedirs(OUT, exist_ok=True)
 made = 0

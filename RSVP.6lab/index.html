@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,7 +19,7 @@
 <meta property="og:description" content="Онлайн-книжный клуб по программе Great Books западного высшего образования. Отслеживайте свой прогресс чтения, изучайте классическую философию, историю и литературу и обсуждайте вечные труды вместе с нами.">
 <meta property="og:url" content="https://rsvp.6lab.ru/">
 <meta property="og:image" content="https://rsvp.6lab.ru/img/og-cover.svg">
-<meta property="og:locale" content="ru_RU">
+<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#1E1F22">
 
@@ -47,9 +47,8 @@ document.addEventListener('contextmenu',function(e){e.preventDefault();},true);}
 </script>
 </head>
 <body>
-<a class="skip" href="#catalog">Перейти к каталогу</a>
+<a class="skip" href="#catalog">Skip to the catalogue</a>
 
-<!-- ===== Единая шапка сайта (одинаковая на главной и на всех 120 страницах книг) ===== -->
 <header class="site-header">
   <div class="header-inner">
     <div class="brand">
@@ -57,63 +56,62 @@ document.addEventListener('contextmenu',function(e){e.preventDefault();},true);}
       <span class="brand-name"><b>Great books</b></span>
     </div>
     <!-- Header navigation: every book keeps its number in the general list below -->
-    <nav class="top-nav" aria-label="Основная навигация">
-      <a href="#catalog" class="active">Каталог</a>
-      <a href="#antiquity">Античность</a>
-      <a href="#middle-ages">Средние века</a>
-      <a href="#enlightenment">Эпоха Просвещения</a>
-      <a href="#nineteenth-century">XIX век</a>
-      <a href="#twentieth-century">XX век</a>
+    <nav class="top-nav" aria-label="Main navigation">
+      <a href="#catalog" class="active">Catalogue</a>
+      <a href="#antiquity">Antiquity</a>
+      <a href="#middle-ages">Middle Ages</a>
+      <a href="#enlightenment">Enlightenment</a>
+      <a href="#nineteenth-century">19th Century</a>
+      <a href="#twentieth-century">20th Century</a>
     </nav>
   </div>
 </header>
-<!-- ===== /Единая шапка сайта ===== -->
 
 <main>
   <section class="hero">
-    <h1>Книжный клуб Великих Книг</h1>
-    <p class="lead">Глубокий каталог, база знаний и платформа для совместного чтения великих книг (Great Books), составляющих основу классического западного образования. Каждая позиция носит свой номер в общем списке и ведёт на собственную страницу книги.</p>
+    <h1>Great Books: an interactive guide to the Western canon</h1>
+    <p class="lead">A deep catalogue, knowledge base and shared-reading platform for the <em>Great Books</em> that form the core of a classical Western education. Every entry carries its number in the general list and links to its own book page.</p>
     <p class="counter-note" id="totalNote" hidden></p>
-    <!-- Пункт 11: строка, отражающая работу пользователей на сервере в реальном времени -->
-    <p class="live-counter" id="liveCounter" role="status" aria-live="polite">Сейчас на сайте: <b id="liveNow">—</b> · Сегодня: <b id="liveToday">—</b> · Всего: <b id="liveTotal">—</b></p>
+    <!-- Req. 11: a line showing live user activity on the server -->
+    <p class="live-counter" id="liveCounter" role="status" aria-live="polite">Now on site: <b id="liveNow">—</b> · Today: <b id="liveToday">—</b> · Total: <b id="liveTotal">—</b></p>
   </section>
 
-  <section id="catalog" class="catalog" aria-label="Каталог великих книг">
+  <section id="catalog" class="catalog" aria-label="Catalogue of great books">
     <!-- Era sections are generated from the single data file books.js -->
   </section>
 
   <section class="about">
-    <h2>Как устроен каталог</h2>
-    <p>Книги разделены на пять исторических эпох. Сквозная нумерация (№&nbsp;1&nbsp;…&nbsp;№&nbsp;120) отражает место каждого произведения в общем каноне. Одна строка на книгу; каждая ссылка ведёт на отдельную страницу с описанием, планами чтения и материалами для обсуждения — часть Великой беседы авторов разных эпох.</p>
+    <h2>How the catalogue is organized</h2>
+    <p>The books are grouped into five historical eras. The running numbering (No.&nbsp;1&nbsp;…&nbsp;No.&nbsp;120) reflects each work's place in the overall canon. One line per book; every link leads to a dedicated page with a description, reading plans and materials for shared discussion — part of the Great Conversation between authors of different ages.</p>
   </section>
 
-  <!-- Пункт 10: закреплённые на главной странице формы счётчиков Google и Yandex -->
-  <section class="analytics-forms" id="analyticsForms" aria-label="Счётчики посещаемости">
-    <h2>Счётчики посещаемости</h2>
+  <!-- Req. 10: Google & Yandex counters with their forms pinned on the home page -->
+  <section class="analytics-forms" id="analyticsForms" aria-label="Traffic counters">
+    <h2>Traffic counters</h2>
 
     <div class="analytics-card" id="ga4Form">
       <h3>Google Analytics 4</h3>
       <label for="ga4Id">Measurement ID (G-XXXXXXXXXX):</label>
       <input id="ga4Id" name="ga4Id" type="text" inputmode="latin" autocomplete="off" spellcheck="false" placeholder="G-XXXXXXXXXX">
-      <button type="button" id="ga4Apply">Включить Google Analytics</button>
-      <p class="analytics-status" id="ga4Status">Выключен.</p>
+      <button type="button" id="ga4Apply">Enable Google Analytics</button>
+      <p class="analytics-status" id="ga4Status">Off.</p>
     </div>
 
     <div class="analytics-card" id="ymForm">
-      <h3>Яндекс Метрика</h3>
-      <label for="ymId">Номер счётчика:</label>
-      <input id="ymId" name="ymId" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" placeholder="например 98765432">
-      <button type="button" id="ymApply">Включить Яндекс Метрику</button>
-      <p class="analytics-status" id="ymStatus">Выключена.</p>
+      <h3>Yandex Metrika</h3>
+      <label for="ymId">Counter ID:</label>
+      <input id="ymId" name="ymId" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" placeholder="e.g. 98765432">
+      <button type="button" id="ymApply">Enable Yandex Metrika</button>
+      <p class="analytics-status" id="ymStatus">Off.</p>
     </div>
 
-    <p class="analytics-note">Формы закреплены на главной странице: после ввода ID счётчики загружаются автоматически и запоминаются в этом браузере. Для продакшна достаточно вставить постоянные коды в конец этого файла (отмечено комментариями).</p>
+    <p class="analytics-note">These forms stay pinned on the home page: after you enter an ID, the counter loads automatically and is remembered in this browser. For production, paste the permanent codes at the end of this file (marked with comments).</p>
   </section>
 </main>
 
 <footer class="site-footer">
-  <p>© Great books · Интерактивный гид по канону классического гуманитарного образования</p>
-  <p><a href="./">Главная</a> · <a href="404.html">Пример страницы 404</a></p>
+  <p>© Great books · An interactive guide to the canon of classical liberal education</p>
+  <p><a href="./">Home</a> · <a href="404.html">404 example</a></p>
 </footer>
 
 <!-- Without JS: the static HTML shell stays empty; the script fills it -->
@@ -123,7 +121,7 @@ document.addEventListener('contextmenu',function(e){e.preventDefault();},true);}
 <script src="js/shield.js?v=6" defer></script>
 
 <!-- ============================================================
-     ПРОДАКШЕН-КОДЫ СЧЁТЧИКОВ (п. 10). Замените XXXXXXXX на реальные ID.
+     PRODUCTION COUNTER CODES (req. 10). Replace XXXXXXXX with real IDs.
      ============================================================ -->
 <!-- Global site tag (gtag.js) — Google Analytics 4
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
@@ -134,7 +132,7 @@ document.addEventListener('contextmenu',function(e){e.preventDefault();},true);}
   gtag('config', 'G-XXXXXXXXXX');
 </script>
 -->
-<!-- Яндекс Метрика: быстрая версия
+<!-- Yandex Metrika: quick version
 <script>(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
 m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
 (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
