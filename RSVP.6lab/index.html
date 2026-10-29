@@ -74,10 +74,9 @@ document.addEventListener('contextmenu',function(e){e.preventDefault();},true);}
       <span class="lead-line">A deep catalogue, knowledge base and shared-reading platform for the <em>Great Books</em> that form the core of a classical Western education — every entry carries its number in the general list and links to its own book page, where you can open the full card of the work.</span>
     </p>
     <p class="counter-note" id="totalNote" hidden></p>
-    <!-- Traffic counters tab removed for now (will be added later); the live
-         counter markup is kept here, hidden, so it can be re-enabled with CSS.
+    <!-- Req.: a line reflecting real-time user activity on the server — how many
+         clients are working on the server right now. Updated by js/live.js. -->
     <p class="live-counter" id="liveCounter" role="status" aria-live="polite">Now on site: <b id="liveNow">—</b> · Today: <b id="liveToday">—</b> · Total: <b id="liveTotal">—</b></p>
-    -->
   </section>
 
   <section id="catalog" class="catalog" aria-label="Catalogue of great books">
@@ -125,6 +124,7 @@ document.addEventListener('contextmenu',function(e){e.preventDefault();},true);}
 <script src="books.js?v=6" defer></script>
 <script src="js/app.js?v=6" defer></script>
 <script src="js/analytics.js?v=6" defer></script>
+<script src="js/live.js?v=6" defer></script>
 <script src="js/shield.js?v=6" defer></script>
 
 <!-- ============================================================
