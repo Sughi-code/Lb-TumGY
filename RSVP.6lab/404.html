@@ -9,14 +9,16 @@
 <link rel="canonical" href="https://rsvp.6lab.ru/404.html">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1E1F22">
+<!-- All colors come from the central token file css/theme.css — nothing is hard-coded here -->
+<link rel="stylesheet" href="css/theme.css?v=8">
 <style>
-body{margin:0;background:#1E1F22;color:#F2F3F5;font-family:Inter,Roboto,"Segoe UI",system-ui,Arial,sans-serif;text-align:center}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Roboto,"Segoe UI",system-ui,Arial,sans-serif;text-align:center}
 .wrap{max-width:640px;margin:0 auto;padding:70px 16px}
-.code{font-size:clamp(5rem,20vw,9rem);color:#00BAC6;margin:0;line-height:1}
+.code{font-size:clamp(5rem,20vw,9rem);color:var(--accent);margin:0;line-height:1}
 h1{font-size:1.4rem;font-weight:700}
-p{color:#949BA4}
-.home{display:inline-block;margin-top:22px;padding:12px 26px;background:#00BAC6;color:#1E1F22;font-weight:600;border-radius:10px;text-decoration:none}
-a:focus-visible{outline:3px solid #00BAC6;outline-offset:2px}
+p{color:var(--muted)}
+.home{display:inline-block;margin-top:22px;padding:12px 26px;background:var(--accent);color:var(--accent-contrast);font-weight:600;border-radius:10px;text-decoration:none}
+a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 </style>
 </head>

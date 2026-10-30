@@ -1,0 +1,49 @@
+/* ============================================================================
+   CENTRALIZED THEME FILE — the single source of truth for all design tokens.
+
+   "Предусмотреть возможность централизованного управления стилями" means:
+   every color / radius on the whole site (index.html, 120 book pages, 404)
+   is defined ONCE here as a CSS custom property (--token). All other styles
+   (css/style.css and the inline critical <style> blocks) only reference
+   var(--token), never hard-coded hex values.
+
+   HOW TO USE IT
+   1) Change a value in ONE place -> the entire site re-skins instantly:
+        --accent:#00BAC6;  ->  --accent:#FF7A45;   (all cyan becomes orange)
+   2) Or override the whole theme centrally from JS without touching any file:
+        Object.assign(document.documentElement.style, {
+          '--bg': '#F6F7F9', '--surface': '#FFFFFF',
+          '--text': '#1E1F22', '--muted': '#5A626E',
+          '--border': '#DDE1E6'
+        }); // one line of code restyles 122 pages at once
+   3) Live demo on the home page: the "Theme controls" section (js/theme.js)
+       wires range/color inputs directly to these variables.
+
+   The <html data-theme="light"> block below shows the same mechanism used
+   declaratively: a light skin defined in this one file, switchable by a
+   single attribute.
+   ========================================================================= */
+:root{
+  --bg:#1E1F22;            /* main app background */
+  --surface:#2B2D31;       /* card / container surface */
+  --text:#F2F3F5;          /* primary text */
+  --muted:#949BA4;         /* secondary / muted text */
+  --accent:#00BAC6;        /* neon cyan: links, headings, CTA */
+  --accent-contrast:#1E1F22;/* text drawn ON accent-colored surfaces */
+  --accent-soft:rgba(0,186,198,.12); /* tinted fills (pills, hover) */
+  --border:#3C3F45;        /* subtle outline separating containers */
+  --radius:10px;           /* cards: 8-12px */
+}
+
+/* Centralized alternate skin: add data-theme="light" to <html> (or toggle it
+   with js/theme.js) and the whole site switches colors — no other file edits. */
+[data-theme="light"]{
+  --bg:#F6F7F9;
+  --surface:#FFFFFF;
+  --text:#1E1F22;
+  --muted:#5A626E;
+  --accent:#00868F;
+  --accent-contrast:#FFFFFF;
+  --accent-soft:rgba(0,134,143,.10);
+  --border:#DDE1E6;
+}
