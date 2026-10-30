@@ -20,8 +20,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#1E1F22">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<!-- Centralized styles: colors come ONLY from css/theme.css (one token file for all 120 pages) -->
+<link rel="stylesheet" href="../css/theme.css?v=8">
 <style>
-body{margin:0;background:#1E1F22;color:#F2F3F5;font-family:Inter,Roboto,"Segoe UI",system-ui,-apple-system,Arial,sans-serif;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Roboto,"Segoe UI",system-ui,-apple-system,Arial,sans-serif;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 header,main,footer{max-width:980px;margin:0 auto;padding:0 16px}
 input,textarea,select,[contenteditable="true"]{-webkit-user-select:text;user-select:text}
 </style>
@@ -29,8 +31,8 @@ input,textarea,select,[contenteditable="true"]{-webkit-user-select:text;user-sel
 (function(){document.addEventListener('copy',function(e){e.preventDefault();},true);
 document.addEventListener('cut',function(e){e.preventDefault();},true);
 document.addEventListener('contextmenu',function(e){e.preventDefault();},true);})();</script>
-<link rel="preload" href="../css/style.css?v=6" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="../css/style.css?v=6"></noscript>
+<link rel="preload" href="../css/style.css?v=8" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="../css/style.css?v=8"></noscript>
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "Book", "name": "The Canterbury Tales", "author": {"@type": "Person", "name": "Geoffrey Chaucer"}, "url": "https://rsvp.6lab.ru/books/geoffrey-chaucer-the-canterbury-tales.html", "description": "Pilgrims from knight to miller tell tales en route to Canterbury: courtly romance, fabliau, sermon, saint's life — genre colliding with class and personality in lively Middle English debate.", "isPartOf": {"@type": "ItemList", "numberOfItems": 120, "name": "Great books canon"}, "position": 50}
 </script>
@@ -74,6 +76,6 @@ document.addEventListener('contextmenu',function(e){e.preventDefault();},true);}
   <p>© Great books · An interactive guide to the canon of classical liberal education</p>
   <p><a href="../">Back to the full catalogue</a></p>
 </footer>
-<script src="../js/shield.js?v=6" defer></script>
+<script src="../js/shield.js?v=8" defer></script>
 </body>
 </html>

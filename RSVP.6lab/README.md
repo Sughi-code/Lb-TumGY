@@ -20,8 +20,37 @@ must never appear as a site title anywhere in the UI or metadata).
   JSON-LD `Book` schema, Annotation + Historical Context sections, prev/next pager).
   Header/breadcrumbs show beginner topics only: Catalogue · Antiquity · Middle Ages ·
   Enlightenment · 19th Century · 20th Century; long era labels are not shown to users.
-- `css/style.css` — Dark Mode Flat Design tokens; critical CSS is inlined in each HTML.
+- `css/style.css` — Dark Mode Flat Design rules; **contains no hard-coded colors**,
+  everything goes through tokens. Critical CSS is inlined in each HTML via `var(--token)`.
+- `css/theme.css` — **centralized style management**: the single source of truth for all
+  design tokens (`--bg`, `--surface`, `--text`, `--muted`, `--accent`, `--border`, `--radius`)
+  plus preset skins (`[data-theme="light"]`). Loaded by every page before any other CSS.
+- `js/theme.js` — live demo of centralized control on the home page ("Theme controls" panel):
+  color pickers and preset buttons change tokens on `<html>` in one place and repaint the site.
 - `404.html`, `favicon.svg`, `img/og-cover.svg` — error page and vector assets.
+
+## Централизованное управление стилями (как этим пользоваться)
+Весь сайт (главная, 120 страниц книг, 404) покрасится через CSS-переменные, объявленные
+**один раз** в `css/theme.css`. В остальных файлах нет ни одного «жёсткого» цвета — только
+`var(--bg)`, `var(--accent)` и т.д. Поэтому управлять стилями можно централизованно, тремя способами:
+
+1. **Один файл — весь сайт.** Правим значение в `css/theme.css`
+   (например, `--accent:#00BAC6;` → `--accent:#FF7A45;`) — и на всех 122 страницах
+   сразу меняется акцентный цвет: ссылки, номера книг, кнопки, заголовки.
+2. **Одна строка кода — мгновенная перекраска.** Из любого центрального места
+   (панель настроек, A/B-тест, CMS):
+   `document.documentElement.style.setProperty('--accent', '#FF7A45');`
+3. **Готовые темы (пресеты).** В `theme.css` описан светлый скин `[data-theme="light"]`;
+   достаточно `document.documentElement.setAttribute('data-theme','light')` —
+   и вся палитра переключается разом.
+
+**Как продемонстрировать на защите:** открыть главную страницу → секция
+*«Theme controls — centralized style management»* → выбрать любой цвет или нажать
+Dark/Light: вся страница перекрашивается мгновенно, а под панелью показывается ровно та
+центральная команда `setProperty(...)`, которая в этот момент выполняется. Выбор
+сохраняется в localStorage и действует на всех страницах сайта. Плюс можно показать
+доказательство из консоли: `getComputedStyle(document.body).backgroundColor` берёт
+значение из `--bg`, а не из правила `body{...}`.
 
 ## UI style (Dark Mode Flat Design)
 - App background `#1E1F22`; card surface `#2B2D31`; primary text `#F2F3F5`;
@@ -29,6 +58,19 @@ must never appear as a site title anywhere in the UI or metadata).
 - Fonts: Inter / Roboto / system-ui; card radius 8–12px; subtle container outlines.
 - Header: full-width dark bar, brand + horizontal nav links; no search field.
 - Catalogue: one book per line, cyan number pill shows the book's number in the list.
+
+## Responsive design (optimized for all displays, incl. mobile)
+- `<meta name="viewport" content="width=device-width, initial-scale=1">` on all 122 pages.
+- Fluid layout: centered container `max-width:980px`, flexible header/nav (`flex-wrap`),
+  images/SVG scale via `img{max-width:100%;height:auto}` (crisp on Retina/High-DPI).
+- Fluid typography with `clamp()` (h1, era titles, 404 code) — text scales with the screen.
+- Breakpoints in `css/style.css`:
+  * `min-width:641px–980px` (tablets): era cards switch to a 2-column CSS grid;
+  * `max-width:640px` (phones): nav drops below the brand, tighter paddings, book rows wrap,
+    touch targets get `min-height:44px` (Apple/Google accessibility guideline);
+  * `max-width:900px + landscape`: reduced hero padding for landscape phones;
+  * `prefers-reduced-motion`: transitions disabled.
+- No horizontal scroll at 320px width; `-webkit-text-size-adjust:100%` prevents font inflation.
 
 ## Language
 All user-facing text, metadata and code comments are in English.
