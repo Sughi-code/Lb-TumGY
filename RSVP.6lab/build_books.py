@@ -99,6 +99,7 @@ TPL = '''<!DOCTYPE html>
 <meta property="og:image" content="{site}/img/og-cover.svg">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
+<!-- theme-color mirrors --bg from css/theme.css; keep in sync if the token changes -->
 <meta name="theme-color" content="#1E1F22">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <!-- Centralized styles: colors come ONLY from css/theme.css (one token file for all 120 pages) -->
@@ -127,12 +128,12 @@ document.addEventListener('contextmenu',function(e){{e.preventDefault();}},true)
     </div>
     <!-- Header navigation: identical to the home page header -->
     <nav class="top-nav" aria-label="Main navigation">
-      <a href="../">Catalogue</a>
-      <a href="../#antiquity">Antiquity</a>
-      <a href="../#middle-ages">Middle Ages</a>
-      <a href="../#enlightenment">Enlightenment</a>
-      <a href="../#nineteenth-century">19th Century</a>
-      <a href="../#twentieth-century">20th Century</a>
+      <a href="../index.html">Catalogue</a>
+      <a href="../index.html#antiquity">Antiquity</a>
+      <a href="../index.html#middle-ages">Middle Ages</a>
+      <a href="../index.html#enlightenment">Enlightenment</a>
+      <a href="../index.html#nineteenth-century">19th Century</a>
+      <a href="../index.html#twentieth-century">20th Century</a>
     </nav>
   </div>
 </header>
@@ -155,7 +156,7 @@ document.addEventListener('contextmenu',function(e){{e.preventDefault();}},true)
 
 <footer class="site-footer">
   <p>© Great books · An interactive guide to the canon of classical liberal education</p>
-  <p><a href="../">Back to the full catalogue</a></p>
+  <p><a href="../index.html">Back to the full catalogue</a></p>
 </footer>
 <script src="../js/shield.js?v=8" defer></script>
 </body>
