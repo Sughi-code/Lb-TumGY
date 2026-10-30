@@ -25,8 +25,13 @@ must never appear as a site title anywhere in the UI or metadata).
 - `css/theme.css` — **centralized style management**: the single source of truth for all
   design tokens (`--bg`, `--surface`, `--text`, `--muted`, `--accent`, `--border`, `--radius`)
   plus preset skins (`[data-theme="light"]`). Loaded by every page before any other CSS.
-- `js/theme.js` — live demo of centralized control on the home page ("Theme controls" panel):
-  color pickers and preset buttons change tokens on `<html>` in one place and repaint the site.
+- `js/theme.js` — centralized style-management EDITOR (admin-only). It is loaded
+  exclusively by `/admin.html`, never by public pages; a runtime guard refuses to
+  build the panel anywhere else.
+- `admin.html` — **admin-only page** hosting the "Theme controls" panel. Not linked
+  from the public site, absent from sitemap.xml, marked `noindex,nofollow`, listed
+  under `Disallow:` in robots.txt, and gated by an access key (`greatbooks-admin`;
+  for production replace with real server-side auth, e.g. HTTP Basic Auth/.htaccess).
 - `404.html`, `favicon.svg`, `img/og-cover.svg` — error page and vector assets.
 
 ## Централизованное управление стилями (как этим пользоваться)
@@ -44,13 +49,16 @@ must never appear as a site title anywhere in the UI or metadata).
    достаточно `document.documentElement.setAttribute('data-theme','light')` —
    и вся палитра переключается разом.
 
-**Как продемонстрировать на защите:** открыть главную страницу → секция
-*«Theme controls — centralized style management»* → выбрать любой цвет или нажать
-Dark/Light: вся страница перекрашивается мгновенно, а под панелью показывается ровно та
-центральная команда `setProperty(...)`, которая в этот момент выполняется. Выбор
-сохраняется в localStorage и действует на всех страницах сайта. Плюс можно показать
-доказательство из консоли: `getComputedStyle(document.body).backgroundColor` берёт
-значение из `--bg`, а не из правила `body{...}`.
+**Как продемонстрировать на защите:** открыть **админ-страницу `/admin.html`** (она не
+ссылается с публичной части сайта; ключ доступа для демо — `greatbooks-admin`) → секция
+*«Theme controls»* → выбрать любой цвет или нажать Dark/Light: вся страница перекрашивается
+мгновенно, а под панелью показывается ровно та центральная команда `setProperty(...)`,
+которая в этот момент выполняется. Выбор сохраняется в localStorage и действует на всех
+страницах сайта (открыть главную — видно результат). Публичная главная страница при этом
+не содержит никаких элементов управления стилями — это требование безопасности/UX:
+обычные посетители не могут менять оформление. Плюс доказательство из консоли:
+`getComputedStyle(document.body).backgroundColor` берёт значение из `--bg`, а не из
+правила `body{...}`.
 
 ## UI style (Dark Mode Flat Design)
 - App background `#1E1F22`; card surface `#2B2D31`; primary text `#F2F3F5`;

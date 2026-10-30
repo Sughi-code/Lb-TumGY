@@ -16,8 +16,9 @@
           '--text': '#1E1F22', '--muted': '#5A626E',
           '--border': '#DDE1E6'
         }); // one line of code restyles 122 pages at once
-   3) Live demo on the home page: the "Theme controls" section (js/theme.js)
-       wires range/color inputs directly to these variables.
+   3) Live editor (ADMIN ONLY): the "Theme controls" panel on /admin.html
+       (js/theme.js) wires color inputs directly to these variables; it was
+       removed from the public homepage.
 
    The <html data-theme="light"> block below shows the same mechanism used
    declaratively: a light skin defined in this one file, switchable by a

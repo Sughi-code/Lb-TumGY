@@ -1,8 +1,12 @@
-/* Great books — CENTRALIZED STYLE MANAGEMENT demo (home page).
+/* Great books — CENTRALIZED STYLE MANAGEMENT editor (ADMIN-ONLY).
+ *
+ * This script is loaded exclusively by /admin.html. It is intentionally NOT
+ * referenced from index.html or any public page anymore: regular visitors
+ * see the site painted by the tokens, but cannot edit them from the homepage.
  *
  * The whole site is painted through CSS custom properties defined ONCE in
  * css/theme.css (:root{--bg, --surface, --text, --muted, --accent, ...}).
- * This script demonstrates the consequence: by changing those variables on
+ * This editor demonstrates the consequence: by changing those variables on
  * the root element (<html>) from a single place, EVERY style that references
  * var(--token) — header, hero, 120 catalogue rows, cards, footer — updates
  * instantly, without editing any CSS file and without re-rendering HTML.
@@ -16,6 +20,11 @@
  */
 (function () {
   'use strict';
+
+  /* Hard guard: build the panel only inside the admin page. Even if this
+     file were accidentally included on a public page, nothing would render. */
+  if (!/\/admin\.html$/.test(location.pathname) &&
+      !document.getElementById('themeControls')) return;
 
   var LS_KEY = 'gb_theme_prefs';           // {vars:{...}, preset:'default'|'light'}
 
