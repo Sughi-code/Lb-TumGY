@@ -10,13 +10,17 @@
    HOW TO USE IT
    1) Change a value in ONE place -> the entire site re-skins instantly:
         --accent:#00BAC6;  ->  --accent:#FF7A45;   (all cyan becomes orange)
-   2) Or override the whole theme centrally from JS without touching any file:
+   2) Load order matters and is enforced on every page:
+        <link rel="stylesheet" href="css/theme.css">   <-- tokens FIRST
+        <link rel="stylesheet" href="css/style.css">   <-- rules, only var()
+      style.css contains ZERO hard-coded colors; it only reads the tokens.
+   3) Or override the whole theme centrally from JS without touching any file:
         Object.assign(document.documentElement.style, {
           '--bg': '#F6F7F9', '--surface': '#FFFFFF',
           '--text': '#1E1F22', '--muted': '#5A626E',
           '--border': '#DDE1E6'
         }); // one line of code restyles 122 pages at once
-   3) Live editor (ADMIN ONLY): the "Theme controls" panel on /admin.html
+   4) Live editor (ADMIN ONLY): the "Theme controls" panel on /admin.html
        (js/theme.js) wires color inputs directly to these variables; it was
        removed from the public homepage.
 
@@ -33,6 +37,7 @@
   --accent-contrast:#1E1F22;/* text drawn ON accent-colored surfaces */
   --accent-soft:rgba(0,186,198,.12); /* tinted fills (pills, hover) */
   --border:#3C3F45;        /* subtle outline separating containers */
+  --danger:#E5484D;        /* error / destructive UI (admin lock etc.) */
   --radius:10px;           /* cards: 8-12px */
 }
 
