@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- ADMIN PAGE: noindex,nofollow + absent from sitemap.xml => invisible to
+     search engines and regular visitors; reachable only by direct URL and
+     protected below by an access key. -->
+<meta name="robots" content="noindex,nofollow,noarchive,noimageindex">
+<title>Theme controls — Admin | Great Books</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/theme.css?v=9">
+<link rel="stylesheet" href="css/style.css?v=9">
+<style>
+  /* Critical inline styles use ONLY the central tokens from css/theme.css */
+  body{margin:0;background:var(--bg);color:var(--text);
+       font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  .wrap{max-width:980px;margin:0 auto;padding:24px 20px 60px}
+  .admin-badge{display:inline-block;padding:4px 12px;border:1px solid var(--accent);
+       border-radius:999px;color:var(--accent);font-size:.78rem;font-weight:700;
+       letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px}
+  .admin-lock{padding:18px 20px;background:var(--surface);border:1px solid var(--border);
+       border-radius:12px;margin:0 0 22px}
+  .admin-lock p{margin:0 0 12px;color:var(--muted);font-size:.9rem}
+  .admin-lock label{display:block;font-size:.85rem;color:var(--muted);margin-bottom:6px}
+  .admin-lock input{width:100%;max-width:320px;padding:10px 12px;background:var(--bg);
+       color:var(--text);border:1px solid var(--border);border-radius:var(--radius);
+       font-size:1rem;min-height:44px;box-sizing:border-box}
+  .admin-lock button,.admin-lock a.btn{display:inline-block;margin-top:12px;padding:10px 18px;
+       background:var(--accent);color:var(--accent-contrast);border:0;border-radius:var(--radius);
+       font-size:.9rem;font-weight:600;cursor:pointer;text-decoration:none;min-height:44px}
+  .admin-lock .err{color:#e5484d;font-size:.85rem;margin-top:8px;display:none}
+  .admin-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:0 0 8px}
+  .admin-bar a{color:var(--accent)}
+  #themeControls.locked > *{filter:blur(6px);pointer-events:none;user-select:none}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <p><span class="admin-badge">Admin only</span></p>
+  <h1>Theme controls — centralized style management</h1>
+
+  <!-- Access gate: without the correct key the panel stays blurred/inert -->
+  <section class="admin-lock" id="adminLock" aria-label="Admin access">
+    <p>This page manages the design tokens of the whole site
+       (<code>css/theme.css</code>). It is intentionally hidden from the public
+       homepage, blocked for robots (<code>noindex</code>) and locked with an
+       access key.</p>
+    <label for="adminKey">Access key:</label>
+    <input id="adminKey" type="password" autocomplete="off" spellcheck="false"
+           placeholder="Enter admin key">
+    <button type="button" id="adminUnlock">Unlock</button>
+    <span class="err" id="adminErr">Wrong key.</span>
+  </section>
+
+  <div class="admin-bar" id="adminBar" hidden>
+    <a href="./">← Back to public site</a>
+    <button type="button" id="adminLockAgain">Lock again</button>
+  </div>
+
+  <!-- Centralized style management: all site colors are CSS custom properties
+       declared ONCE in css/theme.css. This panel demonstrates it live: every
+       control changes one variable on <html>, and the whole page re-skins
+       instantly (the same tokens are used by all 120 book pages and 404). -->
+  <div id="themeControlsHost">
+    <section class="theme-controls locked" id="themeControls" aria-label="Theme controls">
+      <h2>Theme controls</h2>
+      <p>Every color on this site comes from design tokens defined once in <code>css/theme.css</code>
+         (<code>--bg</code>, <code>--surface</code>, <code>--text</code>, <code>--accent</code>…).
+         Pick any color below or switch a preset skin — the change goes through a single central call
+         <code>document.documentElement.style.setProperty('--token', value)</code> and repaints
+         the entire site at once. Your choice is remembered and applies on every page of the site.</p>
+      <!-- color pickers + preset buttons are built here by js/theme.js -->
+      <pre class="theme-code" id="themeCode" aria-label="Central style calls in effect"></pre>
+    </section>
+  </div>
+</main>
+
+<script src="js/theme.js?v=9" defer></script>
+<script>
+/* Simple client-side gate for the demo (static hosting friendly).
+   NOTE: for real production security put server-side auth in front of this
+   file (HTTP Basic Auth / .htaccess / CMS role) — JS checks can be bypassed. */
+(function () {
+  'use strict';
+  var KEY = 'greatbooks-admin';           // demo access key
+  var SESSION_FLAG = 'gb_admin_ok';
+  var section = document.getElementById('themeControls');
+  var lock = document.getElementById('adminLock');
+  var bar = document.getElementById('adminBar');
+  var input = document.getElementById('adminKey');
+  var err = document.getElementById('adminErr');
+
+  function unlock() {
+    section.classList.remove('locked');
+    lock.hidden = true;
+    bar.hidden = false;
+  }
+  function lockIt() {
+    try { sessionStorage.removeItem(SESSION_FLAG); } catch (e) {}
+    section.classList.add('locked');
+    lock.hidden = false;
+    bar.hidden = true;
+    if (input) input.value = '';
+  }
+  document.getElementById('adminUnlock').addEventListener('click', function () {
+    if (input.value === KEY) {
+      try { sessionStorage.setItem(SESSION_FLAG, '1'); } catch (e) {}
+      unlock();
+    } else {
+      err.style.display = 'block';
+    }
+  });
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') document.getElementById('adminUnlock').click();
+  });
+  document.getElementById('adminLockAgain').addEventListener('click', lockIt);
+
+  var ok = false;
+  try { ok = sessionStorage.getItem(SESSION_FLAG) === '1'; } catch (e) {}
+  if (ok) unlock(); else lockIt();
+})();
+</script>
+</body>
+</html>

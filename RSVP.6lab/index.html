@@ -41,9 +41,9 @@ input,textarea,select,[contenteditable="true"]{-webkit-user-select:text;user-sel
 (function(){document.addEventListener('copy',function(e){e.preventDefault();},true);
 document.addEventListener('cut',function(e){e.preventDefault();},true);
 document.addEventListener('contextmenu',function(e){e.preventDefault();},true);})();</script>
-<link rel="stylesheet" href="css/theme.css?v=8">
-<link rel="preload" href="css/style.css?v=8" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="css/style.css?v=8"></noscript>
+<link rel="stylesheet" href="css/theme.css?v=9">
+<link rel="preload" href="css/style.css?v=9" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="css/style.css?v=9"></noscript>
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"Great books","url":"https://rsvp.6lab.ru/","description":"An interactive guide, catalogue and knowledge base of the great books that form the core of a classical Western education."}
@@ -91,21 +91,6 @@ document.addEventListener('contextmenu',function(e){e.preventDefault();},true);}
     <p>The books are grouped into five historical eras. The running numbering (No.&nbsp;1&nbsp;…&nbsp;No.&nbsp;120) reflects each work's place in the overall canon. One line per book; every link leads to a dedicated page with a description, reading plans and materials for shared discussion — part of the Great Conversation between authors of different ages.</p>
   </section>
 
-  <!-- Centralized style management: all site colors are CSS custom properties
-       declared ONCE in css/theme.css. This panel demonstrates it live: every
-       control changes one variable on <html>, and the whole page re-skins
-       instantly (the same tokens are used by all 120 book pages and 404). -->
-  <section class="theme-controls" id="themeControls" aria-label="Theme controls">
-    <h2>Theme controls — centralized style management</h2>
-    <p>Every color on this site comes from design tokens defined once in <code>css/theme.css</code>
-       (<code>--bg</code>, <code>--surface</code>, <code>--text</code>, <code>--accent</code>…).
-       Pick any color below or switch a preset skin — the change goes through a single central call
-       <code>document.documentElement.style.setProperty('--token', value)</code> and repaints
-       the entire page at once. Your choice is remembered and applies on every page of the site.</p>
-    <!-- color pickers + preset buttons are built here by js/theme.js -->
-    <pre class="theme-code" id="themeCode" aria-label="Central style calls in effect"></pre>
-  </section>
-
   <!-- Traffic counters tab removed from the homepage for now — it will be
        added back later (markup preserved below as a comment). -->
   <!--
@@ -139,12 +124,11 @@ document.addEventListener('contextmenu',function(e){e.preventDefault();},true);}
 </footer>
 
 <!-- Without JS: the static HTML shell stays empty; the script fills it -->
-<script src="books.js?v=8" defer></script>
-<script src="js/app.js?v=8" defer></script>
-<script src="js/analytics.js?v=8" defer></script>
-<script src="js/live.js?v=8" defer></script>
-<script src="js/theme.js?v=8" defer></script>
-<script src="js/shield.js?v=8" defer></script>
+<script src="books.js?v=9" defer></script>
+<script src="js/app.js?v=9" defer></script>
+<script src="js/analytics.js?v=9" defer></script>
+<script src="js/live.js?v=9" defer></script>
+<script src="js/shield.js?v=9" defer></script>
 
 <!-- ============================================================
      PRODUCTION COUNTER CODES (req. 10). Replace XXXXXXXX with real IDs.
